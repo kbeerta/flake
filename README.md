@@ -1,10 +1,9 @@
 # NixOs system configuration Flake
-## Table of Content
- * [Building Guide](#building-guide)
 
-## Building Guide
+## Building
 ```shell
-# sudo nixos-rebuild switch --flake <path>#<host>
-# Example: sudo nixos-rebuild switch --flake .#laptop
+# git clone git@github:slavjuan/nixos-config.git ~/.flake
+# cd ~/.flake
+# sudo nixos-rebuild switch --flake .#<host>
 ```
 
