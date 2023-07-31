@@ -4,4 +4,7 @@
 
 [
   ./alacritty.nix
+
+  # Wayland
+  ./wofi.nix
 ]

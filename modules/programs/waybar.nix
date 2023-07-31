@@ -1,6 +1,8 @@
 #
 # Bar
 #
+# Gets imported in Window Manager
+#
 
 { config, lib, pkgs, host, user, ...}:
 {

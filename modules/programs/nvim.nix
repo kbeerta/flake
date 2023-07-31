@@ -1,3 +1,9 @@
+#
+# Nvim
+#
+# Gets imported in ~/hosts/configuration.nix
+#
+
 { pkgs, ... }:
 {
   programs.neovim = {
@@ -12,7 +18,7 @@
 
 	set tabstop=4
 	set shiftwidth=4
-	set expandtab
+        set expandtab
       '';
       packages.myVimPackages = with pkgs.vimPlugins; {
         start = [

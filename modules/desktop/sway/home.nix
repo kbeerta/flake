@@ -6,10 +6,8 @@
     config = rec {
       modifier = "Mod1";
       terminal = "${pkgs.alacritty}/bin/alacritty";
-
-      # TODO: Menu
-      menu = "";
-
+      menu = "${pkgs.wofi}/bin/wofi --show run | xargs swaymsg exec";
+      
       startup = [
         { 
 	  command = ''
@@ -27,6 +25,7 @@
 	  ''; always = true;
 	}
       ];
+
 
       bars = [];
 
@@ -51,6 +50,22 @@
           xkb_layout = "us";
 	  xkb_numlock = "enabled";
 	};
+      };
+
+      colors.focused = {
+        background = "#999999";
+        border = "#999999";
+        childBorder = "#999999";
+        indicator = "#212121";
+        text = "#111111";
+      };
+
+      colors.unfocused = {
+        background = "#333333";
+        border = "#333333";
+        childBorder = "#333333";
+        indicator = "#212121";
+        text = "#999999";
       };
 
       keybindings = {
@@ -91,7 +106,11 @@
 	"XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
       };
     };
+
+    # TODO: Fix output bg thing
     extraConfig = ''
+      output * bg ~/.flake/wallpapers/forest.jpg fill
+
       set $opacity 0.8
       for_window [app_id="Alacritty"] opacity $opacity
     '';
