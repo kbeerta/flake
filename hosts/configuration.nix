@@ -49,7 +49,6 @@
   };
 
   services = {
-    xserver.xkbOptions = "caps:escape";
     pipewire = {
       enable = true;
       alsa.enable = true;

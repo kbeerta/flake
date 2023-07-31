@@ -36,7 +36,11 @@
 
       gaps = {
         inner = 5;
-	outer = 5;
+      };
+
+      window = {
+        border = 2;
+	titlebar = false;
       };
 
       input = {
@@ -49,23 +53,25 @@
 	"type:keyboard" = {
           xkb_layout = "us";
 	  xkb_numlock = "enabled";
+	  xkb_options = "caps:escape";
 	};
       };
 
-      colors.focused = {
-        background = "#999999";
-        border = "#999999";
-        childBorder = "#999999";
-        indicator = "#212121";
-        text = "#111111";
-      };
-
-      colors.unfocused = {
-        background = "#333333";
-        border = "#333333";
-        childBorder = "#333333";
-        indicator = "#212121";
-        text = "#999999";
+      colors = {
+        focused = {
+          background = "#141415";
+          border = "#434A4C";
+          childBorder = "#434A4C";
+	  indicator = "#141415";
+          text = "#FFE9DD";
+	};
+        unfocused = {
+          background = "#141415";
+          border = "#262A2B";
+          childBorder = "#262A2B";
+	  indicator = "#141415";
+          text = "#B9AAA2";
+        };
       };
 
       keybindings = {
