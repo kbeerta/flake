@@ -1,0 +1,7 @@
+#
+# Programs
+#
+
+[
+  ./alacritty.nix
+]
