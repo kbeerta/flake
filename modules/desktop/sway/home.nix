@@ -97,11 +97,13 @@
 	"${modifier}+2" = "workspace number 2";
 	"${modifier}+3" = "workspace number 3";
 	"${modifier}+4" = "workspace number 4";
+	"${modifier}+5" = "workspace number 5";
 
 	"${modifier}+Shift+1" = "move container to workspace number 1";
 	"${modifier}+Shift+2" = "move container to workspace number 2";
 	"${modifier}+Shift+3" = "move container to workspace number 3";
 	"${modifier}+Shift+4" = "move container to workspace number 4";
+	"${modifier}+Shift+5" = "move container to workspace number 5";
 
 	"XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 5";
 	"XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 5";
