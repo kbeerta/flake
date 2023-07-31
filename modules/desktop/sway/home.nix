@@ -1,5 +1,7 @@
 { config, host, lib, pkgs, ... }:
-{
+let 
+  wallpaper = "~/.flake/wallpapers/forest.jpg";
+in {
   wayland.windowManager.sway = {
     enable = true;
     systemd.enable = true;
@@ -12,16 +14,16 @@
         { 
 	  command = ''
             ${pkgs.swayidle}/bin/swayidle -w \
-	      before-sleep '${pkgs.swaylock}/bin/swaylock'
+	      before-sleep '${pkgs.swaylock}/bin/swaylock' --color 171717
 	  ''; always = true;
 	}
         { 
 	  command = ''
             ${pkgs.swayidle}/bin/swayidle \
-	      timeout 120 '${pkgs.swaylock}/bin/swaylock' \
+	      timeout 120 '${pkgs.swaylock}/bin/swaylock' --image ${wallpaper} --no-unlock-indicator \
 	      timeout 240 'swaymsg "output * dpms off"' \
 	      resume 'swaymsg "output * dpms on"' \
-	      before-sleep '${pkgs.swaylock}/bin/swaylock'
+	      before-sleep '${pkgs.swaylock}/bin/swaylock' --image ${wallpaper} --no-unlock-indicator
 	  ''; always = true;
 	}
       ];
@@ -79,14 +81,16 @@
         "${modifier}+Return" = "exec ${terminal}";
         "${modifier}+Space" = "exec ${menu}";
 
+	"${modifier}+l" = "exec ${pkgs.swaylock}/bin/swaylock --image ${wallpaper} --no-unlock-indicator";
+
         "${modifier}+r" = "reload";
         "${modifier}+q" = "kill";
         "${modifier}+f" = "fullscreen toggle";
 
-        "${modifier}+k" = "focus up";
-        "${modifier}+j" = "focuse down";
-        "${modifier}+h" = "focus left";
-        "${modifier}+l" = "focus right";
+        "${modifier}+up" = "focus up";
+        "${modifier}+down" = "focuse down";
+        "${modifier}+left" = "focus left";
+        "${modifier}+right" = "focus right";
 
         "${modifier}+Shift+k" = "move up";
         "${modifier}+Shift+j" = "move down";
@@ -115,9 +119,8 @@
       };
     };
 
-    # TODO: Fix output bg thing
     extraConfig = ''
-      output * bg ~/.flake/wallpapers/forest.jpg fill
+      output * bg ${wallpaper} fill
 
       set $opacity 0.8
       for_window [app_id="Alacritty"] opacity $opacity
