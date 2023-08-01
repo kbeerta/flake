@@ -2,7 +2,7 @@
 {
   imports = 
     (import ../modules/shell) ++
-    [(import ../modules/programs/nvim.nix)]
+    [(import ../modules/programs/nvim)]
   ;
 
   users.users.${user} = {
@@ -43,7 +43,9 @@
       EDITOR = "nvim";
     };
     systemPackages = with pkgs; [
+      fd
       neovim
+      ripgrep
       wget
     ];
   };
