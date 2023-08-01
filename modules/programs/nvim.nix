@@ -9,25 +9,22 @@
   programs.neovim = {
     enable = true;
     configure = {
-      customRC = ''
-        sytax enable
-        colorscheme srcery
+      extraConfig = ''
+        syntax enable
+        colorscheme habamax
 
-        set number
-        set relativenumber
-
+	set number
+	set relativenumber
 	set tabstop=4
 	set shiftwidth=4
-        set expandtab
-      '';
-      packages.myVimPackages = with pkgs.vimPlugins; {
-        start = [
-          vim-nix
-	  vim-markdown
+	set softtabstop=4
+	set expandtab
+	set smartindent
 
-	  auto-pairs
-        ];
-      };
+        set termguicolors
+
+        nmap <Space-n> :Ex<CR>
+      '';
     };
   };
 }
