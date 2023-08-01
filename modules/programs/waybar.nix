@@ -21,6 +21,7 @@
         * {
 	  border: none;
 	  font-family: JetBrainsMono Nerd Font;
+	  font-weight: bold;
 	  font-size: 12px;
 	}
 
