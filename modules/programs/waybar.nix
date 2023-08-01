@@ -70,7 +70,7 @@
         layer = "top";
 	position = "top";
 	height = 32;
-	modules-left = [ "sway/workspaces" "sway/window" ];
+	modules-left = [ "sway/workspaces" "custom/pad" "sway/window" ];
 	modules-center = [ "clock" ];
 	modules-right = [ "custom/performance-indicator" "custom/pad2" "cpu" "custom/pad2" "memory" "custom/pad" "backlight" "custom/pad2" "pulseaudio" "custom/pad" "network" "custom/pad2" "battery" "custom/pad2" ];
 

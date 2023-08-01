@@ -7,3 +7,6 @@
 # sudo nixos-rebuild switch --flake .#<host>
 ```
 
+## Inspiration
+* (Matthias' NixOs & Nix-Darwin System Configuration Flake)[https://github.com/MatthiasBenaets/nixos-config]
+

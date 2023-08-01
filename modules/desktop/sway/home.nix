@@ -14,7 +14,7 @@ in {
         { 
 	  command = ''
             ${pkgs.swayidle}/bin/swayidle -w \
-	      before-sleep '${pkgs.swaylock}/bin/swaylock' --color 171717
+	      before-sleep '${pkgs.swaylock}/bin/swaylock' --image ${wallpaper}
 	  ''; always = true;
 	}
         { 
@@ -62,15 +62,15 @@ in {
       colors = {
         focused = {
           background = "#141415";
-          border = "#434A4C";
-          childBorder = "#434A4C";
+          border = "#D1E9C4";
+          childBorder = "#D1E9C4";
 	  indicator = "#141415";
           text = "#FFE9DD";
 	};
         unfocused = {
           background = "#141415";
-          border = "#262A2B";
-          childBorder = "#262A2B";
+          border = "#111111";
+          childBorder = "#111111";
 	  indicator = "#141415";
           text = "#B9AAA2";
         };
