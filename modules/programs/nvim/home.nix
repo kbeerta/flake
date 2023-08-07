@@ -3,9 +3,9 @@
   xdg.configFile."nvim" = {
     recursive = true;
     source = pkgs.fetchFromGitHub {
-      owner = "slavjuan";
+      owner = "kbeerta";
       repo = "nvim-config";
-      rev = "eb93f81";
+      rev = "0adad2e";
       sha256 = "A2UqrTWAJuUnn48sVYcurCemgIrloG5pGbTRY48gfzI=";
     };
   };
