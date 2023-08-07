@@ -8,5 +8,5 @@
 ```
 
 ## Inspiration
-* (Matthias' NixOs & Nix-Darwin System Configuration Flake)[https://github.com/MatthiasBenaets/nixos-config]
+* [Matthias' NixOs & Nix-Darwin System Configuration Flake](https://github.com/MatthiasBenaets/nixos-config)
 
