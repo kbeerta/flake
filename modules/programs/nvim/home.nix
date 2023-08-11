@@ -6,7 +6,7 @@
       owner = "kbeerta";
       repo = "nvim-config";
       rev = "358dfac";
-      sha256 = "Vc3ZXf/R2OtGa7trfqdcEmfTx3CPSXhtWKltah21wSw=";
+      sha256 = "alVTH4rSPn09545/P6a/jS0w15THA4h2UlBZT2V079w=";
     };
   };
 }
