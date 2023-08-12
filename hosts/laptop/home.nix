@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ../../modules/desktop/sway/home.nix
+    ../../modules/desktop/river/home.nix
   ];
 
   home.packages = with pkgs; [

@@ -2,7 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix 
-    ../../modules/desktop/sway/default.nix
+    ../../modules/desktop/river/default.nix
   ];
 
   boot.loader = {

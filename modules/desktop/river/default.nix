@@ -1,11 +1,10 @@
 #
-# Sway
+# River
 #
 
 { config, lib, pkgs, ... }:
 {
   imports = [
-    ../../programs/waybar.nix
   ];
 
   hardware.opengl.enable = true;
@@ -13,26 +12,20 @@
   environment = {
     loginShellInit = ''
       if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-        exec sway
+        exec river
       fi
     '';
-  };
+    systemPackages = with pkgs; [
+        river
+        wev
 
-  programs = {
-    sway = {
-      enable = true;
-      extraPackages = with pkgs; [
         wl-clipboard
         wlr-randr
-
-        swaybg
-        swayidle
-        swaylock
-
         xwayland
-      ];
-    };
+    ];
   };
+
+  programs.dconf.enable = true;
 
   xdg.portal = {
       enable = true;

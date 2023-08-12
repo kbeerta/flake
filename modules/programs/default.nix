@@ -9,5 +9,6 @@
   ./tmux.nix
 
   # Wayland
+  ./eww.nix
   ./wofi.nix
 ]
