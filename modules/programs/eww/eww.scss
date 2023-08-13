@@ -1,0 +1,92 @@
+
+$background: #111111;
+$background-alt: #1F1F1F;
+$foreground: #FDF3ED;
+$foreground-alt: #C9C2BD;
+
+$accent: #F16A87;
+
+* {
+    all: unset;
+}
+
+.bar {
+    font-family: 'JetBriansMono Nerd Font';
+    font-size: 0.90rem;
+    background-color: $background;
+    color: $foreground;
+}
+
+.icon {
+    color: $accent;
+    font-family: 'Font Awesome 6 Free Solid';
+}
+
+.icon:hover {
+    color: $foreground-alt;
+}
+
+.calendar {
+    font-family: 'JetBriansMono Nerd Font';
+    font-size: 0.85rem;
+    background-color: $background;
+    color: $foreground;
+    border-radius: 7px;
+    border: 5px solid $accent;
+}
+
+.workspaces button {
+    padding: 0 15px 0 15px;
+    transition: all;
+    transition-duration: 0.4s;
+}
+
+.workspaces button:hover {
+    transition: all;
+    transition-duration: 0.6s;
+    background-color: $accent;
+    color: $background;
+}
+
+.inactive-workspace {
+    background-color: $background;
+    color: $foreground-alt;
+}
+
+.active-workspace {
+    background-color: $accent;
+    color: $foreground;
+}
+
+.time-label {
+    border-radius: 7px;
+}
+
+.date {
+    font-size: 2.0rem;
+}
+
+.time {
+    font-size: 1.0rem;
+}
+
+.power-button {
+    padding: 0px 12px;
+    background-color: $accent;
+    color: $background;
+    border-radius: 7px;
+}
+
+scale trough {
+    all: unset;
+    background-color: $foreground;
+    border-radius: 5px;
+    min-height: 7px;
+    min-width: 70px;
+}
+
+.volume-slider trough highlight {
+    background-color: $accent;
+    border-radius: 5px;
+}
+

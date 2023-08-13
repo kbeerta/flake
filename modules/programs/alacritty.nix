@@ -3,19 +3,20 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      window.opacity = 0.8;
       colors = {
         primary = {
           background = "#111111";
           foreground = "#F6F4F4";
-	};
+	    };
       };
       font = rec {
         normal.family = "JetBrainsMono Nerd Font";
-	bold = { style = "Bold"; };
+	    bold = { style = "Bold"; };
       };
       offset = {
-        x = -1;
-	y = 0;
+        x = 0;
+	    y = 0;
       };
     };
   };

@@ -1,7 +1,7 @@
 { config, lib, pkgs, user, ... }:
 
 {
-  imports = (import ../modules/programs) ++ (import ../modules/services);
+  imports = (import ../modules/programs);
 
   home = {
     username = "${user}";
@@ -9,7 +9,9 @@
 
     packages = with pkgs; [
       firefox
+
       pamixer
+      playerctl
     ];
     stateVersion = "23.05";
   };

@@ -1,6 +1,0 @@
-#
-# Services
-#
-[
-  ./mako.nix
-]

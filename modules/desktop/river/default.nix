@@ -5,6 +5,7 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
+    ../../programs/eww.nix
   ];
 
   hardware.opengl.enable = true;
@@ -12,15 +13,17 @@
   environment = {
     loginShellInit = ''
       if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-        exec river
+        exec river 
       fi
     '';
     systemPackages = with pkgs; [
         river
-        wev
+
+        swaybg
 
         wl-clipboard
         wlr-randr
+
         xwayland
     ];
   };

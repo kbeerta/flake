@@ -6,6 +6,8 @@
 {
   imports = [
     ../../programs/waybar.nix
+    # TODO: If i ever switch back to sway
+    # ../../programs/eww.nix
   ];
 
   hardware.opengl.enable = true;

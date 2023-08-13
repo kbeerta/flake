@@ -1,0 +1,32 @@
+
+(defwidget workspaces []
+    (box :class "workspaces"
+         :orientation "h"
+         :halign "center"
+         (button :class { current_workspace == 1 ? "active-workspace" : "inactive-workspace" }
+                 :onclick "riverctl set-focussed-tags 1 & eww update current_workspace=1"
+                 "1")
+         (button :class { current_workspace == 2 ? "active-workspace" : "inactive-workspace" }
+                 :onclick "riverctl set-focussed-tags 2 & eww update current_workspace=2"
+                 "2")
+         (button :class { current_workspace == 3 ? "active-workspace" : "inactive-workspace" }
+                 :onclick "riverctl set-focussed-tags 4 & eww update current_workspace=3"
+                 "3")
+         (button :class { current_workspace == 4 ? "active-workspace" : "inactive-workspace" }
+                 :onclick "riverctl set-focussed-tags 8 & eww update current_workspace=4"
+                 "4")
+         (button :class { current_workspace == 5 ? "active-workspace" : "inactive-workspace" }
+                 :onclick "riverctl set-focussed-tags 16 & eww update current_workspace=5"
+                 "5")
+         (button :class { current_workspace == 6 ? "active-workspace" : "inactive-workspace" }
+                 :onclick "riverctl set-focussed-tags 32 & eww update current_workspace=6"
+                 "6")))
+
+(defwidget left-widgets []
+    (box :class "left-widgets"
+         :orientation "h"
+         :halign "start"
+         :space-evenly true
+         :vexpand "false"
+    (workspaces)))
+

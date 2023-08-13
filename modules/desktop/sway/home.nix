@@ -1,6 +1,6 @@
 { config, host, lib, pkgs, ... }:
 let 
-  wallpaper = "~/.flake/wallpapers/forest.jpg";
+  wallpaper = "~/.flake/wallpapers/sunset.jpg";
 in {
   wayland.windowManager.sway = {
     enable = true;
