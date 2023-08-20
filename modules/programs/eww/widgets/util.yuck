@@ -1,0 +1,32 @@
+
+(defwidget sep [] (box :hexpand false (label :class "sep" :text "|")))
+
+(defpoll volume
+    :interval "1s"
+    :initial "N/A"
+    "pamixer --get-volume")
+
+(defpoll brightness
+    :interval "1s"
+    :initial "N/A"
+    "light")
+
+(defpoll today
+    :interval "1h"
+    :initial "N/A"
+    "date +'%a %d %b %Y'")
+
+(defpoll time
+    :interval "5s"
+    :initial "N/A"
+    "date +'%H:%M'")
+
+(defpoll network-name
+    :interval "60s"
+    :initial "N/A"
+    "nmcli -t -f NAME c show --active | head -n 1")
+
+(defpoll network-strength
+    :interval "60s"
+    :initial "N/A"
+    `nmcli -t -f SIGNAL,ACTIVE device wifi | awk -F':' '{ if ($2 == "yes") print $1 }'`)

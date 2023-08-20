@@ -7,7 +7,7 @@
       colors = {
         primary = {
           background = "#111111";
-          foreground = "#F6F4F4";
+          foreground = "#FCF8ED";
 	    };
       };
       font = rec {

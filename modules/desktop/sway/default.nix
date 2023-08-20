@@ -5,9 +5,7 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
-    ../../programs/waybar.nix
-    # TODO: If i ever switch back to sway
-    # ../../programs/eww.nix
+    ../../programs/eww.nix
   ];
 
   hardware.opengl.enable = true;
@@ -26,6 +24,8 @@
       extraPackages = with pkgs; [
         wl-clipboard
         wlr-randr
+
+        grim
 
         swaybg
         swayidle

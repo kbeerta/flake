@@ -1,34 +1,27 @@
 
-(defvar show_audio_slider false)
-(defvar show_power_menu false)
-(defvar current_workspace 1)
-
-(defpoll volume :interval "0.1s"
-    "pamixer --get-volume")
-
-(defpoll battery :interval "0.1s"
-    "cat /sys/class/power_supply/BAT0/capacity")
-
-(defpoll time :interval "10s"
-    "date '+%H:%M'")
-
-(include "./widgets/left-widgets.yuck")
-(include "./widgets/center-widgets.yuck")
-(include "./widgets/right-widgets.yuck")
+(include "./widgets/util.yuck")
+(include "./widgets/system.yuck")
+(include "./widgets/time.yuck")
+(include "./widgets/workspaces.yuck")
 
 (defwidget bar []
-    (box
-        (left-widgets)
-        (center-widgets)
-        (right-widgets)))
+    (centerbox
+        :class "bar"
+        :orientation "h"
+        :hexpand false
+        :space-evenly true
+        (box :class "bar-section" (workspaces))
+        (box :class "bar-section" (time))
+        (box :class "bar-section" (system))))
 
 (defwindow bar
     :monitor 0
-    :geometry (geometry :x "0%"
-                        :y "0%"
-                        :width "100%"
-                        :height "35px"
-                        :anchor "bottom center")
+    :geometry (geometry 
+        :x "0%"
+        :y "0%"
+        :width "100%"
+        :height "10px"
+        :anchor "top center")
     :exclusive true
     :stacking "fg"
     (bar))

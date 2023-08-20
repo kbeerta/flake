@@ -53,6 +53,8 @@ in {
             riverctl map normal Super Space toggle-float
             riverctl map normal Super F toggle-fullscreen
 
+            riverctl map normal Super F12 spawn "grim - | wl-copy"
+
             riverctl map normal Super Up send-layout-cmd rivertile "main-location top"
             riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
             riverctl map normal Super Down send-layout-cmd rivertile "main-location bottom"
@@ -75,8 +77,9 @@ in {
             done
 
             riverctl background-color 0x1F1F1F
-            riverctl border-color-focused 0xF16A87
-            riverctl border-color-unfocused 0xC9C2BD
+            # riverctl border-width 2
+            riverctl border-color-focused 0x222222
+            riverctl border-color-unfocused 0x222222
 
             riverctl default-layout rivertile
             rivertile -view-padding 6 -outer-padding 6

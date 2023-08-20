@@ -6,7 +6,7 @@
 
   home.file = {
     ".config/wofi/config".text = ''
-      width=280
+      width=380
       lines=10
       filter_rate=100
       allow_markup=false
@@ -22,22 +22,26 @@
         font-family: JetBrainsMono Nerd Font;
       }
 
-      window {
+      #window {
         margin: 0px;
-	    background-color: #111111;
-	    color: #FDF3ED;
+	    background-color: rgba(17, 17, 17, 0.8);
+	    color: #FDF8ED;
       }
 
       #input {
         all: unset;
-	min-height: 20px;
-	padding: 4px 10px;
-	margin: 4px;
-	border: none;
-	color: #FDF3ED;
-	font-weight: bold;
-	background-color: #111111;
+	    min-height: 20px;
+	    padding: 4px 10px;
+	    margin: 4px;
+	    border: none;
+	    color: #FDF8ED;
+	    font-weight: bold;
+	    background-color: rgba(17, 17, 17, 0.8);
 	    outline: #F16A87;
+      }
+
+      #input:focus {
+	    background-color: rgba(17, 17, 17, 0.8);
       }
 
       #inner-box {
@@ -49,20 +53,20 @@
         margin: 0px;
 	padding: 3px;
 	border: none;
-	border: 1px solid #F16A87;
+	border: 1px solid #FCF8ED;
       }
 
     #text {
-        color: #C9C2BD;
+        color: #FCF8ED;
     }
 
       #text:selected {
         background-color: F16A87;
-	color: #FDF3ED;
+    	color: #FCF8ED;
       }
 
       #entry:selected {
-        background-color: F16A87;
+        background-color: #222222;
       }
     '';
   };

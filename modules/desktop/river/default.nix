@@ -19,10 +19,12 @@
     systemPackages = with pkgs; [
         river
 
-        swaybg
-
         wl-clipboard
         wlr-randr
+
+        grim
+
+        swaybg
 
         xwayland
     ];

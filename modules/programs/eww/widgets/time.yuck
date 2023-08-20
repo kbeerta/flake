@@ -1,0 +1,10 @@
+
+
+(defwidget time []
+    (box
+        :halign "center"
+        :space-evenly false
+        :spacing "15"
+        ; (label :text "${today}")
+        ; (sep)
+        (label :text "${time}")))
