@@ -38,12 +38,9 @@
     ];
   };
 
-  programs = {
-    hyprland = {
-      enable = true;
-      package = hyprland.packages.${pkgs.system}.hyprland;
-    };
-    dconf.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = hyprland.packages.${pkgs.system}.hyprland;
   };
 
   xdg.portal = {

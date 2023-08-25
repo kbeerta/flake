@@ -88,6 +88,7 @@
 
       exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = ${pkgs.wbg}/bin/wbg ~/.flake/wallpapers/clouds.jpg
+      exec-once = ${pkgs.eww-wayland}/bin/eww d
       exec-once = ${pkgs.eww-wayland}/bin/eww open eww
     '';
 }
