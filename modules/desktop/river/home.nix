@@ -1,4 +1,4 @@
-{ config, host, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let 
   wallpaper = "~/.flake/wallpapers/sunset.jpg";
 in {

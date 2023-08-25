@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ../../modules/desktop/river/home.nix
+    ../../modules/desktop/hyprland/home.nix
   ];
 
   home.packages = with pkgs; [

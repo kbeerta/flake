@@ -1,4 +1,4 @@
-{ home-manager, inputs, lib, nixpkgs, nixpkgs-unstable, user, ... }:
+{ home-manager, hyprland, inputs, lib, nixpkgs, nixpkgs-unstable, user, ... }:
 let 
   system = "x86_64-linux";
 
@@ -17,7 +17,7 @@ in {
   laptop = lib.nixosSystem {
     inherit system;
     specialArgs = { 
-      inherit inputs unstable user; 
+      inherit hyprland inputs unstable user; 
       host = {
         hostName = "laptop";
       };

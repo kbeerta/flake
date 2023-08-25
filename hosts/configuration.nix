@@ -2,7 +2,7 @@
 {
   imports = 
     (import ../modules/shell) ++
-    [(import ../modules/programs/nvim)]
+    [(import ../modules/programs/nvim.nix)]
   ;
 
   users.users.${user} = {
@@ -68,6 +68,12 @@
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
     };
+    gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 2d";
+    };
+    package = pkgs.nixVersions.unstable;
   };
 
   nixpkgs.config.allowUnfree = true;

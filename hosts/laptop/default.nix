@@ -2,7 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix 
-    ../../modules/desktop/river/default.nix
+    ../../modules/desktop/hyprland/default.nix
   ];
 
   boot.loader = {
