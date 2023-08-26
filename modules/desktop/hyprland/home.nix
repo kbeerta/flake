@@ -11,7 +11,7 @@
       }
 
       decoration {
-        rounding = 0
+        rounding = 5
       }
 
       animations {
@@ -78,17 +78,16 @@
       bind=ALTSHIFT,K,resizeactive,0 -20
       bind=ALTSHIFT,H,resizeactive,0 20
 
-      bind=,XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 2
-      bind=,XF86AudioRaiseVolume,exec,${pkgs.pamixer}/bin/pamixer -i 2
+      bindl=,XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 2
+      bindl=,XF86AudioRaiseVolume,exec,${pkgs.pamixer}/bin/pamixer -i 2
       bind=,XF86AudioMute,exec,${pkgs.pamixer}/bin/pamixer -t
-
       bind=,XF86AudioMicMute,exec,${pkgs.pamixer}/bin/pamixer --default-source -t 
-      bind=,XF86MonBrightnessDown,exec,${pkgs.light}/bin/light -U 5
-      bind=,XF86MonBrightnessUp,exec,${pkgs.light}/bin/light -A 5
+
+      bindl=,XF86MonBrightnessDown,exec,${pkgs.light}/bin/light -U 5
+      bindl=,XF86MonBrightnessUp,exec,${pkgs.light}/bin/light -A 5
 
       exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = ${pkgs.wbg}/bin/wbg ~/.flake/wallpapers/clouds.jpg
-      exec-once = ${pkgs.eww-wayland}/bin/eww d
-      exec-once = ${pkgs.eww-wayland}/bin/eww open eww
+      exec-once = ${pkgs.eww-wayland}/bin/eww open bar
     '';
 }

@@ -14,12 +14,13 @@
           };
           grub = {                              
               enable = true;
+              theme = pkgs.nixos-grub2-theme;
               devices = [ "nodev" ];
               efiSupport = true;
               useOSProber = true;                
               configurationLimit = 2;
           };
-          timeout = 1;   
+          # timeout = 1;   
       };
   };
 
