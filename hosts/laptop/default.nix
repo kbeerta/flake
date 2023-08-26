@@ -20,7 +20,7 @@
               useOSProber = true;                
               configurationLimit = 2;
           };
-          # timeout = 1;   
+          # timeout = 5;   
       };
   };
 

@@ -24,7 +24,7 @@
           repeat_delay = 250
 
           touchpad {
-              natural_scroll = true
+              natural_scroll = false
               middle_button_emulation = true
               tap-to-click = true
           }
@@ -47,6 +47,7 @@
       }
 
       bind=ALT,RETURN,exec,${pkgs.alacritty}/bin/alacritty
+      bind=ALT,SPACE,exec,${pkgs.eww-wayland}/bin/eww open search
       bind=ALT,Q,killactive
       bind=ALT,F,fullscreen
 
