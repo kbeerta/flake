@@ -2,8 +2,8 @@
 let 
   wallpaper = "~/.flake/wallpapers/pine.jpg";
 in {
-    xdg.configFile."hypr/hyprland.conf".text = ''
-      monitor = eDP-1,1920x1080@60,0x0,1
+  xdg.configFile."hypr/hyprland.conf".text = ''
+    monitor = eDP-1,1920x1080@60,0x0,1
 
       general {
         border_size = 0
@@ -92,5 +92,5 @@ in {
       exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = ${pkgs.wbg}/bin/wbg ${wallpaper}
       exec-once = ${pkgs.eww-wayland}/bin/eww open bar
-    '';
+  '';
 }

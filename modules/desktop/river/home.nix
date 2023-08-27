@@ -3,50 +3,50 @@ let
   wallpaper = "~/.flake/wallpapers/sunset.jpg";
 in {
   home.file.".config/river/init" = {
-      executable = true;
-      text = ''
-            #!/bin/sh
+    executable = true;
+    text = ''
+      #!/bin/sh
 
-            riverctl set-repeat 50 300
+      riverctl set-repeat 50 300
 
-            riverctl spawn "${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --mode 1920x1080@60 --pos 0,0"
-            riverctl spawn "${pkgs.eww-wayland}/bin/eww deamon"
-            riverctl spawn "${pkgs.eww-wayland}/bin/eww open bar"
-            riverctl spawn "${pkgs.swaybg}/bin/swaybg -i ${wallpaper} -m fill"
+      riverctl spawn "${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --mode 1920x1080@60 --pos 0,0"
+      riverctl spawn "${pkgs.eww-wayland}/bin/eww deamon"
+      riverctl spawn "${pkgs.eww-wayland}/bin/eww open bar"
+      riverctl spawn "${pkgs.swaybg}/bin/swaybg -i ${wallpaper} -m fill"
 
-            riverctl map normal Super+Shift E exit
+      riverctl map normal Super+Shift E exit
 
-            riverctl map normal Super Return spawn "alacritty"
-            riverctl map normal Super D spawn "wofi --show run"
+      riverctl map normal Super Return spawn "alacritty"
+      riverctl map normal Super D spawn "wofi --show run"
 
-            riverctl map normal Super Q close
+      riverctl map normal Super Q close
 
-            riverctl map normal Super J focus-view next
-            riverctl map normal Super K focus-view previous
+      riverctl map normal Super J focus-view next
+      riverctl map normal Super K focus-view previous
 
-            riverctl map normal Super+Alt H move left 100
-            riverctl map normal Super+Alt J move down 100
-            riverctl map normal Super+Alt K move up 100
-            riverctl map normal Super+Alt L move right 100
+      riverctl map normal Super+Alt H move left 100
+      riverctl map normal Super+Alt J move down 100
+      riverctl map normal Super+Alt K move up 100
+      riverctl map normal Super+Alt L move right 100
 
-            riverctl map normal Super+Alt+Control H snap left 
-            riverctl map normal Super+Alt+Control J snap down 
-            riverctl map normal Super+Alt+Control K snap up 
-            riverctl map normal Super+Alt+Control L snap right
+      riverctl map normal Super+Alt+Control H snap left 
+      riverctl map normal Super+Alt+Control J snap down 
+      riverctl map normal Super+Alt+Control K snap up 
+      riverctl map normal Super+Alt+Control L snap right
 
-            riverctl map normal Super+Alt+Shift H resize horizontal -100
-            riverctl map normal Super+Alt+Shift J resize vertical 100
-            riverctl map normal Super+Alt+Shift K resize vertical -100
-            riverctl map normal Super+Alt+Shift L resize horizontal 100
+      riverctl map normal Super+Alt+Shift H resize horizontal -100
+      riverctl map normal Super+Alt+Shift J resize vertical 100
+      riverctl map normal Super+Alt+Shift K resize vertical -100
+      riverctl map normal Super+Alt+Shift L resize horizontal 100
 
-            for i in $(seq 1 6) 
-            do
-                tags=$((1 << ($i - 1)))
+      for i in $(seq 1 6) 
+        do
+          tags=$((1 << ($i - 1)))
 
-                riverctl map normal Super $i spawn "riverctl set-focused-tags $tags & eww update current_workspace=$i"
-                riverctl map normal Super+Shift $i set-view-tags $tags
-                riverctl map normal Super+Control $i toggle-focused-tags $tags
-                riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
+            riverctl map normal Super $i spawn "riverctl set-focused-tags $tags & eww update current_workspace=$i"
+            riverctl map normal Super+Shift $i set-view-tags $tags
+            riverctl map normal Super+Control $i toggle-focused-tags $tags
+            riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
 
             done
 
