@@ -10,8 +10,8 @@
       source = pkgs.fetchFromGitHub {
         owner = "kbeerta";
         repo = "eww-config";
-        rev = "26c2e4e";
-        sha256 = "Lh/KNRdwp5yA68DDNuCApAZrHx8uAXNWcsYhqKQbLlQ=";
+        rev = "d4c5d68";
+        sha256 = "tLBjgifVI8+SZCpOH625WC2vaw072uxKm6cm5UGTzhA=";
       };
     };
   };
