@@ -5,63 +5,61 @@ in {
   xdg.configFile."hypr/hyprland.conf".text = ''
     monitor = eDP-1,1920x1080@60,0x0,1
 
-      general {
-        border_size = 0
-        gaps_in = 5
-        gaps_out = 5
-        layout = dwindle
-      }
+    general {
+      border_size = 0
+      gaps_in = 5
+      gaps_out = 5
+      layout = dwindle
+    }
 
-      decoration {
-        rounding = 5
-      }
+    decoration {
+      rounding = 5
+    }
 
-      animations {
-          enabled = false
-      }
+    animations {
+        enabled = false
+    }
 
-      input {
-          kb_options=caps:escape
-          follow_mouse = 2
-          repeat_delay = 250
+    input {
+        kb_options=caps:escape
+        follow_mouse = 2
+        repeat_delay = 250
 
-          touchpad {
-              natural_scroll = false
-              middle_button_emulation = true
-              tap-to-click = true
-          }
-      }
+        touchpad {
+            natural_scroll = false
+            middle_button_emulation = true
+            tap-to-click = true
+        }
+    }
 
-      gestures {
-          workspace_swipe = true 
-          workspace_swipe_fingers = 3 
-          workspace_swipe_distance = 100
-      }
+    gestures {
+        workspace_swipe = true 
+        workspace_swipe_fingers = 3 
+        workspace_swipe_distance = 100
+    }
 
-      dwindle {
-          pseudotile = false
-          force_split = 2
-      }
+    dwindle {
+        pseudotile = false
+        force_split = 2
+    }
 
-      misc {
-          disable_hyprland_logo = true
-          disable_splash_rendering = true
-      }
+    misc {
+        disable_hyprland_logo = true
+        disable_splash_rendering = true
+    }
 
       bind=ALT,RETURN,exec,${pkgs.alacritty}/bin/alacritty
-      bind=ALT,SPACE,exec,${pkgs.eww-wayland}/bin/eww open search
+      bind=ALT,SPACE,exec,${pkgs.eww-wayland}/bin/eww open --toggle launcher
       bind=ALT,Q,killactive
       bind=ALT,F,fullscreen
 
-      bind=ALT,J,movefocus,l
-      bind=ALT,L,movefocus,r
+      bind=ALT,J,movefocus,d
       bind=ALT,K,movefocus,u
-      bind=ALT,H,movefocus,d
 
-      bind=CONTROLALT,J,movewindow,l
-      bind=CONTROLALT,L,movewindow,r
+      bind=CONTROLALT,J,movewindow,d
       bind=CONTROLALT,K,movewindow,u
-      bind=CONTROLALT,H,movewindow,d
+      bind=CONTROLALT,L,movewindow,r
+      bind=CONTROLALT,H,movewindow,l
 
       bind=ALT,1,workspace,1
       bind=ALT,2,workspace,2
@@ -76,10 +74,10 @@ in {
       bind=ALTSHIFT,5,movetoworkspace,5
 
 
-      bind=ALTSHIFT,J,resizeactive,-20 0
+      bind=ALTSHIFT,H,resizeactive,-20 0
       bind=ALTSHIFT,L,resizeactive,20 0
       bind=ALTSHIFT,K,resizeactive,0 -20
-      bind=ALTSHIFT,H,resizeactive,0 20
+      bind=ALTSHIFT,J,resizeactive,0 20
 
       bindl=,XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 2
       bindl=,XF86AudioRaiseVolume,exec,${pkgs.pamixer}/bin/pamixer -i 2

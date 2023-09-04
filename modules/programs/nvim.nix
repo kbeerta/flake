@@ -10,8 +10,8 @@
       source = pkgs.fetchFromGitHub {
         owner = "kbeerta";
         repo = "nvim-config";
-        rev = "9de419d";
-        sha256 = "oPZ35ZCK10BlfUJ4h3cRi9Y3R2eYxTgf3fWM98igsQ4=";
+        rev = "63824ec";
+        sha256 = "ZumaUghZ394fkygtCMQgeUz15socMRIoIk1v8F45d3Y=";
       };
     };
   };
