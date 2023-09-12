@@ -12,7 +12,7 @@ let
     config.allowUnfree = true;
   };
 
-  lib = nixpkgs.lib;
+  lib = nixpkgs-unstable.lib;
 in {
   laptop = lib.nixosSystem {
     inherit system;
