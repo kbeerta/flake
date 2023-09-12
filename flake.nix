@@ -6,24 +6,25 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     hyprland = {
       url = "github:vaxerski/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, ... }: 
   let
     user = "koenb";
+    location = "$HOME/.flake";
   in {
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-	    inherit home-manager hyprland inputs nixpkgs nixpkgs-unstable user;
+	      inherit home-manager hyprland inputs location nixpkgs nixpkgs-unstable user;
       }
     );
   };

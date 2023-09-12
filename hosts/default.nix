@@ -28,16 +28,16 @@ in {
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
-	home-manager.useUserPackages = true;
-	home-manager.extraSpecialArgs = { 
-	  inherit unstable user; 
-	  host = {
-	    hostName = "laptop";
-	  };
-	};
-	home-manager.users.${user} = {
-	  imports = [(import ./home.nix)] ++ [(import ./laptop/home.nix)];
-	};
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = { 
+          inherit unstable user; 
+          host = {
+            hostName = "laptop";
+          };
+        };
+        home-manager.users.${user} = {
+          imports = [(import ./home.nix)] ++ [(import ./laptop/home.nix)];
+        };
       }
     ];
   };
