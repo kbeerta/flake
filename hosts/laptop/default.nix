@@ -2,7 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix 
-    ../../modules/desktop/hyprland/default.nix
+    ../../modules/desktop/gnome/default.nix
   ];
 
   boot = {

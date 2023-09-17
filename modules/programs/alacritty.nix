@@ -5,10 +5,10 @@
     settings = {
       window = {
         opacity = 0.8;
-        offset = {
-          x = 32;
-	      y = 32;
-        };
+        # offset = {
+        #   x = 32;
+	      #   y = 32;
+        # };
       };
       colors = {
         primary = {
@@ -18,7 +18,7 @@
       };
       font = rec {
         normal.family = "JetBrainsMono Nerd Font";
-	    bold = { style = "Bold"; };
+	      bold = { style = "Bold"; };
       };
     };
   };

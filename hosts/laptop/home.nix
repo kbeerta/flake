@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ../../modules/desktop/hyprland/home.nix
+    ../../modules/desktop/gnome/home.nix
   ];
 
   home.packages = with pkgs; [
