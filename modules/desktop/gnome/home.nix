@@ -1,13 +1,10 @@
 { config, lib, pkgs, ... }:
 {
-  programs = {
-    alacritty.settings.window.opacity = 0.8;
-  };
-
   dconf.settings = {
     "orgs/gnome/shell" = {
       disable-user-extension = false;
-      enabled-extension = [];
+      enabled-extension = [
+      ];
     };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";

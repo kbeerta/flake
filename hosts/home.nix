@@ -9,6 +9,7 @@
 
     packages = with pkgs; [
       firefox
+      discord
 
       pamixer
       playerctl
