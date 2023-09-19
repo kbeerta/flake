@@ -14,9 +14,10 @@
         primary = {
           background = "#111111";
           foreground = "#FCF8ED";
-	    };
+	      };
       };
       font = rec {
+        size = 11;
         normal.family = "JetBrainsMono Nerd Font";
 	      bold = { style = "Bold"; };
       };

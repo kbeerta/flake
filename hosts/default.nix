@@ -1,4 +1,4 @@
-{ home-manager, hyprland, inputs, lib, nixpkgs, nixpkgs-unstable, user, ... }:
+{ inputs, hardware, home-manager, hyprland, nixpkgs, user, ... }:
 let 
   system = "x86_64-linux";
 
@@ -7,17 +7,12 @@ let
     config.allowUnfree = true;
   };
 
-  unstable = import nixpkgs-unstable {
-    inherit system;
-    config.allowUnfree = true;
-  };
-
-  lib = nixpkgs-unstable.lib;
+  lib = nixpkgs.lib;
 in {
   laptop = lib.nixosSystem {
     inherit system;
     specialArgs = { 
-      inherit hyprland inputs unstable user; 
+      inherit hyprland inputs pkgs user; 
       host = {
         hostName = "laptop";
       };
@@ -30,7 +25,7 @@ in {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = { 
-          inherit unstable user; 
+          inherit pkgs user; 
           host = {
             hostName = "laptop";
           };

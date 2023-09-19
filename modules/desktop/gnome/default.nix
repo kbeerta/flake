@@ -2,7 +2,7 @@
 # Hyprland
 #
 
-{ config, hyprland, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   services = {
     xserver = {

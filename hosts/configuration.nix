@@ -64,7 +64,6 @@
   };
 
   nix = {
-    nixPath = [ "nixpkgs=${inputs.nixpkgs-unstable}" ];
     settings = {
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
@@ -74,9 +73,7 @@
         dates = "weekly";
         options = "--delete-older-than 2d";
     };
-    package = pkgs.nixVersions.unstable;
   };
 
-  nixpkgs.config.allowUnfree = true;
   system.stateVersion = "23.05";
 }
