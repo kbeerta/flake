@@ -1,14 +1,14 @@
 { config, lib, pkgs, ... }:
 let 
-  wallpaper = "~/.flake/wallpapers/pine.jpg";
+  wallpaper = "~/.flake/wallpapers/dreamcore.jpg";
 in {
   xdg.configFile."hypr/hyprland.conf".text = ''
     monitor = eDP-1,1920x1080@60,0x0,1
 
     general {
       border_size = 0
-      gaps_in = 5
-      gaps_out = 5
+      gaps_in = 10
+      gaps_out = 10
       layout = dwindle
     }
 
@@ -21,7 +21,7 @@ in {
     }
 
     input {
-        kb_options=caps:escape
+        # kb_options=caps:escape
         follow_mouse = 2
         repeat_delay = 250
 
@@ -49,7 +49,7 @@ in {
     }
 
       bind=ALT,RETURN,exec,${pkgs.alacritty}/bin/alacritty
-      bind=ALT,SPACE,exec,${pkgs.eww-wayland}/bin/eww open --toggle launcher
+      bind=ALT,SPACE,exec,pkill ${pkgs.tofi}/bin/tofi-drun || ${pkgs.tofi}/bing/tofi-drun --drun-launch=true
       bind=ALT,Q,killactive
       bind=ALT,F,fullscreen
 
@@ -79,8 +79,8 @@ in {
       bind=ALTSHIFT,K,resizeactive,0 -20
       bind=ALTSHIFT,J,resizeactive,0 20
 
-      bindl=,XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 2
-      bindl=,XF86AudioRaiseVolume,exec,${pkgs.pamixer}/bin/pamixer -i 2
+      bindl=,XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -u -d 2
+      bindl=,XF86AudioRaiseVolume,exec,${pkgs.pamixer}/bin/pamixer -u -i 2
       bind=,XF86AudioMute,exec,${pkgs.pamixer}/bin/pamixer -t
       bind=,XF86AudioMicMute,exec,${pkgs.pamixer}/bin/pamixer --default-source -t 
 

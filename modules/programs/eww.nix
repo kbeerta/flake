@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, ...}:
+{ pkgs, user, ... }:
 {
   environment.systemPackages = with pkgs; [
     eww-wayland
@@ -10,8 +10,8 @@
       source = pkgs.fetchFromGitHub {
         owner = "kbeerta";
         repo = "eww-config";
-        rev = "f81d507";
-        sha256 = "ISqRzj2E6/iT6N7EYs24ZiYrz6z/87//pp4YOR5zUJ0=";
+        rev = "403520f";
+        sha256 = "sha256-kK2nweaRLM28abScl80n1hcCq64qbQjGOUzWehSbHUY=";
       };
     };
   };

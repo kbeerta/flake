@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, ...}:
+{ pkgs, user, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -10,8 +10,8 @@
       source = pkgs.fetchFromGitHub {
         owner = "kbeerta";
         repo = "nvim-config";
-        rev = "336dbc4";
-        sha256 = "sha256-LdZoSq6W9EmsyUWUMLlCZCC4om7v/9foTHRum1j2oIU=";
+        rev = "83ce79d";
+        sha256 = "sha256-mWGw95aMd57+VczOzg1hU7f8IrUirkZW+Ln/CcPAJXE=";
       };
     };
   };
