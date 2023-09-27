@@ -49,7 +49,8 @@ in {
     }
 
       bind=ALT,RETURN,exec,${pkgs.alacritty}/bin/alacritty
-      bind=ALT,SPACE,exec,pkill ${pkgs.tofi}/bin/tofi-drun || ${pkgs.tofi}/bing/tofi-drun --drun-launch=true
+      # TODO: fix this binding (let me be able to kill tofi when it runs)
+      bind=ALT,SPACE,exec,tofi-drun --drun-launch=true
       bind=ALT,Q,killactive
       bind=ALT,F,fullscreen
 
@@ -79,8 +80,8 @@ in {
       bind=ALTSHIFT,K,resizeactive,0 -20
       bind=ALTSHIFT,J,resizeactive,0 20
 
-      bindl=,XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -u -d 2
-      bindl=,XF86AudioRaiseVolume,exec,${pkgs.pamixer}/bin/pamixer -u -i 2
+      binde=,XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -u -d 2
+      binde=,XF86AudioRaiseVolume,exec,${pkgs.pamixer}/bin/pamixer -u -i 2
       bind=,XF86AudioMute,exec,${pkgs.pamixer}/bin/pamixer -t
       bind=,XF86AudioMicMute,exec,${pkgs.pamixer}/bin/pamixer --default-source -t 
 
