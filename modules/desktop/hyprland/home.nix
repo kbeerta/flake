@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let 
-  wallpaper = "~/.flake/wallpapers/dreamcore.jpg";
+  wallpaper = "~/.flake/wallpapers/moon.jpeg";
 in {
   xdg.configFile."hypr/hyprland.conf".text = ''
     monitor = eDP-1,1920x1080@60,0x0,1

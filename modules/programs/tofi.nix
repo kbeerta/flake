@@ -16,7 +16,8 @@
     prompt-background = #111111
     input-background = #111111
 
-    selection-color = #D6365D
+    # selection-color = #D6365D
+    selection-color = #383A6B
 
     background-color = #111111
     outline-width = 0

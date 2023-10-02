@@ -3,7 +3,7 @@
   imports = [
     inputs.hardware.nixosModules.common-cpu-intel
     ./hardware-configuration.nix 
-    ../../modules/desktop/hyprland/default.nix
+    ../../modules/desktop/sway/default.nix
   ];
 
   boot = {
