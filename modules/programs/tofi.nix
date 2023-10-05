@@ -17,7 +17,7 @@
     input-background = #111111
 
     # selection-color = #D6365D
-    selection-color = #383A6B
+    selection-color = #CE6F7A
 
     background-color = #111111
     outline-width = 0

@@ -24,7 +24,7 @@
 
         grim
 
-        swaybg
+        wbg
 
         xwayland
     ];

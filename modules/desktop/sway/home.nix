@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let 
-  wallpaper = "~/.flake/wallpapers/moon.jpeg";
+  wallpaper = "~/.flake/wallpapers/landscape.png";
 in {
   wayland.windowManager.sway = {
     enable = true;
@@ -12,6 +12,14 @@ in {
       menu = "tofi-drun --drun-launch=true | xargs swaymsg exec";
       
       startup = [
+      {
+        command = ''${pkgs.eww-wayland}/bin/eww open bar'';
+        always = true;
+      }
+      {
+        command = ''${pkgs.sway}/bin/swaymsg output "*" bg ${wallpaper} fill'';
+        always = true;
+      }
       { 
         command = ''
           ${pkgs.swayidle}/bin/swayidle -w \
@@ -115,20 +123,15 @@ in {
         "${modifier}+Shift+4" = "move container to workspace number 4";
         "${modifier}+Shift+5" = "move container to workspace number 5";
 
-        "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 5";
-        "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 5";
+        "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -u -d 2";
+        "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -u -i 2";
         "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
         "XF86AudioMicMute" = "exec ${pkgs.pamixer}/bin/pamixer --default-source -t";
 
-        "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
-        "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
+        "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 2";
+        "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 2";
       };
     };
-
-    extraConfig = ''
-      output * bg ${wallpaper} fill
-      exec ${pkgs.eww-wayland}/bin/eww open bar
-    '';
     extraSessionCommands = ''
       export XDG_SESSION_TYPE=wayland
       export XDG_SESSION_DESKTOP=sway

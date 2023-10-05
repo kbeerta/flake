@@ -7,17 +7,16 @@ in {
     text = ''
       #!/bin/sh
 
-      riverctl set-repeat 50 300
+      riverctl set-repeat 25 250
 
       riverctl spawn "${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --mode 1920x1080@60 --pos 0,0"
-      riverctl spawn "${pkgs.eww-wayland}/bin/eww deamon"
       riverctl spawn "${pkgs.eww-wayland}/bin/eww open bar"
-      riverctl spawn "${pkgs.swaybg}/bin/swaybg -i ${wallpaper} -m fill"
+      riverctl spawn "${pkgs.wbg}/bin/wbg ${wallpaper}"
 
       riverctl map normal Super+Shift E exit
 
       riverctl map normal Super Return spawn "alacritty"
-      riverctl map normal Super D spawn "wofi --show run"
+      riverctl map normal Super D spawn "tofi-drun --drun-launch=true"
 
       riverctl map normal Super Q close
 

@@ -8,11 +8,14 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     gnumake
 
-    clang-tools
+    libgccjit
+    ccls
 
-    llvm.libstdcxxClang
-    llvm.lldb
-    llvm.libcxx
-    llvm.libllvm
+    # clang-tools
+    #
+    # llvm.libstdcxxClang
+    # llvm.lldb
+    # llvm.libcxx
+    # llvm.libllvm
   ];
 }

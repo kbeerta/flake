@@ -4,11 +4,11 @@
     enable = true;
     settings = {
       window = {
-        # opacity = 0.8;
-        # offset = {
-        #   x = 32;
-	      #   y = 32;
-        # };
+        opacity = 0.90;
+        padding = {
+          x = 2;
+	        y = 2;
+        };
       };
       colors = {
         primary = {
