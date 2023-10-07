@@ -32,7 +32,7 @@
     rtkit.enable = true;
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     font-awesome
     (nerdfonts.override {
       fonts = [
@@ -94,6 +94,7 @@
     package = pkgs.nixVersions.unstable;
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
+  nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "23.05";
 

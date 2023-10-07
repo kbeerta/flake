@@ -1,7 +1,7 @@
 { config, lib, pkgs, var, ... }:
 with lib;
 let
-  colors = import ../colors.nix;
+  theme = import ../colors.nix;
 in
 {
   options = {
@@ -45,7 +45,7 @@ in
     home-manager.users.${var.user} = {
       wayland.windowManager.sway = {
         enable = true;
-        systemdIntegration = true;
+        systemd.enable = true;
         config = rec {
           modifier = "Mod1";
           terminal = "${pkgs.${var.terminal}}/bin/${var.terminal}";
@@ -93,8 +93,11 @@ in
             "*".bg = "${var.wallpaper} fill";
           };
 
-          colors.focused = with colors; {
+          colors.focused = with theme; {
             background = "${primary}";
+            border = "${secondary}";
+            childBorder = "${secondary}";
+            indicator = "${secondary}";
             text = "${text}";
           };
 
@@ -108,7 +111,7 @@ in
             "${modifier}+r" = "reload";
             "${modifier}+q" = "kill";
             "${modifier}+f" = "fullscreen toggle";
-            "${modihier}+f" = "floating toggle";
+            "${modifier}+h" = "floating toggle";
 
             "${modifier}+k" = "focus next";
             "${modifier}+j" = "focus prev";
