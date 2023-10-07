@@ -9,7 +9,7 @@ in {
       modifier = "Mod1";
       terminal = "${pkgs.alacritty}/bin/alacritty";
       # TODO: fix this binding
-      menu = "tofi-drun --drun-launch=true | xargs swaymsg exec";
+      menu = "${pkgs.tofi}/bin/tofi-drun --drun-launch=true | xargs swaymsg exec";
       
       startup = [
       {
