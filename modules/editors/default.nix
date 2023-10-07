@@ -1,0 +1,7 @@
+#
+# Editors
+#
+
+[
+  ./nvim.nix
+]

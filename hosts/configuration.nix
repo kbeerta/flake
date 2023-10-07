@@ -1,22 +1,24 @@
-{ config, lib, pkgs, inputs, user, ... }:
+{ config, lib, pkgs, inputs, var, ... }:
 {
-  imports = 
-    (import ../modules/shell) ++
-    [(import ../modules/programs/nvim.nix)]
-  ;
+  imports = ( 
+    import ../modules/desktops 
+    ++ import ../modules/editors
+    ++ import ../modules/hardware
+    ++ import ../modules/programs
+    ++ import ../modules/shell 
+  );
 
-  users.users.${user} = {
+  users.users.${var.user} = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "video" "wheel" ];
-    shell = pkgs.zsh;
+    extraGroups = [ "audio" "camera" "networkmanager" "video" "wheel" ];
   };
 
   time.timeZone = "Europe/Amsterdam";
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
-      LC_MONETARY = "nl_NL.UTF-8";
       LC_TIME = "nl_NL.UTF-8";
+      LC_MONETARY = "nl_NL.UTF-8";
     };
   };
 
@@ -25,10 +27,12 @@
     keyMap = "us";
   };
 
-  security.polkit.enable = true;
-  security.rtkit.enable = true;
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
+  };
 
-  fonts.packages = with pkgs; [
+  fonts.fonts = with pkgs; [
     font-awesome
     (nerdfonts.override {
       fonts = [
@@ -39,25 +43,39 @@
 
   environment = {
     variables = {
-      TERMINAL = "alacritty";
-      EDITOR = "nvim";
+      TERMINAL = "${var.terminal}";
+      EDITOR = "${var.editor}";
+      VISUAL = "${var.editor}";
     };
     systemPackages = with pkgs; [
+      # Terminal
       fd
+      git
+      wget
       neovim
       ripgrep
-      wget
+
+      # Audio
+      pamixer
+      playerctl
+
+
+      # Files
+      unzip
+      unrar
+      zip
     ];
   };
 
-  hardware.bluetooth.enable = true;
+  programs.dconf.enable = true;
 
   services = {
-    blueman.enable = true;
     pipewire = {
       enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
       pulse.enable = true;
       jack.enable = true;
     };
@@ -73,7 +91,14 @@
         dates = "weekly";
         options = "--delete-older-than 7d";
     };
+    package = pkgs.nixVersions.unstable;
+    registry.nixpkgs.flake = inputs.nixpkgs;
   };
 
   system.stateVersion = "23.05";
+
+  home-manager.users.${var.user} = {
+    home.stateVersion = "23.05";
+    programs.home-manager.enable = true;
+  };
 }

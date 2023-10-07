@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, var, ... }:
 {
+  users.users.${var.user} = {
+    shell = pkgs.zsh;
+  };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;

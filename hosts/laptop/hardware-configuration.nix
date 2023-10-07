@@ -24,7 +24,7 @@
     ];
 
   networking = {
-    useDHCP = false; # lib.mkDefault true;
+    useDHCP = false; 
     hostName = "laptop";
     networkmanager.enable = true;
   };

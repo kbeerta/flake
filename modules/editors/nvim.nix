@@ -1,10 +1,10 @@
-{ pkgs, user, ... }:
+{ pkgs, var, ... }:
 {
   programs.neovim = {
     enable = true;
   };
 
-  home-manager.users.${user} = {
+  home-manager.users.${var.user} = {
     home.file.".config/nvim" = {
       recursive = true;
       source = pkgs.fetchFromGitHub {

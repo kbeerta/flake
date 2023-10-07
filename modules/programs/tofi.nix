@@ -1,30 +1,38 @@
-{ pkgs, ...}:
+{ config, lib, pkgs, var, ...}:
+let 
+  colors = import ../colors.nix;
+in
+with lib;
 {
-  home.packages = with pkgs; [
-    tofi
-  ]; 
+  # TODO: create an option for wayland or x11
+  config = mkIf (config.sway.enable) {
+    home-manager.users.${var.user} = {
+      home.packages = with pkgs; [
+        tofi
+      ]; 
 
-  xdg.configFile."tofi/config".text = ''
-    font = "JetBrainsMono Nerd Font Medium"
-    font-size = 16
+      home.file.".config/tofi/config".text = ''
+        font = "JetBrainsMono Nerd Font Medium"
+        font-size = 12
 
-    default-result-background = #111111
+        default-result-background = ${colors.primary}
 
-    placeholder-background = #111111
-    placeholder-color = #EEEEEE
+        placeholder-background = ${colors.primary}
+        placeholder-color = ${colors.text}
 
-    prompt-background = #111111
-    input-background = #111111
+        prompt-background = ${colors.primary}
+        input-background = ${colors.primary}
 
-    # selection-color = #D6365D
-    selection-color = #CE6F7A
+        selection-color = ${colors.secondary}
 
-    background-color = #111111
-    outline-width = 0
-    border-width = 0
-    corner-radius = 5
+        background-color = ${colors.primary}
+        outline-width = 0
+        border-width = 0
+        corner-radius = 5
 
-    width = 640
-    height = 360
-  '';
+        width = 640
+        height = 360
+      '';
+    };
+  };
 }

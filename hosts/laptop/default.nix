@@ -1,36 +1,38 @@
-{ inputs, pkgs, user, ... }:
+{ pkgs, var, ... }:
 {
   imports = [
-    inputs.hardware.nixosModules.common-cpu-intel
     ./hardware-configuration.nix 
-    ../../modules/desktop/sway/default.nix
   ];
 
   boot = {
-      kernelPackages = pkgs.linuxPackages_latest;
-      loader = {
-          efi = {
-              canTouchEfiVariables = true;
-              efiSysMountPoint = "/boot";
-          };
-          grub = {                              
-              enable = true;
-              devices = [ "nodev" ];
-              efiSupport = true;
-              useOSProber = true;                
-              configurationLimit = 2;
-          };
-          timeout = 2;   
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader = {
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
       };
+      grub = {                              
+        enable = true;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;                
+        configurationLimit = 2;
+      };
+      timeout = 1;   
+    };
   };
 
-  #boot.loader = {
-  #  systemd-boot.enable = true;
-  #  efi.canTouchEfiVariables = true;
-  #};
+  sway.enable = true;
+
+  environment = {
+    systemPackages = with pkgs; [
+      discord
+      firefox
+      onlyoffice-bin
+    ];
+  };
 
   programs = {
-    dconf.enable = true;
     light.enable = true;
   };
 }

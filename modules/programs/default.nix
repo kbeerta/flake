@@ -4,6 +4,6 @@
 
 [
   ./alacritty.nix
+  ./eww.nix
   ./tofi.nix
-  # ./tmux.nix
 ]
