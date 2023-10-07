@@ -5,5 +5,5 @@
 [
   ./alacritty.nix
   ./eww.nix
-  ./tofi.nix
+  ./bemenu.nix
 ]

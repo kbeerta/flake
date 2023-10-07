@@ -49,7 +49,8 @@ with lib;
         config = rec {
           modifier = "Mod1";
           terminal = "${pkgs.${var.terminal}}/bin/${var.terminal}";
-          menu = "${pkgs.tofi}/bin/tofi-drun --drun-launch=true | xargs swaymsg exec";
+          # TODO: Change launcher 
+          menu = "${pkgs.bemenu}/bin/bemenu-run -b";
 
           startup = [
             { command = "${pkgs.autotiling}/bin/autotiling"; always = true; }
@@ -152,6 +153,7 @@ with lib;
           for_window [app_id="Alacritty"] opacity $opacity
         '';
         extraSessionCommands = ''
+          # export BEMENU_BACKEND=wayland
           export XDG_SESSION_TYPE=wayland
           export XDG_SESSION_DESKTOP=sway
           export XDG_CURRENT_DESKTOP=sway
