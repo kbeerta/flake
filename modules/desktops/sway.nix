@@ -1,8 +1,8 @@
 { config, lib, pkgs, var, ... }:
-with lib;
 let
   theme = import ../colors.nix;
 in
+with lib;
 {
   options = {
     sway = {
@@ -49,7 +49,7 @@ in
         config = rec {
           modifier = "Mod1";
           terminal = "${pkgs.${var.terminal}}/bin/${var.terminal}";
-          menu = "tofi-drun --drun-launch=true";
+          menu = "${pkgs.tofi}/bin/tofi-drun --drun-launch=true | xargs swaymsg exec";
 
           startup = [
             { command = "${pkgs.autotiling}/bin/autotiling"; always = true; }
@@ -104,7 +104,7 @@ in
           keybindings = {
             "${modifier}+Escape" = "exec swaymsg exit";
             "${modifier}+Return" = "exec ${terminal}";
-            "${modifier}+Space" = "exec ${menu} | xargs swaymsg exec";
+            "${modifier}+Space" = "exec ${menu}";
 
             "${modifier}+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";
 

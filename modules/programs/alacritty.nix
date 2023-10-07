@@ -1,6 +1,6 @@
 { pkgs, var, ... }:
 let 
-  colors = import ../colors.nix;
+  theme = import ../colors.nix;
 in
 {
   home-manager.users.${var.user} = {
@@ -14,9 +14,9 @@ in
           };
         };
         colors = {
-          primary = {
-            background = "${colors.primary}";
-            foreground = "${colors.text}";
+          primary = with theme; {
+            background = "${primary}";
+            foreground = "${text}";
           };
         };
         font = rec {
