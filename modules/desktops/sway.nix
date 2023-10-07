@@ -49,7 +49,7 @@ in
         config = rec {
           modifier = "Mod1";
           terminal = "${pkgs.${var.terminal}}/bin/${var.terminal}";
-          menu = "${pkgs.tofi}/bin/tofi-drun --drun-launch=true";
+          menu = "tofi-drun --drun-launch=true";
 
           startup = [
             { command = "${pkgs.autotiling}/bin/autotiling"; always = true; }
@@ -104,7 +104,7 @@ in
           keybindings = {
             "${modifier}+Escape" = "exec swaymsg exit";
             "${modifier}+Return" = "exec ${terminal}";
-            "${modifier}+Space" = "exec ${menu}";
+            "${modifier}+Space" = "exec ${menu} | xargs swaymsg exec";
 
             "${modifier}+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";
 
