@@ -4,8 +4,7 @@ let
 in
 with lib;
 {
-  # TODO: create an option for wayland or x11
-  config = mkIf (config.sway.enable) {
+  config = mkIf (config.wayland.enable) {
     home-manager.users.${var.user} = {
       home.packages = with pkgs; [
         bemenu

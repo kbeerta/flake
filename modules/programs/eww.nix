@@ -1,8 +1,7 @@
 { config, lib, pkgs, var, ... }:
 with lib;
 {
-  # TODO: create an option for wayland or x11
-  config = mkIf (config.sway.enable) {
+  config = mkIf (config.wayland.enable) {
     environment.systemPackages = with pkgs; [
       eww-wayland
     ];

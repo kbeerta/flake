@@ -17,6 +17,8 @@ with lib;
   };
 
   config = mkIf (config.sway.enable) {
+    config.wayland.enable = true;
+
     environment = {
       loginShellInit = ''
         if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
@@ -96,9 +98,9 @@ with lib;
 
           colors.focused = with theme; {
             background = "${primary}";
-            border = "${secondary}";
-            childBorder = "${secondary}";
-            indicator = "${secondary}";
+            border = "${primary-alt}";
+            childBorder = "${primary-alt}";
+            indicator = "${primary-alt}";
             text = "${text}";
           };
 

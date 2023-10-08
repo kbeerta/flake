@@ -15,7 +15,6 @@
   let
     var = rec {
       user = "koenb";
-      location = "$HOME/.flake";
       terminal = "alacritty";
       editor = "nvim";
       wallpaper = "${location}/wallpapers/landscape.png";
