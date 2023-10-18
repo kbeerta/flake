@@ -17,6 +17,7 @@
       user = "koenb";
       terminal = "alacritty";
       editor = "nvim";
+      location = "$HOME/.flake";
       wallpaper = "${location}/wallpapers/landscape.png";
     };
   in {

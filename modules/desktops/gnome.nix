@@ -4,18 +4,6 @@ let
 in
 with lib;
 {
-  options = {
-    gnome = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-        description = mdDoc ''
-          Enable gnome within this flake
-        '';
-      };
-    };
-  };
-
   config = mkIf (config.gnome.enable) {
     services = {
       xserver = {

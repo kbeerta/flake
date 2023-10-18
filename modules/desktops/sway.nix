@@ -4,20 +4,8 @@ let
 in
 with lib;
 {
-  options = {
-    sway = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-        description = mdDoc ''
-          Enable sway within this flake
-        '';
-      };
-    };
-  };
-
   config = mkIf (config.sway.enable) {
-    config.wayland.enable = true;
+    wayland.enable = true;
 
     environment = {
       loginShellInit = ''

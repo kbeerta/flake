@@ -16,29 +16,6 @@ let
 in 
 with lib;
 {
-  options = {
-    wayland = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-        description = mdDoc ''
-          Enables the wayland configuration
-            > Gets enabled when using a wayland wm
-        '';
-      };
-    };
-    x11 = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-        description = mdDoc ''
-          Enables the x11 configuration
-            > Gets enabled when using a x11 wm
-        '';
-      };
-    };
-  };
-
   laptop = nixosSystem {
     inherit system;
     specialArgs = { 
@@ -47,6 +24,9 @@ with lib;
     modules = [
       ./laptop
       ./configuration.nix
+
+      # TODO: find a nicer way to put this in configuration.nix
+      ../modules/options.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
