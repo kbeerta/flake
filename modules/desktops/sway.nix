@@ -84,6 +84,7 @@ with lib;
             "*".bg = "${var.wallpaper} fill";
           };
 
+
           colors.focused = with theme; {
             background = "${primary}";
             border = "${primary-alt}";
@@ -139,6 +140,9 @@ with lib;
           };
         };
         extraConfig = ''
+          bindgesture swipe:right workspace prev
+          bindgesture swipe:left workspace next
+
           set $opacity 0.85
           for_window [app_id="Alacritty"] opacity $opacity
         '';
