@@ -1,55 +1,87 @@
-{ inputs, home-manager, nixpkgs, nixpkgs-unstable, var, ... }:
-let 
-  system = "x86_64-linux";
-
-  pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-  };
-
-  unstable = import nixpkgs-unstable {
-    inherit system;
-    config.allowUnfree = true;
-  };
-
-  lib = nixpkgs.lib;
-in 
-with lib;
+{ config, lib, pkgs, inputs, user, ... }:
 {
-  laptop = nixosSystem {
-    inherit system;
-    specialArgs = { 
-      inherit inputs unstable var; 
+  imports = import ../modules;
+
+  # TODO: Don't forget to do passwd
+  users.users.${user} = {
+    isNormalUser = true;
+    extraGroups = [ "audio" "camera" "networkmanager" "video" "wheel" ];
+    password = "password";
+  };
+
+  time.timeZone = "Europe/Amsterdam";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_TIME = "nl_NL.UTF-8";
+      LC_MONETARY = "nl_NL.UTF-8";
     };
-    modules = [
-      ./laptop
-      ./configuration.nix
+  };
 
-      # TODO: find a nicer way to put this in configuration.nix
-      ../modules/options.nix
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
+  };
 
-      home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-      }
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
+  };
+
+  fonts.packages = with pkgs; [
+    font-awesome
+    (nerdfonts.override {
+      fonts = [
+        "JetBrainsMono"
+      ];
+    })
+  ];
+
+  environment = {
+    systemPackages = with pkgs; [
+      # Terminal
+      git
+      wget
+
+      # Files
+      unzip
+      unrar
+      zip
     ];
   };
-  wsl = nixosSystem {
-    inherit system;
-    specialArgs = { 
-      inherit inputs unstable var; 
+
+  programs.dconf.enable = true;
+
+  services = {
+    pipewire = {
+      enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      pulse.enable = true;
+      jack.enable = true;
     };
-    modules = [
-      ./wsl
-      ./configuration.nix
+  };
 
-      # TODO: find a nicer way to put this in configuration.nix
-      ../modules/options.nix
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+    gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
+    };
+    package = pkgs.nixVersions.unstable;
+    registry.nixpkgs.flake = inputs.nixpkgs;
+  };
 
-      home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-      }
-    ];
+  system.stateVersion = "23.05";
+
+  home-manager.users.${user} = {
+    home.stateVersion = "23.05";
+    programs.home-manager.enable = true;
   };
 }

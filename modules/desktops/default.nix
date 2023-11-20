@@ -1,4 +1,0 @@
-[
-  ./gnome.nix
-  ./sway.nix
-]

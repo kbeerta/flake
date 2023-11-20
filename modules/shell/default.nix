@@ -1,8 +1,5 @@
-#
-# Shell
-#
-
 [
-  ./zsh.nix
   ./git.nix
+  ./nvim.nix
+  ./zsh.nix
 ]

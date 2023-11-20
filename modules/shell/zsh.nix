@@ -1,17 +1,11 @@
-{ pkgs, var, ... }:
+{ pkgs, ... }:
 {
-  users.users.${var.user} = {
-    shell = pkgs.zsh;
-  };
+  users.defaultUserShell = pkgs.zsh;
 
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-
     autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-
-    histSize = 100000;
 
     ohMyZsh = {
       enable = true;
