@@ -1,9 +1,4 @@
 { pkgs, ... }:
 {
-  programs.git = {
-    enable = true;
-
-    userName = "kbeerta";
-    userEmail = "koenbeerta@gmail.com";
-  };
+  programs.git.enable = true;
 }

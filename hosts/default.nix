@@ -39,11 +39,7 @@
 
   environment = {
     systemPackages = with pkgs; [
-      # Terminal
-      git
       wget
-
-      # Files
       unzip
       unrar
       zip

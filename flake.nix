@@ -18,7 +18,7 @@
   outputs = { self, nixpkgs, home-manager, ... } @ inputs: 
 
   let
-    user = "kbeerta";
+    user = "koenb";
 
     system = "x86_64-linux";
 
