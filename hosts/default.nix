@@ -34,4 +34,22 @@ with lib;
       }
     ];
   };
+  wsl = nixosSystem {
+    inherit system;
+    specialArgs = { 
+      inherit inputs unstable var; 
+    };
+    modules = [
+      ./wsl
+      ./configuration.nix
+
+      # TODO: find a nicer way to put this in configuration.nix
+      ../modules/options.nix
+
+      home-manager.nixosModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+      }
+    ];
+  };
 }
