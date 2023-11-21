@@ -19,10 +19,16 @@ with lib; {
         fi 
       '';
 
+      sessionVariables = {
+        WLR_NO_HARDWARE_CURSOR = "1";
+        NIXOS_OZONE_WL = "1";
+      };
+
       systemPackages = with pkgs; [
         grim
         slurp
 
+        hyprpaper
         swayidle
         swaylock
 
@@ -50,6 +56,11 @@ with lib; {
     programs.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      xwayland.enable = true;
+    };
+
+    hardware = {
+      opengl.enable = true;
     };
 
     nix.settings = {
