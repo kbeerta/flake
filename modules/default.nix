@@ -1,3 +1,5 @@
 (
-  import ./shell
+  import ./desktop
+  ++ import ./programs
+  ++ import ./shell
 )

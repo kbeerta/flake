@@ -5,7 +5,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -30,6 +35,21 @@
 
   {
     nixosConfigurations = {
+      laptop = nixpkgs.lib.nixosSystem {
+        inherit pkgs;
+        specialArgs = {
+          inherit inputs user;
+        };
+        modules = [
+          ./hosts     # default 'configuration.nix' for all hosts
+          ./hosts/wsl # specific 'configuration.nix' for wsl target
+
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
+        ];
+      };
       wsl = nixpkgs.lib.nixosSystem {
         inherit pkgs;
         specialArgs = {
