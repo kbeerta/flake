@@ -15,22 +15,46 @@ with lib;
      '';
     };
 
+    services.greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        };
+      };
+      vt = 7;
+    };
+
+    security.pam.services.swaylock = {
+      text = ''
+        auth include login
+      '';
+    };
+
     programs = {
       sway = {
         enable = true;
         extraPackages = with pkgs; [
-          autotiling
-
+          grim
+          slurp
+          swayidle
           swaylock-fancy
-
-          wev
           wl-clipboard
           wlr-randr
 
           xwayland
+
+          autotiling
         ];
       };
     };
+
+    systemd.sleep.extraConfig = ''
+      AllowSuspend=yes
+      AllowHibernation=no
+      AllowSuspendThenHibernate=no
+      AllowHybridSleep=yes
+    '';
 
     home-manager.users.${var.user} = {
       wayland.windowManager.sway = {
@@ -43,6 +67,8 @@ with lib;
           menu = "${pkgs.bemenu}/bin/bemenu-run -b";
 
           startup = [
+            # TODO: Change swaymgs to something like ${pkgs.swaymsg} or ${pkgs.sway}/bin/swaymsg
+            { command = "${pkgs.swayidle}/bin/swayidle timeout 60 '${pkgs.swaylock-fancy}/bin/swaylock-fancy -d' timeout 120 '${pkgs.systemd}/bin/systemctl suspend' after-resume 'swaymgs \"output * dpms on\"' before-sleep '${pkgs.swaylock-fancy} -d && swaymsg \"output * dpms off\""; always = true; }
             { command = "${pkgs.autotiling}/bin/autotiling"; always = true; }
             { command = "${pkgs.eww-wayland}/bin/eww open bar"; always = true; }
           ];
