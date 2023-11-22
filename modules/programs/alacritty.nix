@@ -8,6 +8,7 @@ in
       enable = true;
       settings = {
         window = {
+          opacity = 0.85;
           padding = {
             x = 2;
             y = 2;

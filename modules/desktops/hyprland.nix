@@ -97,7 +97,8 @@ in with lib; {
         }
 
         input {
-          repeat_rate = 250
+          repeat_rate = 25
+          repeat_delay = 250
           touchpad {
             natural_scroll = true
             tap-to-click=true
@@ -138,14 +139,14 @@ in with lib; {
 
         bind = ${mod}, ESC, exit
         bind = ${mod}, Q, killactive
-        bind = ${mod}, F, togglefullscreen
-        bind = ${mod}, L, exec ${pkgs.swaylock}/bin/swaylock
+        bind = ${mod}, F, fullscreen
+        bind = ${mod}, L, exec, ${pkgs.swaylock}/bin/swaylock
 
         bind = ${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty
         bind = ${mod}, SPACE, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun
 
         bind = ${mod}, k, cyclenext
-        bind = ${mod}, j, cycleprev
+        bind = ${mod}, j, cyclenext, prev
 
         bind = ${mod}, 1, workspace, 1
         bind = ${mod}, 2, workspace, 2
