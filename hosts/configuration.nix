@@ -94,6 +94,7 @@
     package = pkgs.nixVersions.unstable;
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
+
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "23.05";
