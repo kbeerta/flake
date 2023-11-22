@@ -5,7 +5,7 @@ with lib; {
       programs = {
         rofi = {
           enable = true;
-          package = ${pkgs.rofi-wayland};
+          package = pkgs.rofi-wayland;
           location = "center";
           font = "JetBrainsMono Nerd Font";
           # theme = { };
@@ -13,4 +13,4 @@ with lib; {
       };
     };
   };
-};
+}

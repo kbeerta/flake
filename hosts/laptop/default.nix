@@ -4,6 +4,8 @@
     ./hardware.nix
   ];
 
+  hyprland.enable = true;
+
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {

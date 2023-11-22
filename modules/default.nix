@@ -1,5 +1,5 @@
 (
-  import ./desktop
+  import ./desktops
   ++ import ./programs
   ++ import ./shell
 )

@@ -20,8 +20,8 @@
           size = 10;
           normal.family = "JetBrainsMono Nerd Font";
           bold = { style = "Bold"; };
-        }
+        };
       };
-    }
-  }
+    };
+  };
 }
