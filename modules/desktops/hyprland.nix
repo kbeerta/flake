@@ -173,6 +173,8 @@ in with lib; {
         binde = , XF86BrightnessUp, exec, ${pkgs.light}/bin/light -A 5
         binde = , XF86BrightnessDown, exec, ${pkgs.light}/bin/light -U 5
       '';
+
+      programs.swaylock.settings.image = wallpaper;
     };
   };
 }
