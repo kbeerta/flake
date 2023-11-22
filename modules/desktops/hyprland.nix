@@ -13,8 +13,6 @@ in with lib; {
   };
 
   config = mkIf (config.hyprland.enable) {
-    wayland.enable = true;     
-
     environment = {
       loginShellInit = ''
         if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
@@ -143,7 +141,7 @@ in with lib; {
         exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
         exec-once = ${pkgs.eww-wayland}/bin/eww open bar
 
-        bind = ${mod}, ESC, exit
+        bind = ${mod}, ESCAPE, exit
         bind = ${mod}, Q, killactive
         bind = ${mod}, F, fullscreen
         bind = ${mod}, L, exec, ${pkgs.swaylock-fancy}/bin/swaylock-fancy -d
@@ -166,9 +164,9 @@ in with lib; {
         bind = ${mod} SHIFT, 4, movetoworkspacesilent, 4
         bind = ${mod} SHIFT, 5, movetoworkspacesilent, 5
 
+        bind = , XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t
         binde = , XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -i 5
         binde = , XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -d 5
-        binde = , XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer
         binde = , XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source -t
 
         binde = , XF86BrightnessUp, exec, ${pkgs.light}/bin/light -A 5

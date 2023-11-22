@@ -1,6 +1,6 @@
 { config, lib, pkgs, user, ... }:
 with lib; {
-  config = mkIf (config.wayland.enable) {
+  config = mkIf (config.hyprland.enable) {
     environment.systemPackages = with pkgs; [
       eww-wayland
     ];

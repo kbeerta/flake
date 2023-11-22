@@ -5,6 +5,7 @@
       enable = true;
       settings = {
         window = {
+          opacity = 0.85;
           padding = {
             x = 2;
             y = 2;
@@ -17,7 +18,7 @@
           };
         };
         font = {
-          size = 10;
+          size = 11;
           normal.family = "JetBrainsMono Nerd Font";
           bold = { style = "Bold"; };
         };

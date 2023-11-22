@@ -40,6 +40,10 @@
   environment = {
     systemPackages = with pkgs; [
       wget
+      ripgrep
+      
+      pamixer
+
       unzip
       unrar
       zip
