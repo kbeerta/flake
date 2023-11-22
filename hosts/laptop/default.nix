@@ -26,7 +26,6 @@
     systemPackages = with pkgs; [
       discord
       firefox
-      onlyoffice-bin_latest
     ];
   };
 
