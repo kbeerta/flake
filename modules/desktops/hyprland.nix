@@ -49,6 +49,11 @@ in with lib; {
 
     hardware.opengl.enable = true;
 
+    xdg.portal = {
+      enable = true;
+      wlr.enable = true;
+    };
+
     security.pam.services.swaylock = {
       text = ''
         auth include login
@@ -77,21 +82,24 @@ in with lib; {
     };
 
     home-manager.users.${user} = {
-      home.file.".config/hypr/hyprland.conf".text = ''
+      xdg.configFile."hypr/hyprpaper.conf".text = ''
         preload = ${wallpaper}
         wallpaper = eDP-1,${wallpaper}
-
-        monitor = eDP-1, 1920x0180@60.002998, 0x0, 1
+      '';
+      xdg.configFile."hypr/hyprland.conf".text = ''
+        monitor = eDP-1,1920x1080@60,0x0,1
 
         general {
-          gaps_in = 10
           gaps_out = 10
           border_size = 0
+          col.active_border=0x00000000
+          col.inactive_border=0x00000000
           layout = dwindle
         }
 
         input {
-          kb_layout = "us"
+          repeat_rate = 25
+          repeat_delay = 250
           touchpad {
             natural_scroll = true
             tap-to-click=true
@@ -106,59 +114,65 @@ in with lib; {
             size = 3
           }
           dim_inactive = true
+          dim_strength = 0.25
+        }
+
+        animations {
+          enabled = false
         }
         
         dwindle {
           preserve_split = true
         }
         
-        gestures = {
+        gestures {
           workspace_swipe = true
           workspace_swipe_fingers = 3
           workspace_swipe_distance = 100
         }
 
-        misc = {
+        misc {
           disable_hyprland_logo = true
           disable_splash_rendering = true
-          mouse_move_enables_dpms=true
-          key_press_enables_dpms=true
+          mouse_move_enables_dpms = true
+          key_press_enables_dpms = true
         }
 
         exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
         exec-once = ${pkgs.swayidle}/bin/swayidle -w timeout 60 '${pkgs.swaylock}/bin/swaylock -f' timeout 600 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${config.programs.hyprland.package}/bin/hyprctl sipatch dpms on' before-sleep '${pkgs.swaylock}/bin/swaylock -f && ${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off'
+        exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
         exec-once = ${pkgs.eww-wayland}/bin/eww open bar
 
-        bind ${mod}, ESC, exit
-        bind ${mod}, Q, killactive
-        bind ${mod}, F, togglefullscreen
-        bind ${mod}, L, exec ${pkgs.swaylock}/bin/swaylock
+        bind = ${mod}, ESC, exit
+        bind = ${mod}, Q, killactive
+        bind = ${mod}, F, fullscreen
+        bind = ${mod}, L, exec, ${pkgs.swaylock}/bin/swaylock
 
-        bind ${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty
-        bind ${mod}, SPACE, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun
+        bind = ${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty
+        bind = ${mod}, SPACE, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun
 
-        bind ${mod}, k, cyclenext
-        bind ${mod}, j, cycleprev
+        bind = ${mod}, k, cyclenext
+        bind = ${mod}, j, cyclenext, prev
 
-        bind ${mod}, 1, workspace, 1
-        bind ${mod}, 2, workspace, 2
-        bind ${mod}, 3, workspace, 3
-        bind ${mod}, 4, workspace, 4
-        bind ${mod}, 5, workspace, 5
+        bind = ${mod}, 1, workspace, 1
+        bind = ${mod}, 2, workspace, 2
+        bind = ${mod}, 3, workspace, 3
+        bind = ${mod}, 4, workspace, 4
+        bind = ${mod}, 5, workspace, 5
 
-        bind ${mod} SHIFT, 1, movetoworkspacesilent, 1
-        bind ${mod} SHIFT, 2, movetoworkspacesilent, 2
-        bind ${mod} SHIFT, 3, movetoworkspacesilent, 3
-        bind ${mod} SHIFT, 4, movetoworkspacesilent, 4
-        bind ${mod} SHIFT, 5, movetoworkspacesilent, 5
+        bind = ${mod} SHIFT, 1, movetoworkspacesilent, 1
+        bind = ${mod} SHIFT, 2, movetoworkspacesilent, 2
+        bind = ${mod} SHIFT, 3, movetoworkspacesilent, 3
+        bind = ${mod} SHIFT, 4, movetoworkspacesilent, 4
+        bind = ${mod} SHIFT, 5, movetoworkspacesilent, 5
 
-        binde , XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -i 5
-        binde , XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -d 5
-        binde , XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer
-        binde , XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source -t
+        binde = , XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -i 5
+        binde = , XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -d 5
+        binde = , XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer
+        binde = , XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source -t
 
-        binde , XF86BrightnessUp, exec, ${pkgs.light}/bin/light -A 5
-        binde , XF86BrightnessDown, exec, ${pkgs.light}/bin/light -U 5
+        binde = , XF86BrightnessUp, exec, ${pkgs.light}/bin/light -A 5
+        binde = , XF86BrightnessDown, exec, ${pkgs.light}/bin/light -U 5
       '';
     };
   };
