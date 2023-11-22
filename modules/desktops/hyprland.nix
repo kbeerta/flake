@@ -39,7 +39,7 @@ in with lib; {
 
         hyprpaper
         swayidle
-        swaylock
+        swaylock-fancy
 
         wl-clipboard
         wlr-randr
@@ -139,14 +139,14 @@ in with lib; {
         }
 
         exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-        exec-once = ${pkgs.swayidle}/bin/swayidle -w timeout 60 '${pkgs.swaylock}/bin/swaylock -f' timeout 600 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${config.programs.hyprland.package}/bin/hyprctl sipatch dpms on' before-sleep '${pkgs.swaylock}/bin/swaylock -f && ${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off'
+        exec-once = ${pkgs.swayidle}/bin/swayidle -w timeout 60 '${pkgs.swaylock-fancy}/bin/swaylock-fancy -d --daemonize' timeout 600 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${config.programs.hyprland.package}/bin/hyprctl sipatch dpms on' before-sleep '${pkgs.swaylock-fancy}/bin/swaylock-fancy -d --daemonize && ${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off'
         exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
         exec-once = ${pkgs.eww-wayland}/bin/eww open bar
 
         bind = ${mod}, ESC, exit
         bind = ${mod}, Q, killactive
         bind = ${mod}, F, fullscreen
-        bind = ${mod}, L, exec, ${pkgs.swaylock}/bin/swaylock
+        bind = ${mod}, L, exec, ${pkgs.swaylock-fancy}/bin/swaylock-fancy -d
 
         bind = ${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty
         bind = ${mod}, SPACE, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun
