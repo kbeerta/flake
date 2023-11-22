@@ -41,8 +41,8 @@
           inherit inputs user;
         };
         modules = [
-          ./hosts     # default 'configuration.nix' for all hosts
-          ./hosts/wsl # specific 'configuration.nix' for wsl target
+          ./hosts        # default 'configuration.nix' for all hosts
+          ./hosts/laptop # specific 'configuration.nix' for laptop target
 
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;

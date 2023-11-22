@@ -47,6 +47,8 @@ in with lib; {
       ];
     };
 
+    hardware.opengl.enable = true;
+
     security.pam.services.swaylock = {
       text = ''
         auth include login
@@ -80,8 +82,7 @@ in with lib; {
         wallpaper = eDP-1,${wallpaper}
 
         monitor = eDP-1, 1920x0180@60.002998, 0x0, 1
-        monitor = highres, auto, auto
-          
+
         general {
           gaps_in = 10
           gaps_out = 10
@@ -131,7 +132,7 @@ in with lib; {
         bind ${mod}, ESC, exit
         bind ${mod}, Q, killactive
         bind ${mod}, F, togglefullscreen
-        bind ${mod}, L, exec ${pkg.swaylock}/bin/swaylock
+        bind ${mod}, L, exec ${pkgs.swaylock}/bin/swaylock
 
         bind ${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty
         bind ${mod}, SPACE, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun
@@ -154,7 +155,7 @@ in with lib; {
         binde , XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -i 5
         binde , XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -d 5
         binde , XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer
-        binde , XF86AudioMicMute, exec, ${pkg.pamixer}/bin/pamixer --default-source -t
+        binde , XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source -t
 
         binde , XF86BrightnessUp, exec, ${pkgs.light}/bin/light -A 5
         binde , XF86BrightnessDown, exec, ${pkgs.light}/bin/light -U 5
