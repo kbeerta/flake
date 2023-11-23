@@ -138,7 +138,7 @@ in with lib; {
         }
 
         exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-        exec-once = ${pkgs.swayidle}/bin/swayidle -w timeout 120 '${pkgs.swaylock}/bin/swaylock -d --daemonize' timeout 600 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${config.programs.hyprland.package}/bin/hyprctl sipatch dpms on' before-sleep '${pkgs.swaylock}/bin/swaylock -d --daemonize && ${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off'
+        exec-once = ${pkgs.swayidle}/bin/swayidle -w timeout 600 '${pkgs.swaylock}/bin/swaylock -d --daemonize' timeout 1200 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${config.programs.hyprland.package}/bin/hyprctl sipatch dpms on' before-sleep '${pkgs.swaylock}/bin/swaylock -d --daemonize && ${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off'
         exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
         exec-once = ${pkgs.eww-wayland}/bin/eww open bar
 
@@ -174,7 +174,9 @@ in with lib; {
         binde = , XF86BrightnessDown, exec, ${pkgs.light}/bin/light -U 5
       '';
 
-      programs.swaylock.settings.image = wallpaper;
+      programs.swaylock.settings = {
+        color = "111111";
+      };
     };
   };
 }
