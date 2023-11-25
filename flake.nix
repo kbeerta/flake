@@ -39,6 +39,9 @@
 
     pkgs = import nixpkgs {
       inherit system;
+      overlay = [
+        inputs.nur.overlay
+      ];
       config.allowUnfree = true;
     };
   in 
@@ -53,8 +56,6 @@
         modules = [
           ./hosts        # default 'configuration.nix' for all hosts
           ./hosts/laptop # specific 'configuration.nix' for laptop target
-
-          inputs.nur.nixosModules.nur
 
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
