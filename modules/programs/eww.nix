@@ -11,8 +11,8 @@ with lib; {
         source = pkgs.fetchFromGitHub {
           owner = "kbeerta";
           repo = "eww-config";
-          rev = "ae5bb2e";
-          sha256 = "sha256-xoZk2rF+9+aY6nH0Or1Mk6WW722jVv/++B8cf+ac12w=";
+          rev = "5eb8097";
+          sha256 = "sha256-/oFL/hZl23mEIkmZUxRODRHgRWNlqWFaVHdf3LPYL2k=";
         };
       };
     };

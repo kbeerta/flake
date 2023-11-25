@@ -9,8 +9,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland = {
       url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    ags = {
+      url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -44,6 +54,8 @@
           ./hosts        # default 'configuration.nix' for all hosts
           ./hosts/laptop # specific 'configuration.nix' for laptop target
 
+          inputs.nur.nixosModules.nur
+
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -58,6 +70,8 @@
         modules = [
           ./hosts     # default 'configuration.nix' for all hosts
           ./hosts/wsl # specific 'configuration.nix' for wsl target
+
+          inputs.nur.nixosModules.nur
 
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
