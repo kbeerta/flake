@@ -1,22 +1,18 @@
-{ config, lib, pkgs, var, ... }:
-with lib;
-{
-  config = mkIf (config.wayland.enable) {
+{ config, lib, pkgs, user, ... }:
+with lib; {
+  config = mkIf (config.hyprland.enable) {
     environment.systemPackages = with pkgs; [
       eww-wayland
-
-      # utility i use to get sway workspace id
-      jq
     ];
 
-    home-manager.users.${var.user} = {
+    home-manager.users.${user} = {
       home.file.".config/eww" = {
         recursive = true;
         source = pkgs.fetchFromGitHub {
           owner = "kbeerta";
           repo = "eww-config";
-          rev = "8bb7e7f";
-          sha256 = "sha256-BN+q+jSA4kUdwardUsHslpWejQzi4u5af96mMYSo9hw=";
+          rev = "5eb8097";
+          sha256 = "sha256-/oFL/hZl23mEIkmZUxRODRHgRWNlqWFaVHdf3LPYL2k=";
         };
       };
     };

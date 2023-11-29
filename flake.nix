@@ -1,40 +1,86 @@
 {
-  description = "Personal NixOs system flake";
+  description = "snowflake";
 
   inputs = { 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    nixos-wsl.url = "github:nix-community/NixOS-WSL";
-    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs"; 
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur = {
+      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprland = {
-      url = "github:vaxerski/Hyprland";
+      url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-wsl = {
+      url = "github:nix-community/NixOs-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, ... }: 
+  outputs = { self, nixpkgs, home-manager, ... } @ inputs: 
+
   let
-    var = rec {
-      user = "koenb";
-      terminal = "alacritty";
-      editor = "nvim";
-      location = "$HOME/flake";
-      wallpaper = "${location}/wallpapers/landscape.png";
+    user = "koenb";
+
+    system = "x86_64-linux";
+
+    pkgs = import nixpkgs {
+      inherit system;
+      overlay = [
+        inputs.nur.overlay
+      ];
+      config.allowUnfree = true;
     };
-  in {
-    nixosConfigurations = (
-      import ./hosts {
-        inherit (nixpkgs) lib;
-	      inherit inputs nixpkgs nixpkgs-unstable home-manager var;
-      }
-    );
+  in 
+
+  {
+    nixosConfigurations = {
+      laptop = nixpkgs.lib.nixosSystem {
+        inherit pkgs;
+        specialArgs = {
+          inherit inputs user;
+        };
+        modules = [
+          ./hosts        # default 'configuration.nix' for all hosts
+          ./hosts/laptop # specific 'configuration.nix' for laptop target
+
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
+        ];
+      };
+      wsl = nixpkgs.lib.nixosSystem {
+        inherit pkgs;
+        specialArgs = {
+          inherit inputs user;
+        };
+        modules = [
+          ./hosts     # default 'configuration.nix' for all hosts
+          ./hosts/wsl # specific 'configuration.nix' for wsl target
+
+          inputs.nur.nixosModules.nur
+
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
+        ];
+      };
+    };
   };
 }
 

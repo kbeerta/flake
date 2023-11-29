@@ -1,8 +1,10 @@
-{ pkgs, var, ... }:
+{ pkgs, inputs, user, ... }:
 {
   imports = [
-    ./hardware-configuration.nix 
+    ./hardware.nix
   ];
+
+  hyprland.enable = true;
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -22,14 +24,18 @@
     };
   };
 
-  hyprland.enable = true;
-
   environment = {
     systemPackages = with pkgs; [
       discord
       firefox
-      onlyoffice-bin_latest
     ];
+  };
+
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General.Enable = "Source,Sink,Media,Socket";
+    };
   };
 
   programs = {

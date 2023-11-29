@@ -1,9 +1,5 @@
-#
-# Programs
-#
-
 [
+  ./ags.nix
   ./alacritty.nix
-  ./eww.nix
-  ./bemenu.nix
+  ./rofi.nix
 ]

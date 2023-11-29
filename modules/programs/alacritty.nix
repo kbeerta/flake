@@ -1,9 +1,6 @@
-{ pkgs, var, ... }:
-let 
-  theme = import ../colors.nix;
-in
+{ pkgs, user, ... }:
 {
-  home-manager.users.${var.user} = {
+  home-manager.users.${user} = {
     programs.alacritty = {
       enable = true;
       settings = {
@@ -15,12 +12,12 @@ in
           };
         };
         colors = {
-          primary = with theme; {
-            background = "${primary}";
-            foreground = "${text}";
+          primary = {
+            background = "#111111";
+            foreground = "#EEEEEE";
           };
         };
-        font = rec {
+        font = {
           size = 11;
           normal.family = "JetBrainsMono Nerd Font";
           bold = { style = "Bold"; };

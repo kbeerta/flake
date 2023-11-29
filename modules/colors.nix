@@ -1,12 +1,6 @@
-#
-# Colors
-#
-
 {
-  primary = "#111111";
-  primary-alt = "#333333";
+  bg-primary = "#111111";
 
-  secondary = "#CE6F7A";
-
-  text = "#EEEEEE";
+  fg-primary = "#FFFAFA";
+  fg-secondary = "#B7B7E6";
 }

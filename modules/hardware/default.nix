@@ -1,7 +1,0 @@
-#
-# Hardware
-#
-
-[
-  ./bluetooth.nix
-]
