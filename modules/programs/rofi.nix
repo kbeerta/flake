@@ -13,13 +13,12 @@ in with lib; {
             "*" = {
               font = "JetBrainsMono Nerd Font 12";
 
-              bg0 = mkLiteral "${theme.background}E6";
-              bg1 = mkLiteral "${theme.background-alt}E6";
-              bg2 = mkLiteral "${theme.accent}E6";
+              bg0 = mkLiteral "${theme.bg-primary}E6";
+              bg1 = mkLiteral "${theme.fg-secondary}E6";
 
-              fg0 = mkLiteral "${theme.foreground-alt}";
-              fg1 = mkLiteral "${theme.foreground}";
-              fg2 = mkLiteral "${theme.foreground}80";
+              fg0 = mkLiteral "${theme.fg-primary}";
+              fg1 = mkLiteral "${theme.fg-secondary}";
+              fg2 = mkLiteral "${theme.fg-primary}80";
 
               background-color = mkLiteral "transparent";
               text-color = mkLiteral "@fg0";
@@ -63,8 +62,8 @@ in with lib; {
 
             "message" = {
               border = mkLiteral "2px 0 0";
-              border-color = mkLiteral "@bg1";
-              background-color = mkLiteral "@bg1";
+              border-color = mkLiteral "@bg0";
+              background-color = mkLiteral "@bg0";
             };
 
             "textbox" = {
@@ -76,7 +75,7 @@ in with lib; {
               columns = 1;
               fixed-height = false;
               border = mkLiteral "1px 0 0";
-              border-color = mkLiteral "@bg1";
+              border-color = mkLiteral "@bg0";
             };
 
             "element" = {
@@ -86,12 +85,12 @@ in with lib; {
             };
 
             "element normal active" = {
-              text-color = mkLiteral "@bg2";
+              text-color = mkLiteral "@bg1";
             };
 
             "element selected normal, element selected active" = {
-              background-color = mkLiteral "@bg2";
-              text-color = mkLiteral "@fg1";
+              background-color = mkLiteral "@bg1";
+              text-color = mkLiteral "@bg0";
             };
 
             "element-icon" = {

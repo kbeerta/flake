@@ -1,9 +1,6 @@
 {
-  background = "#111111";
-  background-alt = "#1F1F1F";
+  bg-primary = "#111111";
 
-  foreground = "#EEEEEE";
-  foreground-alt = "#CCCCCC";
-
-  accent = "#C56D89";
+  fg-primary = "#FFFAFA";
+  fg-secondary = "#B7B7E6";
 }

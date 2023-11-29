@@ -11,6 +11,16 @@ with lib; {
         enable = true;
         extraPackages = [ pkgs.libsoup_3 ];
       };
+
+      home.file.".config/ags" = {
+        recursive = true;
+        source = pkgs.fetchFromGitHub {
+          owner = "kbeerta";
+          repo = "ags-config";
+          rev = "c0d417a";
+          sha256 = "sha256-AzpBOMAM+tpUkSYFAEOGtenrxN83madRMLSu5u7/cDI=";
+        };
+      };
     };
   };
 }

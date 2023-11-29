@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, user, ... }:
 let 
   mod = "ALT";
-  wallpaper = "~/flake/wallpapers/rose.png";
+  wallpaper = "~/flake/wallpapers/lake.jpg";
 in with lib; {
   options = {
     hyprland = {
@@ -140,7 +140,7 @@ in with lib; {
         exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
         exec-once = ${pkgs.swayidle}/bin/swayidle -w timeout 600 '${pkgs.swaylock}/bin/swaylock -d --daemonize' timeout 1200 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${config.programs.hyprland.package}/bin/hyprctl sipatch dpms on' before-sleep '${pkgs.swaylock}/bin/swaylock -d --daemonize && ${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off'
         exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
-        exec-once = ${pkgs.eww-wayland}/bin/eww open bar
+        exec-once = ags
 
         bind = ${mod}, ESCAPE, exit
         bind = ${mod}, Q, killactive
@@ -170,8 +170,8 @@ in with lib; {
         binde = , XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -d 5
         binde = , XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source -t
 
-        binde = , XF86BrightnessUp, exec, ${pkgs.light}/bin/light -A 5
-        binde = , XF86BrightnessDown, exec, ${pkgs.light}/bin/light -U 5
+        binde = , XF86MonBrightnessUp, exec, ${pkgs.light}/bin/light -A 5
+        binde = , XF86MonBrightnessDown, exec, ${pkgs.light}/bin/light -U 5
       '';
     };
   };
