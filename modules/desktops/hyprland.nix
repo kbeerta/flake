@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, user, ... }:
 let 
   mod = "ALT";
-  wallpaper = "~/flake/wallpapers/lake.jpg";
+  wallpaper = "~/flake/wallpapers/huleeb.jpg";
 in with lib; {
   options = {
     hyprland = {
@@ -74,11 +74,6 @@ in with lib; {
       xwayland.enable = true;
     };
 
-    nix.settings = {
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-    };
-
     home-manager.users.${user} = {
       xdg.configFile."hypr/hyprpaper.conf".text = ''
         preload = ${wallpaper}
@@ -106,7 +101,7 @@ in with lib; {
         }
           
         decoration {
-          rounding = 0
+          rounding = 5
           drop_shadow = false
           blur {
             enabled = true
@@ -164,6 +159,9 @@ in with lib; {
         bind = ${mod} SHIFT, 3, movetoworkspacesilent, 3
         bind = ${mod} SHIFT, 4, movetoworkspacesilent, 4
         bind = ${mod} SHIFT, 5, movetoworkspacesilent, 5
+
+        bind = , Print, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
+
 
         bind = , XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t
         binde = , XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -i 5

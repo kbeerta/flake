@@ -11,7 +11,7 @@
 
     nur = {
       url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprland = {
@@ -44,6 +44,8 @@
       ];
       config.allowUnfree = true;
     };
+
+    lib = import ./lib;
   in 
 
   {

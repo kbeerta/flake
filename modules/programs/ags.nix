@@ -17,8 +17,8 @@ with lib; {
         source = pkgs.fetchFromGitHub {
           owner = "kbeerta";
           repo = "ags-config";
-          rev = "c0d417a";
-          sha256 = "sha256-AzpBOMAM+tpUkSYFAEOGtenrxN83madRMLSu5u7/cDI=";
+          rev = "dc8662b";
+          sha256 = "sha256-8nXL47Xrzli3Entp3R7m/aZrbkslF1LkEcq+7GGixbI=";
         };
       };
     };

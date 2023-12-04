@@ -1,6 +1,6 @@
 {
-  bg-primary = "#111111";
+  bg0 = "#111111";
+  fg0 = "#FEFEFE";
 
-  fg-primary = "#FFFAFA";
-  fg-secondary = "#B7B7E6";
+  accent = "#FF9E99";
 }

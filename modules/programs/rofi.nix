@@ -13,12 +13,11 @@ in with lib; {
             "*" = {
               font = "JetBrainsMono Nerd Font 12";
 
-              bg0 = mkLiteral "${theme.bg-primary}E6";
-              bg1 = mkLiteral "${theme.fg-secondary}E6";
+              bg0 = mkLiteral "${theme.bg0}E6";
+              accent = mkLiteral "${theme.accent}E6";
 
-              fg0 = mkLiteral "${theme.fg-primary}";
-              fg1 = mkLiteral "${theme.fg-secondary}";
-              fg2 = mkLiteral "${theme.fg-primary}80";
+              fg0 = mkLiteral "${theme.fg0}";
+              fg1 = mkLiteral "${theme.fg0}80";
 
               background-color = mkLiteral "transparent";
               text-color = mkLiteral "@fg0";
@@ -57,7 +56,7 @@ in with lib; {
             "entry" = {
               font = mkLiteral "inherit";
               placeholder = "Search";
-              placeholder-color = mkLiteral "@fg2";
+              placeholder-color = mkLiteral "@fg1";
             };
 
             "message" = {
@@ -85,11 +84,11 @@ in with lib; {
             };
 
             "element normal active" = {
-              text-color = mkLiteral "@bg1";
+              text-color = mkLiteral "@accent";
             };
 
             "element selected normal, element selected active" = {
-              background-color = mkLiteral "@bg1";
+              background-color = mkLiteral "@accent";
               text-color = mkLiteral "@bg0";
             };
 
