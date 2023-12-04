@@ -44,8 +44,6 @@
       ];
       config.allowUnfree = true;
     };
-
-    lib = import ./lib;
   in 
 
   {
