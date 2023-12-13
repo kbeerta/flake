@@ -63,6 +63,7 @@ in with lib; {
       settings = {
         default_session = {
           command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
+          user = "koenb";
         };
       };
       vt = 7;
@@ -81,6 +82,7 @@ in with lib; {
       '';
       xdg.configFile."hypr/hyprland.conf".text = ''
         monitor = eDP-1,1920x1080@60,0x0,1
+        monitor = ,preferred,auto,1,mirror,eDP-1
 
         general {
           gaps_out = 10
