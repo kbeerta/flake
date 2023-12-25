@@ -1,2 +1,1 @@
-# Flake
-
+# ❄️ Nixos Flake
