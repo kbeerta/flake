@@ -1,6 +1,7 @@
 {
   bg0 = "#111111";
+  bg1 = "#292929";
   fg0 = "#FEFEFE";
 
-  accent = "#FF9E99";
+  accent = "#CBA6F7";
 }

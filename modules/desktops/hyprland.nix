@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, user, ... }:
 let 
   mod = "ALT";
-  wallpaper = "~/flake/wallpapers/huleeb.jpg";
+  wallpaper = "~/flake/wallpapers/huleeb-purple.jpg";
 in with lib; {
   options = {
     hyprland = {
@@ -47,6 +47,7 @@ in with lib; {
 
     hardware.opengl.enable = true;
 
+    services.dbus.enable = true; 
     xdg.portal = {
       enable = true;
       wlr.enable = true;
@@ -139,7 +140,7 @@ in with lib; {
         exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
         exec-once = ags
 
-        bind = ${mod}, ESCAPE, exit
+        bind = ${mod} SHIFT, ESCAPE, exit
         bind = ${mod}, Q, killactive
         bind = ${mod}, F, fullscreen
         bind = ${mod}, L, exec, ${pkgs.swaylock}/bin/swaylock -d
@@ -164,14 +165,15 @@ in with lib; {
 
         bind = , Print, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
 
-
         bind = , XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t
-        binde = , XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -i 5
-        binde = , XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -d 5
+        binde = , XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -i 5 && notify-send -t 1000 -a "Volume" -h string:x-canonical-private-synchronous:anything -h string:syncronous:volume -h int:value:$(pamixer --get-volume) "Volume: $(pamixer --get-volume)"
+        binde = , XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -d 5 && notify-send -t 1000 -a "Volume" -h string:x-canonical-private-synchronous:anything -h string:syncronous:volume -h int:value:$(pamixer --get-volume) "Volume: $(pamixer --get-volume)"
         binde = , XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source -t
 
-        binde = , XF86MonBrightnessUp, exec, ${pkgs.light}/bin/light -A 5
-        binde = , XF86MonBrightnessDown, exec, ${pkgs.light}/bin/light -U 5
+        binde = , XF86MonBrightnessUp, exec, ${pkgs.light}/bin/light -A 5 && notify-send -t 1000 -a "Brightness" -h string:x-canonical-private-synchronous:anything -h string:syncronous:volume -h int:value:$(light) "Brightness: $(light)"
+
+        binde = , XF86MonBrightnessDown, exec, ${pkgs.light}/bin/light -U 5 && notify-send -t 1000 -a "Brightness" -h string:x-canonical-private-synchronous:anything -h string:syncronous:volume -h int:value:$(light) "Brightness: $(light)"
+
       '';
     };
   };

@@ -1,5 +1,5 @@
 {
-  description = "snowflake";
+  description = "Flake";
 
   inputs = { 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

@@ -31,7 +31,7 @@ in with lib; {
               background-color = mkLiteral "@bg0";
 
               location = mkLiteral "center";
-              border-radius = 0;
+              border-radius = mkLiteral "5px";
               width = 640;
             };
 
