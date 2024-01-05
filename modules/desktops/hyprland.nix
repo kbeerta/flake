@@ -82,6 +82,8 @@ in with lib; {
         wallpaper = eDP-1,${wallpaper}
       '';
       xdg.configFile."hypr/hyprland.conf".text = ''
+        $mod = ALT
+
         monitor = eDP-1,1920x1080@60,0x0,1
         monitor = ,preferred,auto,1,mirror,eDP-1
 
@@ -143,13 +145,26 @@ in with lib; {
         bind = ${mod} SHIFT, ESCAPE, exit
         bind = ${mod}, Q, killactive
         bind = ${mod}, F, fullscreen
-        bind = ${mod}, L, exec, ${pkgs.swaylock}/bin/swaylock -d
+        bind = SUPER, L, exec, ${pkgs.swaylock}/bin/swaylock -d
 
         bind = ${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty
         bind = ${mod}, SPACE, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun
 
-        bind = ${mod}, k, cyclenext
-        bind = ${mod}, j, cyclenext, prev
+        bind = $mod, l, movefocus, r
+        bind = $mod, h, movefocus, l
+        bind = $mod, j, movefocus, d
+        bind = $mod, k, movefocus, u
+
+        binde = CONTROL $mod, l, resizeactive, 10 0 
+        binde = CONTROL $mod, h, resizeactive, -10 0
+        binde = CONTROL $mod, j, resizeactive, 0 -10
+        binde = CONTROL $mod, k, resizeactive, 0 10
+
+        bind = SHIFT $mod, l, movewindow, r
+        bind = SHIFT $mod, h, movewindow, l
+        bind = SHIFT $mod, j, movewindow, d
+        bind = SHIFT $mod, k, movewindow, u
+
 
         bind = ${mod}, 1, workspace, 1
         bind = ${mod}, 2, workspace, 2

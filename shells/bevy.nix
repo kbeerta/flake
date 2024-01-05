@@ -38,7 +38,7 @@
         pkg-config
       ];
       shellHook = ''
-        exec ${SHELL}
+        exec $SHELL
       '';
       LD_LIBRARY_PATH = (pkgs.lib.makeLibraryPath buildInputs);
     };
