@@ -41,6 +41,7 @@
     systemPackages = with pkgs; [
       wget
       ripgrep
+      fd
       
       pamixer
 

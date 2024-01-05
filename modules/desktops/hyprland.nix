@@ -157,13 +157,13 @@ in with lib; {
 
         binde = CONTROL $mod, l, resizeactive, 10 0 
         binde = CONTROL $mod, h, resizeactive, -10 0
-        binde = CONTROL $mod, j, resizeactive, 0 -10
-        binde = CONTROL $mod, k, resizeactive, 0 10
+        binde = CONTROL $mod, j, resizeactive, 0 10
+        binde = CONTROL $mod, k, resizeactive, 0 -10
 
-        bind = SHIFT $mod, l, movewindow, r
-        bind = SHIFT $mod, h, movewindow, l
-        bind = SHIFT $mod, j, movewindow, d
-        bind = SHIFT $mod, k, movewindow, u
+        bind = SHIFT $mod, l, swapwindow, r
+        bind = SHIFT $mod, h, swapwindow, l
+        bind = SHIFT $mod, j, swapwindow, d
+        bind = SHIFT $mod, k, swapwindow, u
 
 
         bind = ${mod}, 1, workspace, 1

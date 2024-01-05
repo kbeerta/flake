@@ -15,8 +15,8 @@
       source = pkgs.fetchFromGitHub {
         owner = "kbeerta";
         repo = "nvim-config";
-        rev = "f3d274c";
-        sha256 = "sha256-RebbLgueWSuCDYjXKbs+LjG6PkU4aRVW95oeKJqlIPQ=";
+        rev = "c7fbc2e";
+        sha256 = "sha256-v4vVJL0s24JhPd73fbqIAZgnma3HtHNYmFbsdPZE0os=";
       };
     };
   };
