@@ -2,6 +2,7 @@
 let 
   mod = "ALT";
   wallpaper = "~/flake/wallpapers/huleeb-purple.jpg";
+  theme = import ../colors.nix;
 in with lib; {
   options = {
     hyprland = {
@@ -51,12 +52,6 @@ in with lib; {
     xdg.portal = {
       enable = true;
       wlr.enable = true;
-    };
-
-    security.pam.services.swaylock = {
-      text = ''
-        auth include login
-      '';
     };
 
     services.greetd = {
@@ -138,7 +133,7 @@ in with lib; {
         }
 
         exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-        exec-once = ${pkgs.swayidle}/bin/swayidle -w timeout 600 '${pkgs.swaylock}/bin/swaylock -d --daemonize' timeout 1200 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${config.programs.hyprland.package}/bin/hyprctl sipatch dpms on' before-sleep '${pkgs.swaylock}/bin/swaylock -d --daemonize && ${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off'
+        exec-once = ${pkgs.swayidle}/bin/swayidle -w timeout 600 '${pkgs.swaylock}/bin/swaylock --color ${theme.bg1} -d --daemonize' timeout 1200 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${config.programs.hyprland.package}/bin/hyprctl sipatch dpms on' before-sleep '${pkgs.swaylock}/bin/swaylock --color ${theme.bg1} -d --daemonize && ${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off'
         exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
         exec-once = ags
 

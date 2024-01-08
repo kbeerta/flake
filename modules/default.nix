@@ -1,6 +1,5 @@
 (
-  [./editor]
-  ++ import ./desktops
+  import ./desktops
   ++ import ./programs
   ++ import ./services
   ++ import ./shell

@@ -7,7 +7,6 @@ in {
       enable = true;
       settings = {
         window = {
-          # opacity = 0.80;
           padding = {
             x = 2;
             y = 2;
@@ -25,7 +24,9 @@ in {
           bold = { style = "Bold"; };
         };
         cursor = {
-          style = "Underline";
+          style = {
+            shape = "Underline";
+          };
         };
       };
     };
