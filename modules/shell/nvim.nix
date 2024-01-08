@@ -1,6 +1,4 @@
-{ inputs, pkgs, ... }: let
-  indent = 4;
-in {
+{ inputs, pkgs, ... }: {   
   programs.nixvim = {
     enable = true;
     viAlias = true;
@@ -68,6 +66,7 @@ in {
 
 		options = {
 			updatetime = 100;
+      timeoutlen = 300;
 
 			conceallevel = 3;
 			cursorline = true;
@@ -82,9 +81,9 @@ in {
 			expandtab = true;
 			smartindent = true;
 
-			tabstop = indent;
-			shiftwidth = indent;
-			softtabstop = indent;
+			tabstop = 4;
+			shiftwidth = 4;
+			softtabstop = 4;
 
 			wildmode = "longest:full,full";
 			fileencoding = "utf-8";
