@@ -76,7 +76,7 @@
         dates = "weekly";
         options = "--delete-older-than 7d";
     };
-    package = pkgs.nixVersions.unstable;
+    package = pkgs.nixFlakes;
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
 

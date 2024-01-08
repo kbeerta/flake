@@ -24,6 +24,9 @@ in {
           normal.family = "JetBrainsMono Nerd Font";
           bold = { style = "Bold"; };
         };
+        cursor = {
+          style = "Underline";
+        };
       };
     };
   };

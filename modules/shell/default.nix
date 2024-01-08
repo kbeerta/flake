@@ -1,5 +1,5 @@
 [
   ./git.nix
-  ./nvim.nix
+  # ./nvim.nix
   ./zsh.nix
 ]
