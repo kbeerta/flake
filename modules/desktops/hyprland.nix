@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, user, ... }:
 let 
   mod = "ALT";
-  wallpaper = "~/flake/wallpapers/huleeb-purple.jpg";
+  wallpaper = "~/flake/wallpapers/rice.png";
   theme = import ../colors.nix;
 in with lib; {
   options = {
@@ -77,8 +77,6 @@ in with lib; {
         wallpaper = eDP-1,${wallpaper}
       '';
       xdg.configFile."hypr/hyprland.conf".text = ''
-        $mod = ALT
-
         monitor = eDP-1,1920x1080@60,0x0,1
         monitor = ,preferred,auto,1,mirror,eDP-1
 
@@ -135,7 +133,7 @@ in with lib; {
         exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
         exec-once = ${pkgs.swayidle}/bin/swayidle -w timeout 600 '${pkgs.swaylock}/bin/swaylock --color ${theme.bg1} -d --daemonize' timeout 1200 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${config.programs.hyprland.package}/bin/hyprctl sipatch dpms on' before-sleep '${pkgs.swaylock}/bin/swaylock --color ${theme.bg1} -d --daemonize && ${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off'
         exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
-        exec-once = ags
+        exec-once = ${pkgs.waybar}/bin/waybar
 
         bind = ${mod} SHIFT, ESCAPE, exit
         bind = ${mod}, Q, killactive
@@ -145,20 +143,20 @@ in with lib; {
         bind = ${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty
         bind = ${mod}, SPACE, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun
 
-        bind = $mod, l, movefocus, r
-        bind = $mod, h, movefocus, l
-        bind = $mod, j, movefocus, d
-        bind = $mod, k, movefocus, u
+        bind = ${mod}, l, movefocus, r
+        bind = ${mod}, h, movefocus, l
+        bind = ${mod}, j, movefocus, d
+        bind = ${mod}, k, movefocus, u
 
-        binde = CONTROL $mod, l, resizeactive, 10 0 
-        binde = CONTROL $mod, h, resizeactive, -10 0
-        binde = CONTROL $mod, j, resizeactive, 0 10
-        binde = CONTROL $mod, k, resizeactive, 0 -10
+        binde = CONTROL ${mod}, l, resizeactive, 10 0 
+        binde = CONTROL ${mod}, h, resizeactive, -10 0
+        binde = CONTROL ${mod}, j, resizeactive, 0 10
+        binde = CONTROL ${mod}, k, resizeactive, 0 -10
 
-        bind = SHIFT $mod, l, swapwindow, r
-        bind = SHIFT $mod, h, swapwindow, l
-        bind = SHIFT $mod, j, swapwindow, d
-        bind = SHIFT $mod, k, swapwindow, u
+        bind = SHIFT ${mod}, l, swapwindow, r
+        bind = SHIFT ${mod}, h, swapwindow, l
+        bind = SHIFT ${mod}, j, swapwindow, d
+        bind = SHIFT ${mod}, k, swapwindow, u
 
 
         bind = ${mod}, 1, workspace, 1
@@ -176,14 +174,12 @@ in with lib; {
         bind = , Print, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
 
         bind = , XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t
-        binde = , XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -i 5 && notify-send -t 1000 -a "Volume" -h string:x-canonical-private-synchronous:anything -h string:syncronous:volume -h int:value:$(pamixer --get-volume) "Volume: $(pamixer --get-volume)"
-        binde = , XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -d 5 && notify-send -t 1000 -a "Volume" -h string:x-canonical-private-synchronous:anything -h string:syncronous:volume -h int:value:$(pamixer --get-volume) "Volume: $(pamixer --get-volume)"
+        binde = , XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -i 5 
+        binde = , XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -d 5 
         binde = , XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source -t
 
-        binde = , XF86MonBrightnessUp, exec, ${pkgs.light}/bin/light -A 5 && notify-send -t 1000 -a "Brightness" -h string:x-canonical-private-synchronous:anything -h string:syncronous:volume -h int:value:$(light) "Brightness: $(light)"
-
-        binde = , XF86MonBrightnessDown, exec, ${pkgs.light}/bin/light -U 5 && notify-send -t 1000 -a "Brightness" -h string:x-canonical-private-synchronous:anything -h string:syncronous:volume -h int:value:$(light) "Brightness: $(light)"
-
+        binde = , XF86MonBrightnessUp, exec, ${pkgs.light}/bin/light -A 5 
+        binde = , XF86MonBrightnessDown, exec, ${pkgs.light}/bin/light -U 5 
       '';
     };
   };

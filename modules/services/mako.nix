@@ -14,12 +14,12 @@ in with lib; {
 
         font = "JetBrainsMono Nerd Font";
 
-        anchor = "top-right";
+        anchor = "bottom-center";
         margin = "20";
 
         backgroundColor = theme.bg1;
         textColor = theme.fg0;
-        progressColor = theme.accent;
+        progressColor = theme.fg0;
 
         borderRadius = 5;
         borderSize = 0;

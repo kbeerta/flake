@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 {
   users.defaultUserShell = pkgs.zsh;
 
@@ -17,7 +17,6 @@
         "git" 
       ];
     };
-
 
     shellInit = ''
       source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup

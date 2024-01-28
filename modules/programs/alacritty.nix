@@ -17,6 +17,19 @@ in {
             background = theme.bg0;
             foreground = theme.fg0;
           };
+          normal = {
+            black = "#000000";
+            white = "#FFFFFF";
+
+            red = "#d77189";
+
+            # red = theme.fg9;
+            blue = theme.fg9;
+            cyan = theme.fg9;
+            green = theme.fg9;
+            yellow = theme.fg9;
+            magenta = theme.fg9;
+          };
         };
         font = {
           size = 11;

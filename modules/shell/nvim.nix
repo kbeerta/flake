@@ -195,6 +195,7 @@
         };
 
         servers = {
+          ccls.enable = true;
           emmet_ls.enable = true;
           eslint.enable = true;
           elixirls.enable = true;
@@ -240,6 +241,24 @@
 
       lualine = {
         enable = true;
+
+        componentSeparators = {
+          left = "|";
+          right = "|";
+        };
+
+        sectionSeparators = {
+          left = "";
+          right = "";
+        };
+
+        sections = {
+          lualine_c = [
+            {
+              name = "buffers";
+            }
+          ];
+        };
       };
 
       treesitter = {
@@ -252,6 +271,11 @@
 
       luasnip.enable = true;
       oil.enable = true;
+      comment-nvim.enable = true;
     };
+
+    extraPlugins = with pkgs.vimPlugins; [
+      nvim-web-devicons
+    ];
   };
 } 

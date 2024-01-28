@@ -14,7 +14,7 @@ in with lib; {
               font = "JetBrainsMono Nerd Font 12";
 
               bg0 = mkLiteral "${theme.bg0}E6";
-              accent = mkLiteral "${theme.accent}E6";
+              accent = mkLiteral "${theme.fg9}E6";
 
               fg0 = mkLiteral "${theme.fg0}";
               fg1 = mkLiteral "${theme.fg0}80";
