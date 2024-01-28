@@ -57,7 +57,7 @@ in with lib; {
           }
 
           #custom-separator {
-            color: ${theme.bg2};
+            color: ${theme.bg1};
             padding: 0 5px;
           }
         '';
