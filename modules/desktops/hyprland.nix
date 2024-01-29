@@ -43,6 +43,8 @@ in with lib; {
         wl-clipboard
         wlr-randr
         wev
+
+        fzf
       ];
     };
 
@@ -141,7 +143,7 @@ in with lib; {
         bind = SUPER, L, exec, ${pkgs.swaylock}/bin/swaylock -d
 
         bind = ${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty
-        bind = ${mod}, SPACE, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun
+        bind = ${mod}, SPACE, exec, ${pkgs.alacritty}/bin/alacritty --title 'Alacritty fzf-menu' -e bash -c 'compgen -c | sort -u | fzf --no-color | xargs hyprctl dispatch exec --'
 
         bind = ${mod}, l, movefocus, r
         bind = ${mod}, h, movefocus, l
@@ -180,6 +182,9 @@ in with lib; {
 
         binde = , XF86MonBrightnessUp, exec, ${pkgs.light}/bin/light -A 5 
         binde = , XF86MonBrightnessDown, exec, ${pkgs.light}/bin/light -U 5 
+
+        windowrulev2 = float,title:(Alacritty fzf-menu)
+        windowrulev2 = center 1, title:(Alacritty fzf-menu)
       '';
     };
   };
