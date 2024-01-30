@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, user, ... }:
 let 
   mod = "ALT";
-  wallpaper = "~/flake/wallpapers/rice.png";
+  wallpaper = "~/flake/wallpapers/nixos.png";
   theme = import ../colors.nix;
 in with lib; {
   options = {
