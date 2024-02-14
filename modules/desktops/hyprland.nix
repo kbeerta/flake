@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, user, ... }:
 let 
   mod = "ALT";
-  wallpaper = "~/flake/wallpapers/nixos.png";
+  wallpaper = "~/flake/wallpapers/rice.png";
   theme = import ../colors.nix;
 in with lib; {
   options = {
@@ -30,6 +30,13 @@ in with lib; {
       sessionVariables = {
         WLR_NO_HARDWARE_CURSOR = "1";
         NIXOS_OZONE_WL = "1";
+
+        FZF_DEFAULT_OPTS= ''
+          --color=fg:${theme.fg0},bg:${theme.bg0},hl:${theme.fg0}
+          --color=fg+:${theme.fg0},bg+:${theme.bg1},hl+:${theme.fg9}
+          --color=info:${theme.fg0},prompt:${theme.bg1},pointer:${theme.fg9}
+          --color=marker:${theme.fg0},spinner:${theme.bg1},header:${theme.fg9}
+          '';
       };
 
       systemPackages = with pkgs; [
@@ -143,7 +150,7 @@ in with lib; {
         bind = SUPER, L, exec, ${pkgs.swaylock}/bin/swaylock -d
 
         bind = ${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty
-        bind = ${mod}, SPACE, exec, ${pkgs.alacritty}/bin/alacritty --title 'Alacritty fzf-menu' -e bash -c 'compgen -c | sort -u | fzf --no-color | xargs hyprctl dispatch exec --'
+        bind = ${mod}, SPACE, exec, ${pkgs.alacritty}/bin/alacritty --title 'Alacritty fzf-menu' -e bash -c 'compgen -c | sort -u | fzf | xargs hyprctl dispatch exec --'
 
         bind = ${mod}, l, movefocus, r
         bind = ${mod}, h, movefocus, l

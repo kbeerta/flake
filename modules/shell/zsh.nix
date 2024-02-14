@@ -19,6 +19,7 @@
     };
 
     shellInit = ''
+      SPACESHIP_CHAR_SYMBOL="󰴈 ";
       source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
       autoload -U promptinit; promptinit
     '';

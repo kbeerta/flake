@@ -1,4 +1,8 @@
 { inputs, pkgs, ... }: {   
+  environment.systemPackages = with pkgs; [
+    fzf
+  ];
+
   programs.nixvim = {
     enable = true;
     viAlias = true;
@@ -55,16 +59,29 @@
       {
         mode = "n";
         key = "<leader>ff";
-        action = "<cmd>Telescope find_files<CR>";
+        action = "<cmd>FzfLua files<CR>";
       }
       {
         mode = "n";
         key = "<leader>fg";
-        action = "<cmd>Telescope live_grep<CR>";
+        action = "<cmd>FzfLua grep<CR>";
       }
+      # {
+      #   mode = "n";
+      #   key = "<leader>ff";
+      #   action = "<cmd>Telescope find_files<CR>";
+      # }
+      # {
+      #   mode = "n";
+      #   key = "<leader>fg";
+      #   action = "<cmd>Telescope live_grep<CR>";
+      # }
 		];
 
 		options = {
+      laststatus = 4;
+      statusline = "%{repeat('─',winwidth('.'))}";
+
 			updatetime = 100;
       timeoutlen = 300;
 
@@ -117,7 +134,7 @@
 		  }
 		];
 
-      colorschemes.catppuccin = {
+    colorschemes.catppuccin = {
       enable = true;
       flavour = "mocha";
 
@@ -196,6 +213,7 @@
 
         servers = {
           ccls.enable = true;
+          # clangd.enable = true;
           emmet_ls.enable = true;
           eslint.enable = true;
           elixirls.enable = true;
@@ -203,6 +221,8 @@
           lua-ls.enable = true;
           nixd.enable = true;
           omnisharp.enable = true;
+          pyright.enable = true;
+          # ruff-lsp.enable = true;
           rust-analyzer = {
             enable = true;
 
@@ -212,13 +232,6 @@
           };
           tsserver.enable = true;
         };
-      };
-
-      none-ls.enable = true;
-
-      telescope = {
-        enable = true;
-        extensions.fzf-native.enable = true;
       };
 
       indent-blankline = {
@@ -239,28 +252,6 @@
         };
       };
 
-      lualine = {
-        enable = true;
-
-        componentSeparators = {
-          left = "|";
-          right = "|";
-        };
-
-        sectionSeparators = {
-          left = "";
-          right = "";
-        };
-
-        sections = {
-          lualine_c = [
-            {
-              name = "buffers";
-            }
-          ];
-        };
-      };
-
       treesitter = {
         enable = true;
         indent = true;
@@ -269,6 +260,7 @@
 
       treesitter-context.enable = true;
 
+      bufferline.enable = true;
       luasnip.enable = true;
       oil.enable = true;
       comment-nvim.enable = true;
@@ -276,6 +268,7 @@
 
     extraPlugins = with pkgs.vimPlugins; [
       nvim-web-devicons
+      fzf-lua
     ];
   };
 } 

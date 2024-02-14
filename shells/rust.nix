@@ -16,8 +16,9 @@
   in {
     devShells.${system}.default = pkgs.mkShell rec {
       buildInputs = with pkgs; [
-        rust-bin.beta.latest.default
-        rust-analyzer
+        (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
+          extensions = [ "rust-analyzer" ];
+        }))
       ];
       shellHook = ''
         exec $SHELL
