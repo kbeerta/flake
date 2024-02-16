@@ -1,6 +1,6 @@
 { inputs, config, lib, pkgs, user, ... }:
 let
-  theme = import ../colors.nix;
+  theme = import ../theme.nix;
 in with lib; {
   config = mkIf (config.hyprland.enable) {
     environment.systemPackages = with pkgs; [

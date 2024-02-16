@@ -1,6 +1,6 @@
 { inputs, config, lib, pkgs, user, ... }:
 let
-  theme = import ../colors.nix;
+  theme = import ../theme.nix;
 in with lib; {
   config = mkIf (config.hyprland.enable) {
     environment.systemPackages = with pkgs; [
@@ -33,8 +33,9 @@ in with lib; {
             background: ${theme.bg1};
           }
 
-          #workspaces {
-            padding: 0 10px;
+          #window {
+            color: ${theme.fg9};
+            padding: 0 5px;
           }
         
           #workspaces button {
@@ -46,7 +47,7 @@ in with lib; {
             color: ${theme.fg9};
           }
 
-          #battery, #disk, #pulseaudio, #cpu, #memory {
+          #battery, #clock, #disk, #pulseaudio, #cpu, #memory {
             padding: 0 5px;
           }
 
@@ -54,6 +55,12 @@ in with lib; {
             color: ${theme.fg9};
             padding-right: 15px;
             padding-left: 5px;
+          }
+
+          #custom-power {
+            color: ${theme.red};
+            padding-right: 5px;
+            padding-left: 15px;
           }
 
           #custom-separator {
@@ -69,11 +76,16 @@ in with lib; {
             height = 30;
 
             margin-top = 10;
+            # margin-bottom = 10;
             margin-left = 10;
             margin-right = 10;
 
             modules-left = [
+              "custom/power"
+              "custom/separator"
               "hyprland/workspaces"
+              "custom/separator"
+              "hyprland/window"
             ];
             modules-right = [
               "disk"
@@ -92,6 +104,12 @@ in with lib; {
             "hyprland/workspaces" = {
               format = "{icon}";
               on-click = "activate";
+              tooltip = false;
+            };
+
+            "hyprland/window" = {
+              format = "{title}";
+              max-length = 25;
             };
 
             clock = {
@@ -130,6 +148,12 @@ in with lib; {
             disk = {
               format = "<span color='${theme.fg8}'>/</span> {percentage_used}%";
               path = "/";
+            };
+
+            "custom/power" = {
+              format = "";
+              on-click = "shutdown now";
+              tooltip = false;
             };
 
             "custom/separator" = {

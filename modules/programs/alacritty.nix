@@ -1,6 +1,6 @@
 { pkgs, user, ... }:
 let
-  theme = import ../colors.nix;
+  theme = import ../theme.nix;
 in {
   home-manager.users.${user} = {
     programs.alacritty = {
@@ -21,7 +21,7 @@ in {
             black = "#000000";
             white = "#FFFFFF";
 
-            red = "#d77189";
+            red = theme.red;
 
             # red = theme.fg9;
             blue = theme.fg9;

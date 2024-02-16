@@ -2,7 +2,7 @@
 let 
   mod = "ALT";
   wallpaper = "~/flake/wallpapers/rice.png";
-  theme = import ../colors.nix;
+  theme = import ../theme.nix;
 in with lib; {
   options = {
     hyprland = {
@@ -130,6 +130,7 @@ in with lib; {
           workspace_swipe = true
           workspace_swipe_fingers = 3
           workspace_swipe_distance = 100
+          workspace_swipe_numbered = true
         }
 
         misc {
