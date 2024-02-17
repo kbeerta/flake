@@ -116,7 +116,6 @@ in with lib; {
           exec-once = [
             "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
             "${pkgs.hyprpaper}/bin/hyprpaper"
-            "${pkgs.waybar}/bin/waybar"
           ];
 
           bind = [
