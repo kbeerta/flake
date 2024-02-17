@@ -24,7 +24,7 @@ in with lib; {
           }
 
           window#waybar {
-            background: ${theme.bg0};
+            background: rgba(17, 17, 17, 0.95);
             color: ${theme.fg0};
           }
 
@@ -118,9 +118,9 @@ in with lib; {
             };
 
             battery = {
-              format = "<span color='${theme.dark_green}'>BAT</span> {capacity}%";
-              format-charging = "<span color='${theme.dark_green}'>BAT</span> 󱦲{capacity}%";
-              format-critical = "<span color='${theme.dark_green}'>BAT</span> !{capacity}";
+              format = "<span color='${theme.bg2}'>BAT</span> {capacity}%";
+              format-charging = "<span color='${theme.bg2}'>BAT</span> 󱦲{capacity}%";
+              format-critical = "<span color='${theme.bg2}'>BAT</span> !{capacity}";
               states = {
                 critical = 20;
               };
@@ -128,25 +128,25 @@ in with lib; {
             };
 
             cpu = {
-              format = "<span color='${theme.dark_green}'>CPU</span> {usage}%";
+              format = "<span color='${theme.bg2}'>CPU</span> {usage}%";
               interval = 5;
               tooltip = false;
             };
 
             memory = {
-              format = "<span color='${theme.dark_green}'>MEM</span> {percentage}%";
+              format = "<span color='${theme.bg2}'>MEM</span> {percentage}%";
               interval = 5;
               tooltip = false;
             };
 
             pulseaudio = {
-              format = "<span color='${theme.dark_green}'>VOL</span> {volume}%";
-              format-muted = "<span color='${theme.dark_green}'>VOL</span> MUTED";
+              format = "<span color='${theme.bg2}'>VOL</span> {volume}%";
+              format-muted = "<span color='${theme.bg2}'>VOL</span> MUTED";
               tooltip = false;
             };
 
             disk = {
-              format = "<span color='${theme.dark_green}'>/</span> {percentage_used}%";
+              format = "<span color='${theme.bg2}'>/</span> {percentage_used}%";
               path = "/";
             };
 

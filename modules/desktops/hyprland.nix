@@ -32,11 +32,12 @@ in with lib; {
         NIXOS_OZONE_WL = "1";
 
         FZF_DEFAULT_OPTS= ''
+          --prompt='${theme.icon} '
           --color=fg:${theme.fg0},bg:${theme.bg0},hl:${theme.fg0}
           --color=fg+:${theme.fg0},bg+:${theme.bg1},hl+:${theme.green}
-          --color=info:${theme.fg0},prompt:${theme.bg1},pointer:${theme.green}
+          --color=info:${theme.fg0},prompt:${theme.green},pointer:${theme.green}
           --color=marker:${theme.fg0},spinner:${theme.bg1},header:${theme.green}
-          '';
+        '';
       };
 
       systemPackages = with pkgs; [
@@ -149,7 +150,7 @@ in with lib; {
             "${mod} SHIFT, 4, movetoworkspacesilent, 4"
             "${mod} SHIFT, 5, movetoworkspacesilent, 5"
 
-            ", Print, exec, ${pkgs.grim}/bin/grim -g '$(${pkgs.slurp}/bin/slurp -d)' - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png"
+            ", Print, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp -d)\" | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png"
             ", XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
           ];
           binde = [
