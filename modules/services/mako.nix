@@ -19,7 +19,7 @@ in with lib; {
 
         backgroundColor = theme.bg1;
         textColor = theme.fg0;
-        progressColor = theme.fg9;
+        progressColor = theme.green;
 
         borderRadius = 5;
         borderSize = 0;

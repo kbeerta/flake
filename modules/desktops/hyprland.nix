@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, user, ... }:
 let 
   mod = "ALT";
-  wallpaper = "~/flake/wallpapers/shroom.png";
+  wallpaper = "~/flake/wallpapers/tank.png";
   theme = import ../theme.nix;
 in with lib; {
   options = {
@@ -33,9 +33,9 @@ in with lib; {
 
         FZF_DEFAULT_OPTS= ''
           --color=fg:${theme.fg0},bg:${theme.bg0},hl:${theme.fg0}
-          --color=fg+:${theme.fg0},bg+:${theme.bg1},hl+:${theme.fg9}
-          --color=info:${theme.fg0},prompt:${theme.bg1},pointer:${theme.fg9}
-          --color=marker:${theme.fg0},spinner:${theme.bg1},header:${theme.fg9}
+          --color=fg+:${theme.fg0},bg+:${theme.bg1},hl+:${theme.green}
+          --color=info:${theme.fg0},prompt:${theme.bg1},pointer:${theme.green}
+          --color=marker:${theme.fg0},spinner:${theme.bg1},header:${theme.green}
           '';
       };
 
@@ -132,11 +132,6 @@ in with lib; {
             "${mod}, j, movefocus, d"
             "${mod}, k, movefocus, u"
 
-            "CONTROL ${mod}, l, resizeactive, 10 0 "
-            "CONTROL ${mod}, h, resizeactive, -10 0"
-            "CONTROL ${mod}, j, resizeactive, 0 10"
-            "CONTROL ${mod}, k, resizeactive, 0 -10"
-
             "SHIFT ${mod}, l, swapwindow, r"
             "SHIFT ${mod}, h, swapwindow, l"
             "SHIFT ${mod}, j, swapwindow, d"
@@ -158,6 +153,11 @@ in with lib; {
             ", XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
           ];
           binde = [
+            "CONTROL ${mod}, l, resizeactive, 10 0 "
+            "CONTROL ${mod}, h, resizeactive, -10 0"
+            "CONTROL ${mod}, j, resizeactive, 0 10"
+            "CONTROL ${mod}, k, resizeactive, 0 -10"
+
             ", XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -i 5 "
             ", XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -u -d 5 "
             ", XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source -t"
@@ -167,6 +167,7 @@ in with lib; {
           ];
 
           windowrulev2 = [
+            "opacity 0.95,class:^(Alacritty)$"
             "float,title:(Alacritty fzf-menu)"
             "center 1, title:(Alacritty fzf-menu)"
           ];

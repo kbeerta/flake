@@ -18,17 +18,15 @@ in {
             foreground = theme.fg0;
           };
           normal = {
-            black = "#000000";
-            white = "#FFFFFF";
+            black = theme.bg0;
+            white = theme.fg0;
 
             red = theme.red;
-
-            # red = theme.fg9;
-            blue = theme.fg9;
-            cyan = theme.fg9;
-            green = theme.fg9;
-            yellow = theme.fg9;
-            magenta = theme.fg9;
+            blue = theme.green;
+            cyan = theme.green;
+            green = theme.green;
+            yellow = theme.green;
+            magenta = theme.green;
           };
         };
         font = {

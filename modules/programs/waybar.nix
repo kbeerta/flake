@@ -34,7 +34,7 @@ in with lib; {
           }
 
           #window {
-            color: ${theme.fg9};
+            color: ${theme.green};
             padding: 0 5px;
           }
         
@@ -44,7 +44,7 @@ in with lib; {
           }
 
           #workspaces button.active {
-            color: ${theme.fg9};
+            color: ${theme.green};
           }
 
           #battery, #clock, #disk, #pulseaudio, #cpu, #memory {
@@ -52,7 +52,7 @@ in with lib; {
           }
 
           #clock {
-            color: ${theme.fg9};
+            color: ${theme.green};
             padding-right: 15px;
             padding-left: 5px;
           }
@@ -118,9 +118,9 @@ in with lib; {
             };
 
             battery = {
-              format = "<span color='${theme.fg8}'>BAT</span> {capacity}%";
-              format-charging = "<span color='${theme.fg8}'>BAT</span> 󱦲{capacity}%";
-              format-critical = "<span color='${theme.fg8}'>BAT</span> !{capacity}";
+              format = "<span color='${theme.dark_green}'>BAT</span> {capacity}%";
+              format-charging = "<span color='${theme.dark_green}'>BAT</span> 󱦲{capacity}%";
+              format-critical = "<span color='${theme.dark_green}'>BAT</span> !{capacity}";
               states = {
                 critical = 20;
               };
@@ -128,25 +128,25 @@ in with lib; {
             };
 
             cpu = {
-              format = "<span color='${theme.fg8}'>CPU</span> {usage}%";
+              format = "<span color='${theme.dark_green}'>CPU</span> {usage}%";
               interval = 5;
               tooltip = false;
             };
 
             memory = {
-              format = "<span color='${theme.fg8}'>MEM</span> {percentage}%";
+              format = "<span color='${theme.dark_green}'>MEM</span> {percentage}%";
               interval = 5;
               tooltip = false;
             };
 
             pulseaudio = {
-              format = "<span color='${theme.fg8}'>VOL</span> {volume}%";
-              format-muted = "<span color='${theme.fg8}'>VOL</span> MUTED";
+              format = "<span color='${theme.dark_green}'>VOL</span> {volume}%";
+              format-muted = "<span color='${theme.dark_green}'>VOL</span> MUTED";
               tooltip = false;
             };
 
             disk = {
-              format = "<span color='${theme.fg8}'>/</span> {percentage_used}%";
+              format = "<span color='${theme.dark_green}'>/</span> {percentage_used}%";
               path = "/";
             };
 
