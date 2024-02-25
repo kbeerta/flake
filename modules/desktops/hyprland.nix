@@ -123,7 +123,7 @@ in with lib; {
           bind = [
             "${mod} SHIFT, ESCAPE, exit"
             "${mod}, Q, killactive"
-            "${mod}, F, fullscreen"
+            ", F11, fullscreen"
 
             "${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty"
             "${mod}, SPACE, exec, ${pkgs.alacritty}/bin/alacritty --title 'Alacritty fzf-menu' -e bash -c 'compgen -c | sort -u | fzf | xargs hyprctl dispatch exec --'"
