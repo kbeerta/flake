@@ -60,13 +60,10 @@ in with lib; {
       ];
     };
 
-    hardware.opengl.enable = true;
-    services.dbus.enable = true; 
-
     home-manager.users.${user} = {
       imports = [
         inputs.hyprlock.homeManagerModules.default              
-          inputs.hypridle.homeManagerModules.default              
+        inputs.hypridle.homeManagerModules.default              
       ];
 
       wayland.windowManager.hyprland = {
@@ -130,6 +127,7 @@ in with lib; {
 
             "${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty"
             "${mod}, SPACE, exec, ${pkgs.alacritty}/bin/alacritty --title 'Alacritty fzf-menu' -e bash -c 'compgen -c | sort -u | fzf | xargs hyprctl dispatch exec --'"
+            "${mod}, L, exec, ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}"
 
             "${mod}, l, movefocus, r"
             "${mod}, h, movefocus, l"
@@ -193,31 +191,25 @@ in with lib; {
         input-fields = [
           {
             monitor = "";
+
             size = {
               width = 350;
               height = 50;
             };
 
             outline_thickness = 0;
-
             font_color = "rgb(${theme.fg0})";
-            outer_color = "rgb(${theme.bg1})";
-            inner_color = "rgb(${theme.bg0})";
-
-            dots_spacing = 0.3;
-            dots_center = true;
           }
         ];
 
         labels = [
         {
-          monitor = "";
+          monitor = "eDP-1";
           text = "$TIME";
 
           font_size = 50;
           font_family = "JetBrainsMono Nerd Font";
 
-          color = "";
           position = {
             x = 0;
             y = 80;
