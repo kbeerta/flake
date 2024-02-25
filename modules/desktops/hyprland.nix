@@ -60,6 +60,8 @@ in with lib; {
       ];
     };
 
+    services.dbus.enable = true;
+
     home-manager.users.${user} = {
       imports = [
         inputs.hyprlock.homeManagerModules.default              
