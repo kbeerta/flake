@@ -1,4 +1,3 @@
 [
   ./docker.nix
-  ./mako.nix
 ]

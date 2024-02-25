@@ -34,7 +34,7 @@ in with lib; {
           }
 
           #window {
-            color: ${theme.green};
+            color: ${theme.fg0};
             padding: 0 5px;
           }
         
@@ -44,7 +44,7 @@ in with lib; {
           }
 
           #workspaces button.active {
-            color: ${theme.green};
+            color: ${theme.special};
           }
 
           #battery, #clock, #disk, #pulseaudio, #cpu, #memory {
@@ -52,7 +52,7 @@ in with lib; {
           }
 
           #clock {
-            color: ${theme.green};
+            color: ${theme.special};
             padding-right: 15px;
             padding-left: 5px;
           }

@@ -22,11 +22,11 @@ in {
             white = theme.fg0;
 
             red = theme.red;
-            blue = theme.green;
-            cyan = theme.green;
-            green = theme.green;
-            yellow = theme.green;
-            magenta = theme.green;
+            blue = theme.special;
+            cyan = theme.special;
+            green = theme.special;
+            yellow = theme.special;
+            magenta = theme.special;
           };
         };
         font = {

@@ -1,8 +1,16 @@
 { config, lib, pkgs, inputs, user, ... }:
 let 
   mod = "ALT";
-  wallpaper = "~/flake/wallpapers/tank.png";
+  wallpaper = "~/flake/wallpapers/forest.jpg";
   theme = import ../theme.nix;
+
+  timeoutScript = pkgs.writeShellScript "timeout-hyprland-script" ''
+    ${pkgs.pipewire}/bin/pw-cli i all 2>&1 | ${pkgs.ripgrep}/bin/rg running -q
+
+    if [ $? ==  1 ]; then
+      ${pkgs.systemd}/bin/systemctl suspend
+    fi
+  '';
 in with lib; {
   options = {
     hyprland = {
@@ -34,18 +42,15 @@ in with lib; {
         FZF_DEFAULT_OPTS= ''
           --prompt='${theme.icon} '
           --color=fg:${theme.fg0},bg:${theme.bg0},hl:${theme.fg0}
-          --color=fg+:${theme.fg0},bg+:${theme.bg1},hl+:${theme.green}
-          --color=info:${theme.fg0},prompt:${theme.green},pointer:${theme.green}
-          --color=marker:${theme.fg0},spinner:${theme.bg1},header:${theme.green}
+          --color=fg+:${theme.fg0},bg+:${theme.bg1},hl+:${theme.special}
+          --color=info:${theme.fg0},prompt:${theme.special},pointer:${theme.special}
+          --color=marker:${theme.fg0},spinner:${theme.bg1},header:${theme.special}
         '';
       };
 
       systemPackages = with pkgs; [
         grim
         slurp
-
-        hyprpaper
-        swaylock
 
         wl-clipboard
         wlr-randr
@@ -58,12 +63,12 @@ in with lib; {
     hardware.opengl.enable = true;
     services.dbus.enable = true; 
 
-    xdg.portal = {
-      enable = true;
-      wlr.enable = true;
-    };
-
     home-manager.users.${user} = {
+      imports = [
+        inputs.hyprlock.homeManagerModules.default              
+          inputs.hypridle.homeManagerModules.default              
+      ];
+
       wayland.windowManager.hyprland = {
         enable = true;
         package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -116,14 +121,12 @@ in with lib; {
 
           exec-once = [
             "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-            "${pkgs.hyprpaper}/bin/hyprpaper"
           ];
 
           bind = [
             "${mod} SHIFT, ESCAPE, exit"
             "${mod}, Q, killactive"
             "${mod}, F, fullscreen"
-            "SUPER, L, exec, ${pkgs.swaylock}/bin/swaylock"
 
             "${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty"
             "${mod}, SPACE, exec, ${pkgs.alacritty}/bin/alacritty --title 'Alacritty fzf-menu' -e bash -c 'compgen -c | sort -u | fzf | xargs hyprctl dispatch exec --'"
@@ -150,7 +153,8 @@ in with lib; {
             "${mod} SHIFT, 4, movetoworkspacesilent, 4"
             "${mod} SHIFT, 5, movetoworkspacesilent, 5"
 
-            ", Print, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp -d)\" | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png"
+            "${mod}, Print, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp -d)\" | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png"
+
             ", XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
           ];
           binde = [
@@ -174,11 +178,86 @@ in with lib; {
           ];
         };
       };
+
+      programs.hyprlock = {
+        enable = true;
+
+        backgrounds = [
+          {
+            monitor = "";
+            path = "screenshot";
+            blur_passes = 1;
+          }
+        ];
+
+        input-fields = [
+          {
+            monitor = "";
+            size = {
+              width = 350;
+              height = 50;
+            };
+
+            outline_thickness = 0;
+
+            font_color = "rgb(${theme.fg0})";
+            outer_color = "rgb(${theme.bg1})";
+            inner_color = "rgb(${theme.bg0})";
+
+            dots_spacing = 0.3;
+            dots_center = true;
+          }
+        ];
+
+        labels = [
+        {
+          monitor = "";
+          text = "$TIME";
+
+          font_size = 50;
+          font_family = "JetBrainsMono Nerd Font";
+
+          color = "";
+          position = {
+            x = 0;
+            y = 80;
+          };
+
+          valign = "center";
+          halign = "center";
+        }
+        ];
+      };
+
       xdg.configFile."hypr/hyprpaper.conf".text = ''
         preload = ${wallpaper}
         wallpaper = eDP-1,${wallpaper}
-        ipc = off
       '';
+
+      systemd.user.services.hyprpaper = {
+        Unit = {
+          Description = "Hyprland wallpaper daemon";
+          PartOf = [ "graphical-session.target" ];
+        };
+        Service = {
+          ExecStart = "${inputs.hyprpaper.packages.${pkgs.system}.default}/bin/hyprpaper";
+          Restart = "on-failure";
+        };
+        Install.WantedBy = [ "graphical-session.target" ];
+      };
+
+      services.hypridle = {
+        enable = true;
+        lockCmd = "${inputs.hyprlock.packages.${pkgs.system}.hyprlock}";
+        beforeSleepCmd = "${pkgs.systemd}/bin/loginctl lock-session";
+
+        listeners = [
+          {
+            timeout = 330;
+            onTimeout = timeoutScript.outPath;
+          }
+        ];
+      };
     };
   };
 }
