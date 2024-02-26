@@ -130,7 +130,7 @@ in with lib; {
 
             "${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty"
             "${mod}, SPACE, exec, ${pkgs.alacritty}/bin/alacritty --title 'Alacritty fzf-menu' -e bash -c 'compgen -c | sort -u | fzf | xargs hyprctl dispatch exec --'"
-            "SUPER ${mod}, L, exec, ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}"
+            # "SUPER, L, exec, ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}"
 
             "${mod}, l, movefocus, r"
             "${mod}, h, movefocus, l"
