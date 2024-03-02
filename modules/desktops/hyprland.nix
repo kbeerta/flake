@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, user, ... }:
 let 
   mod = "ALT";
-  wallpaper = "~/flake/wallpapers/forest.jpg";
+  wallpaper = "~/flake/wallpapers/travel.png";
   theme = import ../theme.nix;
 
   timeoutScript = pkgs.writeShellScript "timeout-hyprland-script" ''

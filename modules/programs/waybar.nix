@@ -30,7 +30,7 @@ in with lib; {
 
           button:hover {
             color: ${theme.fg0};
-            background: ${theme.bg1};
+            background: ${theme.bg0};
           }
 
           #window {
@@ -118,9 +118,9 @@ in with lib; {
             };
 
             battery = {
-              format = "<span color='${theme.bg2}'>BAT</span> {capacity}%";
-              format-charging = "<span color='${theme.bg2}'>BAT</span> 󱦲{capacity}%";
-              format-critical = "<span color='${theme.bg2}'>BAT</span> !{capacity}";
+              format = "{capacity}%";
+              format-charging = "<span color='${theme.special_accent}'>󱦲</span>{capacity}%";
+              format-critical = " <span color='${theme.red}'>!</span>{capacity}%";
               states = {
                 critical = 20;
               };
@@ -128,25 +128,25 @@ in with lib; {
             };
 
             cpu = {
-              format = "<span color='${theme.bg2}'>CPU</span> {usage}%";
+              format = "<span color='${theme.special_accent}'>CPU</span> {usage}%";
               interval = 5;
               tooltip = false;
             };
 
             memory = {
-              format = "<span color='${theme.bg2}'>MEM</span> {percentage}%";
+              format = "<span color='${theme.special_accent}'>MEM</span> {percentage}%";
               interval = 5;
               tooltip = false;
             };
 
             pulseaudio = {
-              format = "<span color='${theme.bg2}'>VOL</span> {volume}%";
-              format-muted = "<span color='${theme.bg2}'>VOL</span> MUTED";
+              format = "<span color='${theme.special_accent}'>VOL</span> {volume}%";
+              format-muted = "<span color='${theme.special_accent}'>VOL</span> MUTED";
               tooltip = false;
             };
 
             disk = {
-              format = "<span color='${theme.bg2}'>/</span> {percentage_used}%";
+              format = "<span color='${theme.special_accent}'>/</span> {percentage_used}%";
               path = "/";
             };
 

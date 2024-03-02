@@ -7,7 +7,9 @@
 
   fg0 = "#FEFEFE";
 
-  special = "#5a6457";
+  special = "#B57EDC";
+  special_accent = "#D1AFE9";
 
-  red = "#E66C5C";
+  red = "#F985BB";
+  # red = "#FC5D65";
 }
