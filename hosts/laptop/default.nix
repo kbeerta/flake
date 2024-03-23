@@ -1,16 +1,9 @@
-{ inputs, outputs, config, lib, options, pkgs, ... }: let
-  hostName = "LaptopKB";
-in {
+{ inputs, outputs, config, lib, options, pkgs, ... }: {
   imports = [
     ./hardware.nix
   ];
 
 	environment = {
-		loginShellInit = ''
-			if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-				exec dwl
-			fi
-		'';
 		variables = {
 			EDITOR = "${pkgs.neovim}/bin/nvim";
 		};
@@ -32,7 +25,7 @@ in {
   };
 
   networking = {
-    hostName = hostName;
+    hostName = "nixos";
     networkmanager.enable = true;
   };
 
