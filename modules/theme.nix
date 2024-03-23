@@ -1,15 +1,14 @@
 {
   icon = "";
 
-  bg0 = "#111111";
+  bg0 = "#1B1B1B";
   bg1 = "#292929";
-  bg2 = "#525252";
+  bg2 = "#333333";
 
-  fg0 = "#FEFEFE";
+  fg0 = "#FFF0F5";
 
   special = "#B57EDC";
-  special_accent = "#D1AFE9";
+  special_accent = "#DBB2D1";
 
-  red = "#F985BB";
-  # red = "#FC5D65";
+  red = "#FBAED2";
 }

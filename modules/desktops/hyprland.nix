@@ -64,11 +64,6 @@ in with lib; {
     services.dbus.enable = true;
 
     home-manager.users.${user} = {
-      imports = [
-        inputs.hyprlock.homeManagerModules.default              
-        inputs.hypridle.homeManagerModules.default              
-      ];
-
       wayland.windowManager.hyprland = {
         enable = true;
         package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -130,7 +125,6 @@ in with lib; {
 
             "${mod}, RETURN, exec, ${pkgs.alacritty}/bin/alacritty"
             "${mod}, SPACE, exec, ${pkgs.alacritty}/bin/alacritty --title 'Alacritty fzf-menu' -e bash -c 'compgen -c | sort -u | fzf | xargs hyprctl dispatch exec --'"
-            # "SUPER, L, exec, ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}"
 
             "${mod}, l, movefocus, r"
             "${mod}, h, movefocus, l"
@@ -180,50 +174,6 @@ in with lib; {
         };
       };
 
-      programs.hyprlock = {
-        enable = true;
-
-        backgrounds = [
-          {
-            monitor = "";
-            path = "screenshot";
-            blur_passes = 1;
-          }
-        ];
-
-        input-fields = [
-          {
-            monitor = "";
-
-            size = {
-              width = 350;
-              height = 50;
-            };
-
-            outline_thickness = 0;
-            font_color = "rgb(${theme.fg0})";
-          }
-        ];
-
-        labels = [
-        {
-          monitor = "eDP-1";
-          text = "$TIME";
-
-          font_size = 50;
-          font_family = "JetBrainsMono Nerd Font";
-
-          position = {
-            x = 0;
-            y = 80;
-          };
-
-          valign = "center";
-          halign = "center";
-        }
-        ];
-      };
-
       xdg.configFile."hypr/hyprpaper.conf".text = ''
         preload = ${wallpaper}
         wallpaper = eDP-1,${wallpaper}
@@ -239,19 +189,6 @@ in with lib; {
           Restart = "on-failure";
         };
         Install.WantedBy = [ "graphical-session.target" ];
-      };
-
-      services.hypridle = {
-        enable = true;
-        lockCmd = "${inputs.hyprlock.packages.${pkgs.system}.hyprlock}";
-        beforeSleepCmd = "${pkgs.systemd}/bin/loginctl lock-session";
-
-        listeners = [
-          {
-            timeout = 330;
-            onTimeout = timeoutScript.outPath;
-          }
-        ];
       };
     };
   };

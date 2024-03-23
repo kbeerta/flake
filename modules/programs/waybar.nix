@@ -24,7 +24,7 @@ in with lib; {
           }
 
           window#waybar {
-            background: rgba(17, 17, 17, 0.95);
+            background: ${theme.bg0};
             color: ${theme.fg0};
           }
 
@@ -47,14 +47,13 @@ in with lib; {
             color: ${theme.special};
           }
 
-          #battery, #clock, #disk, #pulseaudio, #cpu, #memory {
+          #battery, #clock, #disk, #pulseaudio, #cpu, #memory, #network {
             padding: 0 5px;
           }
 
           #clock {
-            color: ${theme.special};
             padding-right: 15px;
-            padding-left: 5px;
+            color: ${theme.special};
           }
 
           #custom-power {
@@ -90,6 +89,8 @@ in with lib; {
             modules-right = [
               "disk"
               "custom/separator"
+              "network"
+              "custom/separator"
               "memory"
               "custom/separator"
               "cpu"
@@ -118,9 +119,9 @@ in with lib; {
             };
 
             battery = {
-              format = "{capacity}%";
-              format-charging = "<span color='${theme.special_accent}'>󱦲</span>{capacity}%";
-              format-critical = " <span color='${theme.red}'>!</span>{capacity}%";
+              format = "<span color='${theme.special_accent}'>BAT</span> {capacity}%";
+              format-charging = "<span color='${theme.special_accent}'>BAT</span> <span color='${theme.special_accent}'>󱦲</span>{capacity}%";
+              format-critical = "<span color='${theme.special_accent}'>BAT</span> <span color='${theme.red}'>!</span>{capacity}%";
               states = {
                 critical = 20;
               };
@@ -142,6 +143,12 @@ in with lib; {
             pulseaudio = {
               format = "<span color='${theme.special_accent}'>VOL</span> {volume}%";
               format-muted = "<span color='${theme.special_accent}'>VOL</span> MUTED";
+              tooltip = false;
+            };
+
+            network = {
+              format = "<span color='${theme.special_accent}'>NET</span> up";
+              format-disconnected = "<span color='${theme.special_accent}'>NET</span> down";
               tooltip = false;
             };
 
