@@ -12,11 +12,17 @@
     ./hardware.nix
   ];
 
-	environment.systemPackages = with pkgs; [
-    alacritty
-    cage
-    firefox
-  ];
+	environment = {
+    systemPackages = with pkgs; [
+      alacritty
+      cage
+    ];
+    loginShellInit = ''
+      if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+        exec ${pkgs.cage}/bin/cage -d ${pkgs.alacritty}/bin/alacritty
+      fi
+    '';
+  };
 
 	fonts.packages = with pkgs; [
 		(nerdfonts.override {
