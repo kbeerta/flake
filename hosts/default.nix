@@ -1,9 +1,8 @@
-{ home-manager, inputs, outputs, lib, user, ... }: {
-  users = {
-    mutableUsers = false;
+{ home-manager, inputs, lib, outputs, pkgs, user, ... }: {
+	users = {
+    defaultUserShell = pkgs.zsh;
     users.${user} = {
       isNormalUser = true;
-      initialPassword = "password";
       extraGroups = [ "audio" "networkmanager" "wheel" "video" ];
     };
   };
@@ -16,8 +15,19 @@
     keyMap = "us";
   };
   
-  environment.etc = {
-    "nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
+  environment = {
+    etc = {
+      "nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
+    };
+  };
+
+  programs = {
+    git.enable = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
+    zsh.enable = true;
   };
 
   nixpkgs = {

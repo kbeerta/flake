@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { 
@@ -22,6 +26,14 @@
       modules = [
         ./hosts
         ./hosts/laptop
+      ];
+    };
+    homeConfigurations."${user}@laptop" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      extraSpecialArgs = { inherit inputs outputs user; };
+      modules = [
+        ./home
+        # ./home/laptop
       ];
     };
   };

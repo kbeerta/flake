@@ -1,17 +1,22 @@
-{ inputs, outputs, config, lib, options, pkgs, ... }: {
+{ 
+  inputs,
+  outputs,
+  config,
+  lib,
+  options,
+  pkgs,
+  user,
+  ...
+}: {
   imports = [
     ./hardware.nix
   ];
 
-	environment = {
-		variables = {
-			EDITOR = "${pkgs.neovim}/bin/nvim";
-		};
-		systemPackages = with pkgs; [
-      git
-      neovim
-    ];
-	};
+	environment.systemPackages = with pkgs; [
+    alacritty
+    cage
+    firefox
+  ];
 
 	fonts.packages = with pkgs; [
 		(nerdfonts.override {
