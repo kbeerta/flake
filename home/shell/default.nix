@@ -1,3 +1,4 @@
 [
+  ./nvim.nix
   ./zsh.nix
 ]

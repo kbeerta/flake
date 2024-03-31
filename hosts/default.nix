@@ -23,10 +23,10 @@
 
   programs = {
     git.enable = true;
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-    };
+#    neovim = {
+#      enable = true;
+#      defaultEditor = true;
+#    };
     zsh.enable = true;
   };
 

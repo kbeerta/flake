@@ -18,8 +18,8 @@
         startup_mode = "Fullscreen";
       };
       colors.primary = {
-        background = "#101010";
-        foreground = "#FEFEFE";
+        background = "#000000";
+        foreground = "#FFFFFF";
       };
       font = {
         size = 11;

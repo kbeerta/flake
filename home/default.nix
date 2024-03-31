@@ -8,7 +8,10 @@
   ... 
 }: {
   imports = import ./programs 
-    ++ import ./shell;
+    ++ import ./shell
+    ++ [
+      inputs.nixvim.homeManagerModules.nixvim
+    ];
 
   nixpkgs = {
     config = {
