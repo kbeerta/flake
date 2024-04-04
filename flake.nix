@@ -13,6 +13,11 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    swl = {
+      url = "github:kbeerta/swl";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { 

@@ -15,11 +15,12 @@
 	environment = {
     systemPackages = with pkgs; [
       alacritty
-      cage
+      # cage
+      inputs.swl.packages.${pkgs.system}.swl
     ];
     loginShellInit = ''
       if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-        exec ${pkgs.cage}/bin/cage -d ${pkgs.alacritty}/bin/alacritty
+        exec ${inputs.swl.packages.${pkgs.system}.swl}/bin/swl
       fi
     '';
   };
