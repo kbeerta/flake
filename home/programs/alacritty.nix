@@ -12,10 +12,9 @@
     settings = {
       window = {
         padding = {
-          x = 5;
-          y = 5;
+          x = 2;
+          y = 2;
         };
-        startup_mode = "Fullscreen";
       };
       colors.primary = {
         background = "#000000";

@@ -15,12 +15,11 @@
 	environment = {
     systemPackages = with pkgs; [
       alacritty
-
       inputs.hyprland.packages.${pkgs.system}.hyprland
     ];
     loginShellInit = ''
       if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-        exec dbus-launch ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland
+        exec ${pkgs.dbus}/bin/dbus-launch ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland
       fi
     '';
   };
@@ -47,6 +46,7 @@
   };
 
   services = {
+    dbus.enable = true;
     pipewire = {
       enable = true;
       alsa = {
