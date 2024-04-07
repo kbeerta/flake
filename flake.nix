@@ -9,13 +9,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
+    hyprland = {
+      url = "github:hyprwm/hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    swl = {
-      url = "github:kbeerta/swl";
+    nixvim = {
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

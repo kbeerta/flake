@@ -15,12 +15,12 @@
 	environment = {
     systemPackages = with pkgs; [
       alacritty
-      # cage
-      inputs.swl.packages.${pkgs.system}.swl
+
+      inputs.hyprland.packages.${pkgs.system}.hyprland
     ];
     loginShellInit = ''
       if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-        exec ${inputs.swl.packages.${pkgs.system}.swl}/bin/swl
+        exec dbus-launch ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland
       fi
     '';
   };

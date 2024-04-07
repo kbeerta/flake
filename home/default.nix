@@ -7,7 +7,8 @@
   user,
   ... 
 }: {
-  imports = import ./programs 
+  imports = import ./desktop 
+    ++ import ./programs 
     ++ import ./shell
     ++ [
       inputs.nixvim.homeManagerModules.nixvim
