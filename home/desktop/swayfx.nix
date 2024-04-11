@@ -27,7 +27,6 @@
       bars = [];
 
       gaps = {
-        outer = 10;
         inner = 10;
       };
 
