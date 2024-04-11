@@ -1,4 +1,12 @@
-{ home-manager, inputs, lib, outputs, pkgs, user, ... }: {
+{ 
+  home-manager,
+  inputs,
+  lib,
+  outputs,
+  pkgs,
+  user,
+  ...
+}: {
 	users = {
     defaultUserShell = pkgs.zsh;
     users.${user} = {
@@ -30,13 +38,9 @@
     zsh.enable = true;
   };
 
-  nixpkgs = {
-    # overlays = builtins.attrValues outputs.overlays;
-    config.allowUnfree = true;
-  };
+  nixpkgs.config.allowUnfree = true;
 
   nix = {
-    # channel.enable = false;
     registry.nixpkgs.flake = inputs.nixpkgs;
     settings = {
       auto-optimise-store = true;

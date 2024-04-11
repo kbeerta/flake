@@ -41,6 +41,7 @@
 			undofile = true;
 			
 			termguicolors = true;
+      clipboard = "unnamedplus";
 		};
 
 		keymaps = [
@@ -91,6 +92,11 @@
 				servers = {
 					ccls.enable = true;
 					nixd.enable = true;
+          rust-analyzer = {
+            enable = true;
+            installCargo = false;
+            installRustc = false;
+          };
 				};
 			};
 

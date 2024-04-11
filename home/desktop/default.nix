@@ -1,3 +1,3 @@
 [
-  ./hyprland.nix
+  ./swayfx.nix
 ]

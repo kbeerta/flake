@@ -15,18 +15,18 @@
 	environment = {
     systemPackages = with pkgs; [
       alacritty
-      inputs.hyprland.packages.${pkgs.system}.hyprland
+      inputs.swayfx.packages.${pkgs.system}.default
     ];
     loginShellInit = ''
       if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-        exec ${pkgs.dbus}/bin/dbus-launch ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland
+        exec ${pkgs.dbus}/bin/dbus-launch ${inputs.swayfx.packages.${pkgs.system}.default}/bin/sway
       fi
     '';
   };
 
 	fonts.packages = with pkgs; [
 		(nerdfonts.override {
-			fonts = [ "JetBrainsMono" ];
+			fonts = [ "IosevkaTerm" ];
 		})
 	];
 
