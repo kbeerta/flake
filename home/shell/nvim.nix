@@ -19,6 +19,8 @@
 		};
 
 		opts = {
+      laststatus = 4;
+      statusline = "%{repeat('─',winwidth('.'))}";
 			updatetime = 100;
 			timeoutlen = 300;
 
@@ -31,7 +33,11 @@
 			autoindent = true;
 			smartindent = true;
 
+      mouse = null;
+      number = true;
 			relativenumber = true;
+
+      wildmode = "longest:full,full";
 			fileencoding = "utf-8";
 
 			scrolloff = 8;
@@ -64,6 +70,16 @@
 				key = "-";
 				mode = "n";
 				action = "<cmd>Oil<CR>";
+			}
+			{
+				key = "<leader>ff";
+				mode = "n";
+				action = "<cmd>FzfLua files<CR>";
+			}
+			{
+				key = "<leader>fg";
+				mode = "n";
+				action = "<cmd>FzfLua grep<CR>";
 			}
 		];
 
@@ -127,17 +143,23 @@
 				};
 			};
 
-		  bufferline.enable = true;
-      comment.enable = true;
-      luasnip.enable = true;
-			indent-blankline.enable = true;
-			oil.enable = true;
+		  bufferline = {
+        enable = true;
+        showBufferIcons = false;
+        showBufferCloseIcons = false;
+      };
 
 			treesitter = {
 				enable = true;
 				indent = true;
 				nixvimInjections = true;
 			};
+
+      comment.enable = true;
+      fzf-lua.enable = true;
+			indent-blankline.enable = true;
+      luasnip.enable = true;
+			oil.enable = true;
 		};
   };
 }

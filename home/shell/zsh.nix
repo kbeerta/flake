@@ -22,7 +22,7 @@
     initExtra = ''
       git_expander() {
         if [[ ! -z "$(current_branch)" ]]; then
-          echo "%F{10}@%f%F{6}$(current_branch)%f"
+          echo "%F{10}@%f%F{12}$(current_branch)%f"
         fi
       }
 

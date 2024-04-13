@@ -7,9 +7,20 @@
   user,
   ... 
 }: {
-	home.packages = with pkgs; [
-		autotiling
-	];
+	home = {
+    packages = with pkgs; [
+      fzf
+      autotiling
+    ];
+    sessionVariables = {
+      FZF_DEFAULT_OPTS = ''
+        --color=fg:-1,bg:-1,hl:magenta
+        --color=fg+:-1,bg+:-1,hl+:magenta
+        --color=info:magenta,prompt:magenta,pointer:magenta
+        --color=marker:magenta,spinner:magenta,header:magenta
+      '';
+    };
+  };
 
   wayland.windowManager.sway = {
     enable = true;
@@ -21,10 +32,14 @@
     config = rec {
       modifier = "Mod1";
 
-      menu = "";
+      menu = "${pkgs.alacritty}/bin/alacritty --class 'fzf-menu' -e bash -c 'compgen -c | sort -u | fzf | xargs ${inputs.swayfx.packages.${pkgs.system}.default}/bin/swaymsg exec --'";
       terminal = "${pkgs.alacritty}/bin/alacritty";
 
-      bars = [ ];
+      bars = [
+        {
+          command = "${pkgs.waybar}/bin/waybar";
+        }
+      ];
 
       gaps = {
         inner = 10;
@@ -52,7 +67,7 @@
       };
 
       output = {
-        "*".bg = "~/flake/wallpaper.png fill";
+        "*".bg = "~/flake/wallpapers/catppuccin.png fill";
         "*".scale = "1";
         "eDP-1" = {
           mode = "1920x1080";
@@ -70,6 +85,7 @@
         "${modifier}+q" = "exec swaymsg kill";
         "${modifier}+Shift+r" = "exec swaymsg reload";
         "${modifier}+Return" = "exec ${terminal}";
+        "${modifier}+Space" = "exec ${menu}";
 
         "${modifier}+h" = "focus left";
         "${modifier}+j" = "focus down";
@@ -103,6 +119,9 @@
       corner_radius 5
 
       for_window [app_id="Alacritty"] opacity 0.95
+
+      for_window [app_id="fzf-menu"] opacity 0.95
+      for_window [app_id="fzf-menu"] floating enable
     '';
   };
 }

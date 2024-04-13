@@ -10,10 +10,7 @@
   programs.waybar = {
     enable = true;
     package = pkgs.waybar;
-    systemd = {
-      enable = true;
-      target = "sway-session.target";
-    };
+    systemd.enable = true;
 
     settings = {
       main = {
@@ -31,9 +28,9 @@
         ];
 
         modules-right = [
-          "clock"
-          "custom/sep"
           "battery"
+          "custom/sep"
+          "clock"
         ];
 
         "sway/workspaces" = {
@@ -63,7 +60,7 @@
 
       * {
         all: unset;
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: "JetBrainsMono";
         font-size: 12px;
         font-weight: bold;
       }
@@ -84,21 +81,22 @@
       }
 
       #workspaces button.focused {
-        color: @mauve;
+        color: @yellow;
       }
 
       #battery,
       #clock {
         margin: 2px 10px;
+        color: @text;
       }
 
-      #battery {
+      #clock {
         margin-right: 15px;
       }
 
       #custom-sep {
         margin: 2px 5px;
-        color: @surface0;
+        color: @maroon;
       }
     '';
   };

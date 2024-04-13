@@ -39,7 +39,7 @@
         ./hosts/laptop
       ];
     };
-    homeConfigurations."${user}@laptop" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
       extraSpecialArgs = { inherit inputs outputs user; };
       modules = [

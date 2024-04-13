@@ -15,6 +15,7 @@
 	environment = {
     systemPackages = with pkgs; [
       alacritty
+      wl-clipboard
       inputs.swayfx.packages.${pkgs.system}.default
     ];
     loginShellInit = ''
@@ -27,7 +28,6 @@
 	fonts.packages = with pkgs; [
 		(nerdfonts.override {
 			fonts = [ 
-        "IosevkaTerm" 
         "JetBrainsMono" 
       ];
 		})
