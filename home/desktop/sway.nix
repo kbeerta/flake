@@ -35,11 +35,7 @@
       menu = "${pkgs.alacritty}/bin/alacritty --class 'fzf-menu' -e bash -c 'compgen -c | sort -u | fzf | xargs ${inputs.swayfx.packages.${pkgs.system}.default}/bin/swaymsg exec --'";
       terminal = "${pkgs.alacritty}/bin/alacritty";
 
-      bars = [
-        {
-          command = "${pkgs.waybar}/bin/waybar";
-        }
-      ];
+      bars = [ ];
 
       gaps = {
         inner = 10;
@@ -108,6 +104,8 @@
         "${modifier}+Shift+3" = "move container to workspace 3";
         "${modifier}+Shift+4" = "move container to workspace 4";
         "${modifier}+Shift+5" = "move container to workspace 5";
+
+        "F11" = "fullscreen";
 
         "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 2%+";
         "XF86AudioLowerVolume"= "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 2%-";
