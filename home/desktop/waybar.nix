@@ -28,6 +28,7 @@
         ];
 
         modules-right = [
+          "disk"
           "battery"
           "custom/sep"
           "clock"
@@ -47,6 +48,12 @@
           tooltip = false;
         };
 
+        "disk" = {
+          format = "<span color='#cba6f7'>/</span> {percentage_used}%";
+          interval = 60;
+          tooltip = false;
+        };
+
         "custom/sep" = {
           format = "|";
         };
@@ -63,6 +70,10 @@
         font-family: "JetBrainsMono";
         font-size: 12px;
         font-weight: bold;
+      }
+
+      span {
+        color: @mauve;
       }
 
       window#waybar {
@@ -85,7 +96,8 @@
       }
 
       #battery,
-      #clock {
+      #clock,
+      #disk {
         margin: 2px 10px;
         color: @text;
       }
