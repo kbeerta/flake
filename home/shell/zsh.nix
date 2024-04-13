@@ -9,19 +9,26 @@
 }: {
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
 
+    enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    
+
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
     };
 
     initExtra = ''
-      source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
-      autoload -U promptinit; promptinit
+      git_expander() {
+        if [[ ! -z "$(current_branch)" ]]; then
+          echo "%F{10}@%f%F{6}$(current_branch)%f"
+        fi
+      }
+
+      setopt prompt_subst
+
+      export PROMPT='%F{9}[%f%F{11}%n%f$(git_expander) %F{13}%1~%f%F{9}]%f%(?.%f.%F{9})$%f '
     '';
   };
 }

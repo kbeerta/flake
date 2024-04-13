@@ -24,7 +24,7 @@
       menu = "";
       terminal = "${pkgs.alacritty}/bin/alacritty";
 
-      bars = [];
+      bars = [ ];
 
       gaps = {
         inner = 10;
@@ -36,7 +36,7 @@
       };
 
       fonts = {
-        names = [ "IosevkaTerm Nerd Font" ];
+        names = [ "JetBrainsMono Nerd Font" ];
         size = 10.0;
       };
 
@@ -94,7 +94,7 @@
         "${modifier}+Shift+5" = "move container to workspace 5";
 
         "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 2%+";
-        "XF86AudioLowerVolume"= "exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 2%-";
+        "XF86AudioLowerVolume"= "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 2%-";
         "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle";
       };
     };
@@ -102,7 +102,7 @@
     extraConfig = ''
       corner_radius 5
 
-      for_window [app_id="Alacritty"] opacity 0.85
+      for_window [app_id="Alacritty"] opacity 0.95
     '';
   };
 }

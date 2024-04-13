@@ -1,3 +1,4 @@
 [
-  ./swayfx.nix
+  ./sway.nix
+  ./waybar.nix
 ]

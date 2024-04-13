@@ -11,27 +11,27 @@
     enable = true;
     settings = {
       # TODO unhardcode alacritty theme location
-      import = [ ".config/alacritty/theme/catppuccin-mocha.toml" ];
-      window = {
-        padding = {
-          x = 2;
-          y = 2;
-        };
+      import = [ ".config/alacritty/theme/catppuccin/catppuccin-mocha.toml" ];
+      window.padding = {
+        x = 2;
+        y = 2;
       };
       colors.primary = {
         background = "#111111";
-        foreground = "#EEEEEE";
       };
       font = {
         size = 11;
-        normal.family = "IosevkaTerm Nerd Font";
+        normal = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Bold";
+        };
       };
-      mouse.hide_when_typing = true;
     };
   };
 
-  home.file."catppuccin" = {
-    target = ".config/alacritty/theme";
+  home.file."alacritty/catppuccin" = {
+    recursive = true;
+    target = ".config/alacritty/theme/catppuccin";
     source = (pkgs.fetchFromGitHub {
       owner = "catppuccin";
       repo = "alacritty";

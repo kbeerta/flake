@@ -19,14 +19,17 @@
     ];
     loginShellInit = ''
       if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-        exec ${pkgs.dbus}/bin/dbus-launch ${inputs.swayfx.packages.${pkgs.system}.default}/bin/sway
+        exec ${inputs.swayfx.packages.${pkgs.system}.default}/bin/sway
       fi
     '';
   };
 
 	fonts.packages = with pkgs; [
 		(nerdfonts.override {
-			fonts = [ "IosevkaTerm" ];
+			fonts = [ 
+        "IosevkaTerm" 
+        "JetBrainsMono" 
+      ];
 		})
 	];
 
