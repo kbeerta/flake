@@ -47,7 +47,7 @@
       };
 
       fonts = {
-        names = [ "JetBrainsMono Nerd Font" ];
+        names = [ "JetBrainsMono NF" ];
         size = 10.0;
       };
 
@@ -116,9 +116,9 @@
     extraConfig = ''
       corner_radius 5
 
-      for_window [app_id="Alacritty"] opacity 0.95
+      for_window [app_id="Alacritty"] opacity 0.85
 
-      for_window [app_id="fzf-menu"] opacity 0.95
+      for_window [app_id="fzf-menu"] opacity 0.85
       for_window [app_id="fzf-menu"] floating enable
     '';
   };

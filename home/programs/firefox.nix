@@ -25,6 +25,12 @@
 
         @import 'cascade/chrome/includes/cascade-nav-bar.css';
         @import 'cascade/chrome/includes/cascade-tabs.css';
+
+        :root {
+          --uc-border-radius: 5px !important;
+          --uc-urlbar-min-width: 0vw !important;
+          --uc-urlbar-max-width: 100vw !important;
+        }
       '';
     };
   };

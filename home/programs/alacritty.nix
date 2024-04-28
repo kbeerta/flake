@@ -22,7 +22,7 @@
       font = {
         size = 11;
         normal = {
-          family = "JetBrainsMono Nerd Font";
+          family = "JetBrainsMono NF";
           style = "Bold";
         };
       };

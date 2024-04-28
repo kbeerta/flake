@@ -15,28 +15,21 @@
     settings = {
       main = {
         layer = "top";
-        position = "top";
+        position = "bottom";
         height = 30;
-
-        margin-top = 10;
-        margin-left = 10;
-        margin-right = 10;
 
         modules-left = [
           "sway/workspaces"
-          "custom/sep"
         ];
 
         modules-right = [
           "disk"
           "battery"
-          "custom/sep"
           "clock"
         ];
 
         "sway/workspaces" = {
-          format = "";
-          all-outputs = true;
+          format = "*";
           persistent-workspaces = {
             "1" = [ ];   
             "2" = [ ];   
@@ -49,13 +42,9 @@
         };
 
         "disk" = {
-          format = "<span color='#cba6f7'>/</span> {percentage_used}%";
+          format = "/ {percentage_used}%";
           interval = 60;
           tooltip = false;
-        };
-
-        "custom/sep" = {
-          format = "|";
         };
       };
     };
@@ -67,7 +56,7 @@
 
       * {
         all: unset;
-        font-family: "JetBrainsMono";
+        font-family: "JetBrainsMono NF";
         font-size: 12px;
         font-weight: bold;
       }
@@ -79,36 +68,27 @@
       window#waybar {
         color: @text;
         background-color: alpha(@bg, 0.95);
-        border-radius: 5px;
-      }
-
-      #workspaces {
-        margin: 2px 5px;
       }
 
       #workspaces button {
-        margin: 2px 10px;
+        padding: 6px 8px;
         color: @surface1;
       }
 
       #workspaces button.focused {
-        color: @yellow;
+        color: @bg;
+        background-color: @yellow;
       }
 
       #battery,
-      #clock,
       #disk {
-        margin: 2px 10px;
-        color: @text;
+        padding: 6px 8px;
+        color: @bg;
+        background-color: @yellow;
       }
 
       #clock {
-        margin-right: 15px;
-      }
-
-      #custom-sep {
-        margin: 2px 5px;
-        color: @maroon;
+        padding: 6px 8px;
       }
     '';
   };
