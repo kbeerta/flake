@@ -16,7 +16,7 @@
       main = {
         layer = "top";
         position = "bottom";
-        height = 30;
+        height = 25;
 
         modules-left = [
           "sway/workspaces"
@@ -71,24 +71,24 @@
       }
 
       #workspaces button {
-        padding: 6px 8px;
-        color: @surface1;
+        padding: 1px 8px;
+        color: @mauve;
       }
 
       #workspaces button.focused {
         color: @bg;
-        background-color: @yellow;
+        background-color: @mauve;
       }
 
       #battery,
       #disk {
-        padding: 6px 8px;
+        padding: 1px 8px;
         color: @bg;
-        background-color: @yellow;
+        background-color: @mauve;
       }
 
       #clock {
-        padding: 6px 8px;
+        padding: 1px 8px;
       }
     '';
   };
