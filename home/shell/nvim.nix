@@ -102,7 +102,9 @@
 			lsp = {
 				enable = true;
 				keymaps.lspBuf = {
+					"K" = "hover";
 					"<leader>f" = "format";
+					"<leader>rn" = "rename";
 				};
 
 				servers = {

@@ -19,6 +19,7 @@
         height = 25;
 
         modules-left = [
+          "custom/icon"
           "sway/workspaces"
         ];
 
@@ -27,6 +28,10 @@
           "battery"
           "clock"
         ];
+
+        "custom/icon" = {
+          format = "";
+        };
 
         "sway/workspaces" = {
           format = "*";
@@ -42,7 +47,7 @@
         };
 
         "disk" = {
-          format = "/ {percentage_used}%";
+          format = "/{percentage_used}%";
           interval = 60;
           tooltip = false;
         };
@@ -61,30 +66,33 @@
         font-weight: bold;
       }
 
-      span {
-        color: @mauve;
-      }
-
       window#waybar {
         color: @text;
         background-color: alpha(@bg, 0.95);
       }
 
       #workspaces button {
+        color: @pink;
         padding: 1px 8px;
-        color: @mauve;
       }
 
       #workspaces button.focused {
-        color: @bg;
-        background-color: @mauve;
+        background-color: @surface0;
       }
 
       #battery,
-      #disk {
-        padding: 1px 8px;
+      #disk,
+      #custom-icon {
         color: @bg;
-        background-color: @mauve;
+        background-color: @pink;
+
+        padding: 1px 8px;
+      }
+
+      #custom-icon {
+        background-color: @pink;
+
+        padding-right: 15px;
       }
 
       #clock {

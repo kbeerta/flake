@@ -63,7 +63,7 @@
       };
 
       output = {
-        "*".bg = "~/flake/wallpapers/catppuccin.png fill";
+        "*".bg = "~/flake/wallpapers/base.png fill";
         "*".scale = "1";
         "eDP-1" = {
           mode = "1920x1080";

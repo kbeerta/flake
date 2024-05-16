@@ -7,28 +7,63 @@
   user,
   ... 
 }: {
-  programs.zsh = {
-    enable = true;
-
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    oh-my-zsh = {
+  programs = {
+    zsh = {
       enable = true;
-      plugins = [ "git" ];
+
+      enableCompletion = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting = {
+        enable = true;
+        styles = {
+          arg0 = "fg=magenta";
+        };
+      };
+
+      history = {
+        size = 5000;
+        share = true;
+
+        ignoreDups = true;
+        ignoreSpace = true;
+      };
+
+      initExtra = ''
+        bindkey -e
+        bindkey '^p' history-search-backward
+        bindkey '^n' history-search-forward
+      '';
     };
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        add_newline = false;
+        format = "\n$directory$git_branch$git_status$line_break$character";
 
-    initExtra = ''
-      git_expander() {
-        if [[ ! -z "$(current_branch)" ]]; then
-          echo "%F{14}@%f%F{12}$(current_branch)%f"
-        fi
-      }
+        directory = {
+          style = "purple";
+        };
 
-      setopt prompt_subst
+        character = {
+          success_symbol = "\[\\$\](yellow)";
+          error_symbol = "\[\\$\](red)";
+        };
 
-      export PROMPT='%F{9}[%f%F{13}%n%f$(git_expander) %F{11}%1~%f%F{9}]%f%(?.%f.%F{9})$%f '
-    '';
+        git_branch = {
+          format = "[$branch]($style)";
+          style = "bright-black";
+        };
+
+        git_status = {
+          format = "[$modified]($style)";
+          style = "yellow";
+          modified = "*";
+        };
+
+        command_timeout = 1000;
+      };
+    };
   };
+
 }

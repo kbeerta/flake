@@ -9,20 +9,23 @@
 }: {
   programs.tmux = {
     enable = true;
-    prefix = "C-a";
+    shortcut = "a";
     shell = "${pkgs.zsh}/bin/zsh";
     terminal = "screen-256color";
-    plugins = with pkgs.tmuxPlugins; [
-      {
-        plugin = catppuccin;
-        extraConfig = ''
-          set -g @catppuccin_flavour 'mocha'
-          set -g @catppuccin_status_default "off"
-        '';
-      }
+
+    baseIndex = 1;
+    escapeTime = 0;
+    keyMode = "vi";
+    disableConfirmationPrompt = true;
+
+    plugins = with pkgs; [
+      tmuxPlugins.pain-control
     ];
+
     extraConfig = ''
-      set -g status off
+      bind-key -T copy-mode-vi Escape send-keys -X cancel
+      set -g status-bg magenta
+      set -g status-fg black
     '';
   };
 }
