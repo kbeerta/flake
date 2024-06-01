@@ -1,10 +1,5 @@
 { 
-  inputs, 
-  outputs,
-  lib, 
-  config,
   pkgs,
-  user,
   ... 
 }: {
   programs.firefox = {

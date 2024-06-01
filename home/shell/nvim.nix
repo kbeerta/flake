@@ -1,10 +1,4 @@
 { 
-  inputs, 
-  outputs,
-  lib, 
-  config,
-  pkgs,
-  user,
   ... 
 }: {
   programs.nixvim = {
