@@ -30,6 +30,13 @@
 
     user = "koenb";
 		system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [
+        inputs.swayfx.overlays.default
+      ];
+      config.allowUnfree = true;
+    };
   in {
     nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
 			inherit system;
@@ -40,7 +47,7 @@
       ];
     };
     homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
+      inherit pkgs;
       extraSpecialArgs = { inherit inputs outputs user; };
       modules = [
         ./home

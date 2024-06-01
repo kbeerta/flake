@@ -1,10 +1,6 @@
 { 
   inputs, 
-  outputs,
-  lib, 
-  config,
   pkgs,
-  user,
   ... 
 }: {
 	home = {
@@ -24,10 +20,11 @@
 
   wayland.windowManager.sway = {
     enable = true;
+    checkConfig = false;
     xwayland = true;
     systemd.enable = true;
 
-    package = inputs.swayfx.packages.${pkgs.system}.default;
+    package = pkgs.swayfx;
 
     config = rec {
       modifier = "Mod1";
@@ -63,7 +60,7 @@
       };
 
       output = {
-        "*".bg = "~/flake/wallpapers/base.png fill";
+        "*".bg = "~/flake/wallpapers/base.png.jpg fill";
         "*".scale = "1";
         "eDP-1" = {
           mode = "1920x1080";

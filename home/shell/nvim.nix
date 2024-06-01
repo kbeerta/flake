@@ -93,9 +93,11 @@
 
 		colorschemes.catppuccin = {
 		  enable = true;
-			flavour = "mocha";
-			disableItalic = true;
-			transparentBackground = true;
+      settings = {
+        flavour = "mocha";
+			  no_italics = true;
+			  transparent_background = true;
+      };
 		};
 		
 		plugins = {
@@ -110,6 +112,7 @@
 				servers = {
 					ccls.enable = true;
 					nixd.enable = true;
+          zls.enable = true;
           rust-analyzer = {
             enable = true;
             installCargo = false;

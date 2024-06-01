@@ -34,12 +34,13 @@
         bindkey '^n' history-search-forward
       '';
     };
+
     starship = {
       enable = true;
       enableZshIntegration = true;
       settings = {
-        add_newline = false;
-        format = "\n$directory$git_branch$git_status$line_break$character";
+        add_newline = true;
+        format = ''$username$hostname$directory$git_branch$git_state$git_status$line_break$character'';
 
         directory = {
           style = "purple";
@@ -56,14 +57,17 @@
         };
 
         git_status = {
-          format = "[$modified]($style)";
+          format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)";
           style = "yellow";
-          modified = "*";
+          conflicted = "";
+          untracked = "";
+          modified = "";
+          staged = "";
+          renamed = "";
+          deleted = "";
+          stashed = "≡";
         };
-
-        command_timeout = 1000;
       };
     };
   };
-
 }

@@ -1,11 +1,6 @@
 { 
   inputs,
-  outputs,
-  config,
-  lib,
-  options,
   pkgs,
-  user,
   ...
 }: {
   imports = [
@@ -15,8 +10,8 @@
 	environment = {
     systemPackages = with pkgs; [
       alacritty
+      swayfx
       wl-clipboard
-      inputs.swayfx.packages.${pkgs.system}.default
     ];
     loginShellInit = ''
       if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then

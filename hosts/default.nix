@@ -1,8 +1,6 @@
 { 
-  home-manager,
   inputs,
   lib,
-  outputs,
   pkgs,
   user,
   ...
@@ -34,8 +32,6 @@
     tmux.enable = true;
     zsh.enable = true;
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   nix = {
     registry.nixpkgs.flake = inputs.nixpkgs;
