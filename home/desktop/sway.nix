@@ -35,7 +35,7 @@
       bars = [ ];
 
       gaps = {
-        inner = 10;
+        inner = 0;
       };
 
       window = {
@@ -60,7 +60,7 @@
       };
 
       output = {
-        "*".bg = "~/flake/wallpapers/base.png fill";
+        "*".bg = "~/flake/wallpapers/clouds.jpg fill";
         "*".scale = "1";
         "eDP-1" = {
           mode = "1920x1080";
@@ -111,7 +111,8 @@
     };
 
     extraConfig = ''
-      corner_radius 5
+      corner_radius 0
+      default_dim_inactive 0.50
 
       for_window [app_id="Alacritty"] opacity 0.85
 

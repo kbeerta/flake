@@ -14,7 +14,7 @@
 
 		opts = {
       laststatus = 4;
-      statusline = "%{repeat('─',winwidth('.'))}";
+      statusline = "%{repeat(' ',winwidth('.'))}";
 			updatetime = 100;
 			timeoutlen = 300;
 
