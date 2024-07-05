@@ -22,6 +22,9 @@
   };
   
   environment = {
+    systemPackages = with pkgs; [
+      dwarf-fortress
+    ];
     etc = {
       "nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
     };

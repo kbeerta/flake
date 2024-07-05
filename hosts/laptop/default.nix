@@ -7,10 +7,12 @@
     ./hardware.nix
   ];
 
+  programs = {
+    light.enable = true;
+  };
+
 	environment = {
     systemPackages = with pkgs; [
-      alacritty
-      swayfx
       wl-clipboard
     ];
     loginShellInit = ''
@@ -30,7 +32,7 @@
 
   hardware = {
     bluetooth.enable = true;
-    opengl.enable = true;
+    graphics.enable = true;
   };
 
   networking = {

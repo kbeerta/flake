@@ -8,8 +8,8 @@
       # TODO unhardcode alacritty theme location
       import = [ ".config/alacritty/theme/catppuccin/catppuccin-mocha.toml" ];
       window.padding = {
-        x = 2;
-        y = 2;
+        x = 5;
+        y = 5;
       };
       colors.primary = {
         background = "#111111";

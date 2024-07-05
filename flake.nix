@@ -39,7 +39,7 @@
     };
   in {
     nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-			inherit system;
+			inherit system pkgs;
       specialArgs = { inherit inputs outputs user; };
       modules = [
         ./hosts

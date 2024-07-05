@@ -107,6 +107,9 @@
         "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 2%+";
         "XF86AudioLowerVolume"= "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 2%-";
         "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle";
+
+        "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
+        "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
       };
     };
 
