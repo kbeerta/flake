@@ -5,8 +5,9 @@
 }: {
 	home = {
     packages = with pkgs; [
-      fzf
       autotiling
+      fzf
+      wl-clipboard
     ];
     sessionVariables = {
       FZF_DEFAULT_OPTS = ''

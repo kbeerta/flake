@@ -12,9 +12,6 @@
   };
 
 	environment = {
-    systemPackages = with pkgs; [
-      wl-clipboard
-    ];
     loginShellInit = ''
       if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
         exec ${inputs.swayfx.packages.${pkgs.system}.default}/bin/sway
