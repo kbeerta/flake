@@ -17,13 +17,15 @@
     systemPackages = with pkgs; [
       # programs
       alacritty
+			netflix
 
       # rice
 			autotiling
       pure-prompt
 
       # util
-      fzf # gnom
+      fzf 
+			# gnom
       dwarf-fortress
     ];
     loginShellInit = ''
@@ -66,6 +68,7 @@
 
       promptInit = ''
         autoload -U promptinit; promptinit 
+				PURE_PROMPT_SYMBOL="$"
         zstyle :prompt:pure:path color magenta
         prompt pure
       '';
@@ -99,7 +102,7 @@
 
   system = {
 		activationScripts.config = builtins.concatStringsSep "\n" (map (n: "ln -sfn ${../home}/${n} /home/${user}/.config/${n}") (builtins.attrNames (builtins.readDir ../home)));
-		stateVersion = "24.05";
+		stateVersion = "24.11";
 	};
 }
 
