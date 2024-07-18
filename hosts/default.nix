@@ -101,7 +101,7 @@
 
   system = {
 		activationScripts.config = ''
-			ln -Tsf /home/${user}/flake/home /home/${user}/.config	
+			ln -Tsf ${../home} /home/${user}/.config	
 		'';
 		stateVersion = "24.05";
 	};
