@@ -34,7 +34,7 @@ bindsym Mod1+Shift+j move down
 bindsym Mod1+Shift+k move up
 bindsym Mod1+Shift+l move right
 bindsym Mod1+Shift+r exec swaymsg reload
-bindsym Mod1+Space exec alacritty --class 'fzf-menu' -e bash -c 'compgen -c | sort -u | fzf | xargs /nix/store/b0pmcjg9flac1mna3bcg7ipknzxn2adi-swayfx-unwrapped-0.4.0-git/bin/swaymsg exec --'
+bindsym Mod1+Space exec alacritty --class 'fzf-menu' -e bash -c 'compgen -c | sort -u | fzf | xargs swaymsg exec --'
 bindsym Mod1+h focus left
 bindsym Mod1+j focus down
 bindsym Mod1+k focus up
@@ -45,6 +45,10 @@ bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 2%+
 bindsym XF86MonBrightnessDown exec light -U 5
 bindsym XF86MonBrightnessUp exec light -A 5
+
+bar {
+	swaybar_command waybar
+}
 
 input "type:keyboard" {
 	repeat_delay 250

@@ -23,9 +23,7 @@
       pure-prompt
 
       # util
-      fzf
-
-      # gnom
+      fzf # gnom
       dwarf-fortress
     ];
     loginShellInit = ''
@@ -100,9 +98,7 @@
   };
 
   system = {
-		activationScripts.config = ''
-			ln -Tsf ${../home} /home/${user}/.config	
-		'';
+		activationScripts.config = builtins.concatStringsSep "\n" (map (n: "ln -sfn ${../home}/${n} /home/${user}/.config/${n}") (builtins.attrNames (builtins.readDir ../home)));
 		stateVersion = "24.05";
 	};
 }
