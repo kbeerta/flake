@@ -1,0 +1,52 @@
+
+@define-color bg #181926;
+@define-color fg #cad3f5;
+
+@define-color black #24273a;
+@define-color white #f4dbd6;
+@define-color red #ed8796;
+@define-color green #a6da95;
+@define-color blue #8aadf4;
+@define-color yellow #eed49f;
+@define-color magenta #c6a0f6;
+@define-color cyan #91d7e3;
+
+* {
+  all: unset;
+  font-family: "JetBrainsMono NF";
+  font-size: 12px;
+  font-weight: bold;
+}
+
+window#waybar {
+  color: @text;
+  background-color: alpha(@bg, 0.95);
+}
+
+#workspaces button {
+  color: @magenta;
+  padding: 1px 8px;
+}
+
+#workspaces button.focused {
+  background-color: @black;
+}
+
+#battery,
+#disk,
+#custom-icon {
+  color: @bg;
+  background-color: @magenta;
+
+  padding: 1px 8px;
+}
+
+#custom-icon {
+  background-color: @magenta;
+
+  padding-right: 15px;
+}
+
+#clock {
+  padding: 1px 8px;
+}

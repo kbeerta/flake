@@ -4,8 +4,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
+    # TODO add my own overlay for nightly overlays
+    nvim = {
+      url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -13,17 +14,11 @@
       url = "github:WillPower3309/swayfx";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { 
     self, 
     nixpkgs, 
-    home-manager, 
     ... 
   } @ inputs: let
     inherit (self) outputs;
@@ -33,6 +28,7 @@
     pkgs = import nixpkgs {
       inherit system;
       overlays = [
+        inputs.nvim.overlays.default
         inputs.swayfx.overlays.default
       ];
       config.allowUnfree = true;
@@ -44,14 +40,6 @@
       modules = [
         ./hosts
         ./hosts/laptop
-      ];
-    };
-    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = { inherit inputs outputs user; };
-      modules = [
-        ./home
-        # ./home/laptop
       ];
     };
   };

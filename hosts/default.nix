@@ -12,29 +12,83 @@
       extraGroups = [ "audio" "networkmanager" "wheel" "video" ];
     };
   };
-
-  time.timeZone = "Europe/Amsterdam";
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
   
   environment = {
     systemPackages = with pkgs; [
+      # programs
+      alacritty
+
+      # rice
+			autotiling
+      pure-prompt
+
+      # util
+      fzf
+
+      # gnom
       dwarf-fortress
     ];
+    loginShellInit = ''
+      if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+        exec ${pkgs.swayfx}/bin/sway
+      fi
+    '';
     etc = {
       "nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
     };
   };
 
   programs = {
-    git.enable = true;
-    tmux.enable = true;
-    zsh.enable = true;
+    git = {
+      enable = true;
+    };
+    firefox = {
+      enable = true;
+    };
+    light = {
+      enable = true;
+    };
+    neovim = {
+      enable = true;
+      package = pkgs.neovim;
+    };
+    sway = {
+      enable = true;
+      package = pkgs.swayfx;
+      xwayland.enable = true;
+    };
+		waybar = {
+			enable = true;
+		};
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+
+      promptInit = ''
+        autoload -U promptinit; promptinit 
+        zstyle :prompt:pure:path color magenta
+        prompt pure
+      '';
+    };
   };
+
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
+  };
+
+	fonts.packages = with pkgs; [
+		(nerdfonts.override {
+			fonts = [ 
+        "JetBrainsMono" 
+      ];
+		})
+	];
+
+  time.timeZone = "Europe/Amsterdam";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   nix = {
     registry.nixpkgs.flake = inputs.nixpkgs;
@@ -45,6 +99,11 @@
     };
   };
 
-  system.stateVersion = "24.05";
+  system = {
+		activationScripts.config = ''
+			ln -Tsf /home/${user}/flake/home /home/${user}/.config	
+		'';
+		stateVersion = "24.05";
+	};
 }
 

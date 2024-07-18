@@ -1,0 +1,36 @@
+[
+  {
+    "custom/icon": {
+      "format": ""
+    },
+    "disk": {
+      "format": "/{percentage_used}%",
+      "interval": 60,
+      "tooltip": false
+    },
+    "height": 25,
+    "layer": "top",
+    "modules-left": [
+      "custom/icon",
+      "sway/workspaces"
+    ],
+    "modules-right": [
+      "disk",
+      "battery",
+      "clock"
+    ],
+    "position": "bottom",
+    "sway/workspaces": {
+      "format": "*",
+      "on-click": "activate",
+      "persistent-workspaces": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+      },
+      "tooltip": false
+    }
+  }
+]

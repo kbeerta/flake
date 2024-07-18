@@ -1,31 +1,10 @@
 { 
-  inputs,
   pkgs,
   ...
 }: {
   imports = [
     ./hardware.nix
   ];
-
-  programs = {
-    light.enable = true;
-  };
-
-	environment = {
-    loginShellInit = ''
-      if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-        exec ${inputs.swayfx.packages.${pkgs.system}.default}/bin/sway
-      fi
-    '';
-  };
-
-	fonts.packages = with pkgs; [
-		(nerdfonts.override {
-			fonts = [ 
-        "JetBrainsMono" 
-      ];
-		})
-	];
 
   hardware = {
     bluetooth.enable = true;
