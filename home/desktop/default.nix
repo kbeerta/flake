@@ -1,4 +1,0 @@
-[
-  ./sway.nix
-  ./waybar.nix
-]

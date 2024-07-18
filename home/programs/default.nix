@@ -1,4 +1,0 @@
-[
-  ./alacritty.nix
-  ./firefox.nix
-]

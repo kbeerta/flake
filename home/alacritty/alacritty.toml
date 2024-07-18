@@ -1,0 +1,21 @@
+
+[colors.primary]
+background = "#181926"
+foreground = "#cad3f5"
+
+[colors.normal]
+black = "#24273a"
+white = "#f4dbd6"
+red = "#ed8796"
+green = "#a6da95"
+blue = "#8aadf4"
+yellow = "#eed49f"
+magenta = "#c6a0f6"
+cyan = "#91d7e3"
+
+[window]
+padding = { x = 5, y = 5 }
+
+[font]
+size = 10
+normal = { family = "JetBrainsMono NF", style = "Bold" }
