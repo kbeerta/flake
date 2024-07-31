@@ -1,4 +1,3 @@
-vim.g.mapleader = " "
 vim.g.editorconfig = true
 
 vim.o.clipboard = "unnamedplus"

@@ -1,4 +1,5 @@
-print("gnom")
+require("core")
 
-require("core.options")
-require("core.keymaps")
+local plugins = require("plugins")
+
+plugins.greeter.setup()

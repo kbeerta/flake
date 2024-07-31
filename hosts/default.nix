@@ -17,7 +17,6 @@
     systemPackages = with pkgs; [
       # programs
       alacritty
-			netflix
 
       # rice
 			autotiling
