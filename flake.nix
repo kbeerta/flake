@@ -9,11 +9,6 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    swayfx = {
-      url = "github:WillPower3309/swayfx";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { 
@@ -29,7 +24,6 @@
       inherit system;
       overlays = [
         inputs.nvim.overlays.default
-        inputs.swayfx.overlays.default
       ];
       config.allowUnfree = true;
     };
