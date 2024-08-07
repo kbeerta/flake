@@ -45,11 +45,11 @@
 		neovim = {
 			enable = true;
 			defaultEditor = true;
-			package = pkgs.neovim-unwrapped;
+			package = pkgs.neovim;
 		};
 		sway = {
 			enable = true;
-			package = pkgs.swayfx-unwrapped;
+			package = pkgs.swayfx;
 			xwayland.enable = true;
 		};
 		waybar = {
