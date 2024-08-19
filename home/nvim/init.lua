@@ -5,7 +5,6 @@ vim.g.localmapleader = " "
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.showtabline = 2
 vim.opt.showmode = false
 
 vim.schedule(function() 
