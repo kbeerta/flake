@@ -22,6 +22,8 @@
 
       fzf 
       pure-prompt
+
+      dwarf-fortress
     ];
     loginShellInit = ''
       if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
@@ -34,10 +36,10 @@
   };
 
   programs = {
-    git = {
+    firefox = {
       enable = true;
     };
-    firefox = {
+    git = {
       enable = true;
     };
     light = {
@@ -52,6 +54,9 @@
       enable = true;
       package = pkgs.swayfx;
       xwayland.enable = true;
+    };
+    tmux = {
+      enable = true;
     };
     waybar = {
       enable = true;

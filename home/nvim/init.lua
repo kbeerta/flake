@@ -46,18 +46,18 @@ local core = require("core")
 
 core.lsp.setup({
   servers = {
-    zls = {
-      name = "zls",
-      cmd = { "zls" },
-      filetypes = { "zig", "zir" },
-      root_dir = vim.fs.root(0, { "zls.json", "build.zig" }),
-      single_file_support = true,
-    },
     rust_analyzer = {
       name = "rust-analyzer",
       cmd = { "rust-analyzer" },
       filetypes = { "rust" },
       root_dir = vim.fs.root(0, { "Cargo.toml" }),
+      single_file_support = true,
+    },
+    zls = {
+      name = "zls",
+      cmd = { "zls" },
+      filetypes = { "zig", "zir" },
+      root_dir = vim.fs.root(0, { "zls.json", "build.zig" }),
       single_file_support = true,
     },
   }
