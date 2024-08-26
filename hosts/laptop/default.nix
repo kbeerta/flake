@@ -2,7 +2,7 @@
   pkgs,
   ...
 }: {
-	# TODO move into parent folder
+  # TODO move into parent folder
   imports = [
     ./hardware.nix
   ];

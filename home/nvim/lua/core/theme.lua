@@ -28,6 +28,9 @@ local theme = {
   Type        = { fg = colors.yellow },
   Function    = { fg = colors.magenta },
   Statement   = { fg = colors.magenta },
+
+  StatusLine  = { fg = colors.bg, bg = colors.magenta },
+  NetrwDir    = { fg = colors.magenta },
 }
 
 function M.setup()

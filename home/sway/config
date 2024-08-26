@@ -61,7 +61,7 @@ input "type:touchpad" {
 }
 
 output "*" {
-  bg ~/flake/wallpapers/clouds.jpg fill
+  bg ~/flake/wallpapers/blasphemous.jpg fill
   scale 1
 }
 
