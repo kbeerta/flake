@@ -16,7 +16,11 @@
   environment = {
     systemPackages = with pkgs; [
       autotiling
+
       wl-clipboard
+
+      slurp
+      grim
 
       alacritty
 

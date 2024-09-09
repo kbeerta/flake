@@ -1,7 +1,9 @@
 font pango:JetBrainsMono NF 11.000000
+
 floating_modifier Mod1
 default_border pixel 0
-default_floating_border normal 2
+default_floating_border normal 1
+
 hide_edge_borders none
 focus_wrapping no
 focus_follows_mouse yes
@@ -9,7 +11,8 @@ focus_on_window_activation smart
 mouse_warping output
 workspace_layout default
 workspace_auto_back_and_forth no
-client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
+
+client.focused #c6a0f6 #285577 #ffffff #2e9ef4 #285577
 client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
 client.unfocused #333333 #222222 #888888 #292d2e #222222
 client.urgent #2f343a #900000 #ffffff #900000 #900000
@@ -17,29 +20,45 @@ client.placeholder #000000 #0c0c0c #ffffff #000000 #0c0c0c
 client.background #ffffff
 
 bindsym F11 fullscreen
+
 bindsym Mod1+1 workspace number 1
 bindsym Mod1+2 workspace number 2
 bindsym Mod1+3 workspace number 3
 bindsym Mod1+4 workspace number 4
 bindsym Mod1+5 workspace number 5
-bindsym Mod1+Return exec alacritty
+
 bindsym Mod1+Shift+1 move container to workspace 1
 bindsym Mod1+Shift+2 move container to workspace 2
 bindsym Mod1+Shift+3 move container to workspace 3
 bindsym Mod1+Shift+4 move container to workspace 4
 bindsym Mod1+Shift+5 move container to workspace 5
+
 bindsym Mod1+Shift+Escape exec swaymsg exit
-bindsym Mod1+Shift+h move left
-bindsym Mod1+Shift+j move down
-bindsym Mod1+Shift+k move up
-bindsym Mod1+Shift+l move right
+
 bindsym Mod1+Shift+r exec swaymsg reload
+
+bindsym Mod1+Return exec alacritty
 bindsym Mod1+Space exec alacritty --class 'fzf-menu' -e bash -c 'compgen -c | sort -u | fzf | xargs swaymsg exec --'
+
 bindsym Mod1+h focus left
 bindsym Mod1+j focus down
 bindsym Mod1+k focus up
 bindsym Mod1+l focus right
+
+bindsym Mod1+Shift+h move left
+bindsym Mod1+Shift+j move down
+bindsym Mod1+Shift+k move up
+bindsym Mod1+Shift+l move right
+
+bindsym Mod1+Ctrl+h resize shrink width 10 px
+bindsym Mod1+Ctrl+j resize grow height 10 px
+bindsym Mod1+Ctrl+k resize shrink height 10 px
+bindsym Mod1+Ctrl+l resize grow width 10 px
+
 bindsym Mod1+q exec swaymsg kill
+
+bindsym Mod1+Shift+s exec slurp | grim -g - - | wl-copy
+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ 2%-
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 2%+
@@ -68,19 +87,6 @@ output "*" {
 output "eDP-1" {
   mode 1920x1080
   pos 0 0
-}
-
-mode "resize" {
-  bindsym Down resize grow height 10 px
-  bindsym Escape mode default
-  bindsym Left resize shrink width 10 px
-  bindsym Return mode default
-  bindsym Right resize grow width 10 px
-  bindsym Up resize shrink height 10 px
-  bindsym h resize shrink width 10 px
-  bindsym j resize grow height 10 px
-  bindsym k resize shrink height 10 px
-  bindsym l resize grow width 10 px
 }
 
 gaps inner 0
