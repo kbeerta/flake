@@ -79,6 +79,20 @@
     };
   };
 
+  services = {
+    dbus.enable = true;
+    pipewire = {
+      enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      jack.enable = true;
+      pulse.enable = true;
+    };
+  };
+
+
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";

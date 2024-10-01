@@ -25,19 +25,6 @@
     rtkit.enable = true;
   };
 
-  services = {
-    dbus.enable = true;
-    pipewire = {
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      jack.enable = true;
-      pulse.enable = true;
-    };
-  };
-
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {

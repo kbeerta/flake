@@ -22,6 +22,9 @@ vim.opt.smartindent = true
 vim.opt.undofile = true
 vim.opt.swapfile = false
 
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
@@ -36,6 +39,14 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("n", "<S-h>", "<cmd>bp<CR>")
 vim.keymap.set("n", "<S-l>", "<cmd>bn<CR>")
+
+vim.keymap.set("n", "<C-S>h", "<cmd>split<CR>")
+vim.keymap.set("n", "<C-S>v", "<cmd>vsplit<CR>")
+
+vim.keymap.set("n", "<C-s>h", "<C-W><C-H>")
+vim.keymap.set("n", "<C-s>j", "<C-W><C-J>")
+vim.keymap.set("n", "<C-s>k", "<C-W><C-K>")
+vim.keymap.set("n", "<C-s>l", "<C-W><C-L>")
 
 vim.keymap.set("n", "<left>", "<Nop>")
 vim.keymap.set("n", "<right>", "<Nop>")
