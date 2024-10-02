@@ -29,7 +29,7 @@ local theme = {
   Function    = { fg = colors.magenta },
   Statement   = { fg = colors.magenta },
 
-  StatusLine  = { fg = colors.bg, bg = colors.magenta },
+  StatusLine  = { fg = colors.magenta, bg = colors.none },
   NetrwDir    = { fg = colors.magenta },
 }
 

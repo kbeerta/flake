@@ -19,31 +19,28 @@
 }
 
 window#waybar {
-  color: @text;
-  background-color: alpha(@bg, 0.95);
+  color: @fg;
+  background-color: alpha(@bg, 0.85);
 }
 
 #workspaces button {
-  color: @magenta;
+  color: @black;
   padding: 1px 8px;
 }
 
 #workspaces button.focused {
-  background-color: @black;
+  color: @magenta;
 }
 
 #battery,
 #disk,
 #custom-icon {
-  color: @bg;
-  background-color: @magenta;
-
+  color: @magenta;
   padding: 1px 8px;
 }
 
 #custom-icon {
-  background-color: @magenta;
-
+  color: @magenta;
   padding-right: 15px;
 }
 

@@ -66,12 +66,12 @@ bindsym XF86MonBrightnessDown exec light -U 5
 bindsym XF86MonBrightnessUp exec light -A 5
 
 bar {
-	swaybar_command waybar
+  swaybar_command waybar
 }
 
 input "type:keyboard" {
-	repeat_delay 250
-	repeat_rate 25
+  repeat_delay 250
+  repeat_rate 25
 }
 
 input "type:touchpad" {
