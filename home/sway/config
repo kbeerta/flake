@@ -80,7 +80,7 @@ input "type:touchpad" {
 }
 
 output "*" {
-  bg ~/flake/wallpaper.jpg fill
+  bg ~/flake/wallpaper.png fill
   scale 1
 }
 
