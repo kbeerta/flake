@@ -1,10 +1,15 @@
-{ inputs, config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
   cfg = config.system.snowflake;
-  flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-in {
+in
+{
   imports = [
     ./dev.nix
     ./gnome.nix
@@ -30,7 +35,13 @@ in {
       shell = pkgs.zsh;
       isNormalUser = true;
       initialPassword = "snowflake";
-      extraGroups = [ "audio" "input" "networkmanager" "video" "wheel" ];
+      extraGroups = [
+        "audio"
+        "input"
+        "networkmanager"
+        "video"
+        "wheel"
+      ];
     };
 
     fonts.packages = with pkgs; [
@@ -68,6 +79,9 @@ in {
 
     nix.channel.enable = false;
     nix.settings.auto-optimise-store = true;
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 }

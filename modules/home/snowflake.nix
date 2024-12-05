@@ -1,10 +1,16 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
   cfg = config.home.snowflake;
   generated = pkgs.callPackage ../../_sources/generated.nix { };
-in {
+in
+{
   options.home.snowflake = {
     enable = mkEnableOption "gnome";
     user = mkOption {
@@ -15,7 +21,7 @@ in {
 
   config = mkIf cfg.enable {
     home.username = "kbeerta";
-    home.homeDirectory = "/home/kbeerta"; 
+    home.homeDirectory = "/home/kbeerta";
     home.stateVersion = "25.05";
 
     home.file = {

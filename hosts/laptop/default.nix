@@ -1,4 +1,4 @@
-{ outputs, config, lib, pkgs, ... }:
+{ outputs, ... }:
 
 {
   imports = [
@@ -27,4 +27,3 @@
 
   system.stateVersion = "24.11";
 }
-

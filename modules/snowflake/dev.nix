@@ -1,9 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
   cfg = config.system.snowflake.dev;
-in {
+in
+{
   options.system.snowflake.dev = {
     enable = mkEnableOption "development packages";
   };
@@ -12,8 +18,9 @@ in {
     environment.systemPackages = with pkgs; [
       gcc
       rustup
+
       nixd
-      stylua
+      sumneko-lua-language-server
     ];
   };
 }

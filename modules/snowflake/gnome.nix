@@ -1,9 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
   cfg = config.system.snowflake.gnome;
-in {
+in
+{
   options.system.snowflake.gnome = {
     enable = mkEnableOption "gnome";
   };
@@ -18,7 +24,7 @@ in {
 
     services.pipewire.enable = true;
     services.pipewire.alsa.enable = true;
-    services.pipewire.alsa.support32Bit= true;
+    services.pipewire.alsa.support32Bit = true;
     services.pipewire.pulse.enable = true;
 
     services.xserver.enable = true;
