@@ -23,6 +23,24 @@ in {
         recursive = true;
         source = "${generated.neovim.src}";
       };
+      ".config/alacritty/catppuccin-mocha.toml" = {
+        source = "${generated.catppuccin_alacritty.src}";
+      };
+      ".config/alacritty/alacritty.toml" = {
+        text = ''
+          [general]
+          import = [
+            "~/.config/alacritty/catpuccin-mocha.toml"
+          ]
+
+          [font]
+          size = 10
+
+          [font.normal]
+          style = "Medium"
+          family = "RobotoMono Nerd Font"
+        '';
+      };
     };
 
     dconf.settings = {
@@ -34,16 +52,8 @@ in {
         "color-scheme" = "prefer-dark";
         "show-battery-percentage" = true;
       };
-      "org/gnome/shell" = {
-        "favorite-apps" = ["firefox.desktop" "Alacritty.desktop" "org.gnome.Settings.desktop" ];
-      };
       "org/gnome/desktop/wm/keybindings" = {
         "close" = [ "<Super>q" ];
-        "switch-to-workspace-1" = [ "<Super>1" ];
-        "switch-to-workspace-2" = [ "<Super>2" ];
-        "switch-to-workspace-3" = [ "<Super>3" ];
-        "switch-to-workspace-4" = [ "<Super>4" ];
-        "switch-to-workspace-5" = [ "<Super>5" ];
         "move-to-workspace-left" = [ "" ];
         "move-to-workspace-right" = [ "" ];
       };

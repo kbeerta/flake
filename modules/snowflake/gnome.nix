@@ -28,8 +28,8 @@ in {
     environment.systemPackages = with pkgs; [
       wl-clipboard
 
-      gnome-tweaks
       dconf-editor
+      gnome-tweaks
       papirus-icon-theme
     ];
 

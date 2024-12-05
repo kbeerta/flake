@@ -67,7 +67,7 @@ in {
     nix.gc.dates = "weekly";
     nix.gc.automatic = true;
     nix.gc.options = "--delete-older-than 7d";
-    
+
     nix.channel.enable = false;
     nix.settings.auto-optimise-store = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];

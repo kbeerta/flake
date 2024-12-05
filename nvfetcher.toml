@@ -1,3 +1,7 @@
 [neovim]
 src.git = "https://github.com/kbeerta/kbeerta.nvim.git"
 fetch.github = "kbeerta/kbeerta.nvim"
+
+[catppuccin_alacritty]
+src.git = "https://github.com/catppuccin/alacritty.git"
+fetch.github = "catppuccin/alacritty"
