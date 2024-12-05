@@ -34,8 +34,10 @@ in
     environment.systemPackages = with pkgs; [
       wl-clipboard
 
-      dconf-editor
       gnome-tweaks
+      gnome-shell-extensions
+
+      dconf-editor
       papirus-icon-theme
     ];
 
@@ -72,7 +74,6 @@ in
       gnome-weather
 
       loupe
-      nautilus
 
       gnome-connections
 
