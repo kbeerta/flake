@@ -6,6 +6,7 @@ let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
 in {
   imports = [
+    ./dev.nix
     ./gnome.nix
   ];
 
@@ -39,9 +40,6 @@ in {
     nixpkgs.config.allowUnfree = true;
 
     environment.systemPackages = with pkgs; [
-      gcc
-      rustup
-
       nvfetcher
       firefox
       alacritty

@@ -9,6 +9,8 @@
   system.snowflake = {
     enable = true;
     user = "kbeerta";
+
+    dev.enable = true;
     gnome.enable = true;
   };
 

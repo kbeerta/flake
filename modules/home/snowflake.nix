@@ -24,17 +24,20 @@ in {
         source = "${generated.neovim.src}";
       };
       ".config/alacritty/catppuccin-mocha.toml" = {
-        source = "${generated.catppuccin_alacritty.src}";
+        source = "${generated.catppuccin_alacritty.src}/catppuccin-mocha.toml";
       };
       ".config/alacritty/alacritty.toml" = {
         text = ''
           [general]
           import = [
-            "~/.config/alacritty/catpuccin-mocha.toml"
+            "~/.config/alacritty/catppuccin-mocha.toml"
           ]
 
           [font]
           size = 10
+
+          [window]
+          padding = { x = 5, y = 5 }
 
           [font.normal]
           style = "Medium"
