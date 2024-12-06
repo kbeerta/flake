@@ -43,6 +43,7 @@ in
           size = 10
 
           [window]
+          decorations = "None"
           padding = { x = 5, y = 5 }
 
           [font.normal]
