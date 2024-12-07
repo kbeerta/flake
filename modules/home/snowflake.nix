@@ -11,6 +11,10 @@ let
   generated = pkgs.callPackage ../../_sources/generated.nix { };
 in
 {
+  imports = [
+    ./gnome.nix
+  ];
+
   options.home.snowflake = {
     enable = mkEnableOption "gnome";
     user = mkOption {
@@ -43,7 +47,9 @@ in
           size = 10
 
           [window]
+          opacity = 0.90
           decorations = "None"
+          startup_mode = "Maximized"
           padding = { x = 5, y = 5 }
 
           [font.normal]
@@ -53,20 +59,5 @@ in
       };
     };
 
-    dconf.settings = {
-      "org/gnome/desktop/wm/preferences" = {
-        "button-layout" = "appmenu:minimize,maximize,close";
-      };
-      "org/gnome/desktop/interface" = {
-        "icon-theme" = "Papirus-Dark";
-        "color-scheme" = "prefer-dark";
-        "show-battery-percentage" = true;
-      };
-      "org/gnome/desktop/wm/keybindings" = {
-        "close" = [ "<Super>q" ];
-        "move-to-workspace-left" = [ "" ];
-        "move-to-workspace-right" = [ "" ];
-      };
-    };
   };
 }

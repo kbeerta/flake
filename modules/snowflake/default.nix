@@ -11,8 +11,8 @@ let
 in
 {
   imports = [
-    ./dev.nix
     ./gnome.nix
+    ./development.nix
   ];
 
   options.system.snowflake = {
@@ -52,9 +52,11 @@ in
 
     environment.systemPackages = with pkgs; [
       nvfetcher
+      pure-prompt
+
+      # split the following into another file
       firefox
       alacritty
-      pure-prompt
     ];
 
     programs.zsh = {

@@ -10,8 +10,14 @@
     enable = true;
     user = "kbeerta";
 
-    dev.enable = true;
     gnome.enable = true;
+    development = {
+      enable = true;
+
+      lua.enable = true;
+      zig.enable = true;
+      rust.enable = true;
+    };
   };
 
   time.timeZone = "Europe/Amsterdam";
@@ -19,11 +25,6 @@
 
   console.keyMap = "us";
   console.font = "Lat2-Terminus16";
-
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
 
   system.stateVersion = "24.11";
 }

@@ -8,5 +8,6 @@
   home.snowflake = {
     enable = true;
     user = "kbeerta";
+    gnome.enable = true;
   };
 }
