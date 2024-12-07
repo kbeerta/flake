@@ -14,6 +14,7 @@
     development = {
       enable = true;
 
+      c.enable = true;
       lua.enable = true;
       zig.enable = true;
       rust.enable = true;
