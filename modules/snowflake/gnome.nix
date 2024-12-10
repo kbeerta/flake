@@ -27,15 +27,25 @@ in
     services.pipewire.alsa.support32Bit = true;
     services.pipewire.pulse.enable = true;
 
+    services.fprintd.enable = true;
+    services.fprintd.tod.enable = true;
+    services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
+
     services.xserver.enable = true;
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
 
     environment.systemPackages = with pkgs; [
+      # split the following into another file
+      discord
+      firefox
+      alacritty
       wl-clipboard
 
       gnome-tweaks
       gnome-shell-extensions
+
+      gnomeExtensions.blur-my-shell
 
       dconf-editor
       papirus-icon-theme

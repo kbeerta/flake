@@ -53,10 +53,6 @@ in
     environment.systemPackages = with pkgs; [
       nvfetcher
       pure-prompt
-
-      # split the following into another file
-      firefox
-      alacritty
     ];
 
     programs.zsh = {

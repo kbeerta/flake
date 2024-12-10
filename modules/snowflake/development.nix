@@ -31,7 +31,10 @@ in
     environment.systemPackages =
       with pkgs;
       [ nixd ]
-      ++ (optionals (cfg.c.enable) [ gcc ])
+      ++ (optionals (cfg.c.enable) [
+        gcc
+        ccls
+      ])
       ++ (optionals (cfg.lua.enable) [
         lua
         sumneko-lua-language-server
