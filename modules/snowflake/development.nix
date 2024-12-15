@@ -25,6 +25,14 @@ in
     rust = {
       enable = mkEnableOption "rust programming language";
     };
+    python = {
+      enable = mkEnableOption "python programming language";
+      extraPackages = mkOption {
+        type = with types; listOf package;
+        default = [ ];
+        description = "python packages to be used in python programs";
+      };
+    };
   };
 
   config = mkIf cfg.enable {
@@ -43,6 +51,13 @@ in
         zig
         zls
       ])
-      ++ (optionals (cfg.rust.enable) [ rustup ]);
+      ++ (optionals (cfg.rust.enable) [ rustup ])
+      ++ (
+        optionals (cfg.python.enable) [
+          python311
+          python311Packages.python-lsp-server
+        ]
+        ++ cfg.python.extraPackages
+      );
   };
 }

@@ -1,4 +1,4 @@
-{ outputs, ... }:
+{ outputs, pkgs, ... }:
 
 {
   imports = [
@@ -18,6 +18,12 @@
       lua.enable = true;
       zig.enable = true;
       rust.enable = true;
+      python = {
+        enable = true;
+        extraPackages = with pkgs.python311Packages; [
+          numpy
+        ];
+      };
     };
   };
 
