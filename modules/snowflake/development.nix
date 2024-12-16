@@ -52,12 +52,8 @@ in
         zls
       ])
       ++ (optionals (cfg.rust.enable) [ rustup ])
-      ++ (
-        optionals (cfg.python.enable) [
-          python311
-          python311Packages.python-lsp-server
-        ]
-        ++ cfg.python.extraPackages
-      );
+      ++ (optionals (cfg.python.enable) [
+        (python311.withPackages (ps: [ python311Packages.python-lsp-server ] ++ cfg.python.extraPackages))
+      ]);
   };
 }
