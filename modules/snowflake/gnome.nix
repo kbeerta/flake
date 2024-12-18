@@ -42,6 +42,9 @@ in
       alacritty
       wl-clipboard
 
+      matugen
+      nodejs_latest
+
       gnome-tweaks
       gnome-shell-extensions
 

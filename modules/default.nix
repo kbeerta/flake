@@ -1,3 +1,3 @@
 {
-  snowflake = import ./snowflake;
+	snowflake = import ./snowflake;
 }
