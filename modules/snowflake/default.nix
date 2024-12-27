@@ -12,7 +12,6 @@ in
 {
   imports = [
     ./gnome.nix
-    ./development.nix
   ];
 
   options.system.snowflake = {

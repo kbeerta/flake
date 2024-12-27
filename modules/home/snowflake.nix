@@ -58,6 +58,47 @@ in
         '';
       };
     };
+    home.file.".tmux.conf" = {
+      text = ''
+        set -s escape-time 0
 
+        set -g mouse on
+        set -g base-index 1
+        set -g default-terminal "tmux-256color"
+
+        unbind-key C-b
+        set-option -g prefix C-a
+        bind-key C-a send-prefix
+
+        bind-key x kill-pane
+        bind-key & kill-window
+
+        setw -g mode-keys vi
+
+        set -g status on
+        set -g status-interval 1
+        set -g status-justify centre
+        set -g status-position top
+
+        set -g status-keys vi
+        set -g status-style fg=default
+
+        set -g status-left ""
+        set -g status-right ""
+
+        set -g window-status-style fg=default
+        set -g window-status-format ' #I #W '
+
+        set -g window-status-current-style fg=magenta
+        set -g window-status-current-format ' #I #W '
+
+        set -g visual-bell off
+        set -g bell-action none
+        set -g visual-silence off
+        set -g visual-activity off
+
+        setw -g monitor-activity off
+      '';
+    };
   };
 }

@@ -1,4 +1,4 @@
-{ outputs, pkgs, ... }:
+{ outputs, ... }:
 
 {
   imports = [
@@ -11,20 +11,6 @@
     user = "kbeerta";
 
     gnome.enable = true;
-    development = {
-      enable = true;
-
-      c.enable = true;
-      lua.enable = true;
-      zig.enable = true;
-      rust.enable = true;
-      python = {
-        enable = true;
-        extraPackages = with pkgs.python311Packages; [
-          numpy
-        ];
-      };
-    };
   };
 
   time.timeZone = "Europe/Amsterdam";
