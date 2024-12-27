@@ -53,6 +53,8 @@ in
       fzf
       nvfetcher
       pure-prompt
+
+      nixd
     ];
 
     programs.zsh = {

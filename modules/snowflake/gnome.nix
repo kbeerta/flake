@@ -39,7 +39,7 @@ in
       # split the following into another file
       discord
       firefox
-      alacritty
+      ghostty
       wl-clipboard
 
       matugen

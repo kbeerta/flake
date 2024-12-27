@@ -28,35 +28,30 @@ in
     home.homeDirectory = "/home/kbeerta";
     home.stateVersion = "25.05";
 
-    home.file = {
-      ".config/nvim" = {
-        recursive = true;
-        source = "${generated.neovim.src}";
-      };
-      ".config/alacritty/catppuccin-mocha.toml" = {
-        source = "${generated.catppuccin_alacritty.src}/catppuccin-mocha.toml";
-      };
-      ".config/alacritty/alacritty.toml" = {
-        text = ''
-          [general]
-          import = [
-            "~/.config/alacritty/catppuccin-mocha.toml"
-          ]
+    home.file.".config/nvim" = {
+      recursive = true;
+      source = "${generated.neovim.src}";
+    };
+    home.file.".config/ghostty/config" = {
+      text = ''
+        theme = catppuccin-mocha
+        background-opacity = 0.9
 
-          [font]
-          size = 10
+        font-size = 10
+        font-feature = -calt -liga -dlag
+        font-family = "RobotoMono Nerd Font Md"
 
-          [window]
-          opacity = 0.90
-          decorations = "None"
-          startup_mode = "Maximized"
-          padding = { x = 5, y = 5 }
+        cursor-style = block
+        cursor-style-blink = false
 
-          [font.normal]
-          style = "Medium"
-          family = "RobotoMono Nerd Font"
-        '';
-      };
+        resize-overlay = never
+        window-decoration = false
+        confirm-close-surface = false
+
+        # maximize on startup...
+        window-width = 9999
+        window-height = 9999
+      '';
     };
     home.file.".tmux.conf" = {
       text = ''
