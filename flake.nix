@@ -2,7 +2,7 @@
   description = "snowflake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +31,17 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.kbeerta = import ./home/snowflake.nix;
+            home-manager.users.kbeerta = {
+              imports = [
+                outputs.homeManagerModules.snowflake
+              ];
+
+              home.snowflake = {
+                enable = true;
+                user = "kbeerta";
+                gnome.enable = true;
+              };
+            };
             home-manager.extraSpecialArgs = { inherit inputs outputs; };
           }
         ];

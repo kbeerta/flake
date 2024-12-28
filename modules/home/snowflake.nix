@@ -41,7 +41,6 @@ in
         font-feature = -calt -liga -dlag
         font-family = "RobotoMono Nerd Font Md"
 
-        cursor-style = block
         cursor-style-blink = false
 
         resize-overlay = never
@@ -72,8 +71,8 @@ in
 
         set -g status on
         set -g status-interval 1
-        set -g status-justify centre
-        set -g status-position top
+        set -g status-justify left
+        set -g status-position bottom
 
         set -g status-keys vi
         set -g status-style fg=default
@@ -84,7 +83,7 @@ in
         set -g window-status-style fg=default
         set -g window-status-format ' #I #W '
 
-        set -g window-status-current-style fg=magenta
+        set -g window-status-current-style 'bg=magenta fg=black'
         set -g window-status-current-format ' #I #W '
 
         set -g visual-bell off
