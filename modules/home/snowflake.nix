@@ -46,10 +46,6 @@ in
         resize-overlay = never
         window-decoration = false
         confirm-close-surface = false
-
-        # maximize on startup...
-        window-width = 9999
-        window-height = 9999
       '';
     };
     home.file.".tmux.conf" = {
