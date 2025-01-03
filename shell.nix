@@ -1,18 +1,20 @@
 {
-  description = "devshell flake";
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  description = "Development flake";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-  outputs =
-    { nixpkgs, ... }:
-    let
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    in
-    {
-      devShells.x86_64-linux.default = pkgs.mkShell {
-        buildInputs = [ ];
-        shellHook = ''
-          exec ${pkgs.zsh}/bin/zsh
-        '';
-      };
+  outputs = { nixpkgs, ... } @ inputs: let 
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [];
     };
+  in {
+    devShells.${system}.default = pkgs.mkShell rec {
+      buildInputs = with pkgs; [];
+      shellHook = ''
+        exec ${pkgs.zsh}/bin/zsh
+      '';
+      LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath buildInputs;
+    };
+  };
 }
