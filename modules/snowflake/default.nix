@@ -12,6 +12,7 @@ in
 {
   imports = [
     ./gnome.nix
+    ./docker.nix
   ];
 
   options.system.snowflake = {

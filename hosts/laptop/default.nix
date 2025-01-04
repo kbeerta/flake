@@ -11,6 +11,7 @@
     user = "kbeerta";
 
     gnome.enable = true;
+    docker.enable = true;
   };
 
   time.timeZone = "Europe/Amsterdam";
