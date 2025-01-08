@@ -36,10 +36,9 @@
                 outputs.homeManagerModules.snowflake
               ];
 
-              home.snowflake = {
+              system.snowflake.home = {
                 enable = true;
                 user = "kbeerta";
-                gnome.enable = true;
               };
             };
             home-manager.extraSpecialArgs = { inherit inputs outputs; };
