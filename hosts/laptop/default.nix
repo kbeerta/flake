@@ -20,5 +20,8 @@
   console.keyMap = "us";
   console.font = "Lat2-Terminus16";
 
+  services.openssh.enable = true;
+  services.openssh.settings.X11Forwarding = true;
+
   system.stateVersion = "24.11";
 }

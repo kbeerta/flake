@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }:
 
@@ -56,6 +57,8 @@ in
       pure-prompt
 
       nixd
+
+      vimPlugins.nvim-treesitter.withAllGrammars
     ];
 
     programs.zsh = {
@@ -71,8 +74,13 @@ in
     };
 
     programs.git.enable = true;
+    programs.git.config.push.autoSetupRemote = true;
+
     programs.tmux.enable = true;
+
     programs.neovim.enable = true;
+    programs.neovim.defaultEditor = true;
+    programs.neovim.package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
 
     nix.gc.dates = "weekly";
     nix.gc.automatic = true;

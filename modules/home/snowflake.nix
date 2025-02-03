@@ -11,7 +11,7 @@ with lib.hm.gvariant;
 let
   cfg = config.system.snowflake.home;
   user = config.system.snowflake.home.user;
-  generated = pkgs.callPackage ../../_sources/generated.nix {};
+  generated = pkgs.callPackage ../../_sources/generated.nix { };
 in
 {
   options.system.snowflake.home = {
@@ -44,7 +44,6 @@ in
         cursor-style-blink = false
 
         resize-overlay = never
-        window-decoration = false
         confirm-close-surface = false
       '';
     };
@@ -133,26 +132,11 @@ in
           "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
         ];
       };
-      "org/gnome/shell/extensions/tiling-assistant" = {
-        window-gap = 4;
-        single-screen-gap = 4;
-        maximize-with-gap = true;
-      };
       "org/gnome/shell/extensions/focus-changer" = {
         focus-up = [ "<Shift><Super>k" ];
         focus-down = [ "<Shift><Super>j" ];
         focus-left = [ "<Shift><Super>h" ];
         focus-right = [ "<Shift><Super>l" ];
-      };
-      "org/gnome/settings-daemon/plugins/media-keys" = {
-        custom-keybindings = [
-          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-        ];
-      };
-      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-        binding = "<Super>return";
-        command = "ghostty";
-        name = "ghostty";
       };
     };
   };
