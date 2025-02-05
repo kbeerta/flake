@@ -52,13 +52,11 @@ in
     nixpkgs.config.allowUnfree = true;
 
     environment.systemPackages = with pkgs; [
+      nixd
+
       fzf
       nvfetcher
       pure-prompt
-
-      nixd
-
-      vimPlugins.nvim-treesitter.withAllGrammars
     ];
 
     programs.zsh = {

@@ -1,7 +1,7 @@
 {
     "neovim": {
         "cargoLocks": null,
-        "date": "2025-02-02",
+        "date": "2025-02-05",
         "extract": null,
         "name": "neovim",
         "passthru": null,
@@ -13,11 +13,11 @@
             "name": null,
             "owner": "kbeerta",
             "repo": "kbeerta.nvim",
-            "rev": "5d03caed282b27612c305f79def7b50b45c3de58",
-            "sha256": "sha256-6LJ8Zi6HssTq7NmvkOT6pZK4/NhoLb2XThZcqs4Nm0c=",
+            "rev": "4334bc5801cdbe4b9ba44910d5b8d84cb3e2d24f",
+            "sha256": "sha256-aRBW7WUGRqB85GfxgMzlI11gKEB03SGeWIR7s9uk/8E=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "5d03caed282b27612c305f79def7b50b45c3de58"
+        "version": "4334bc5801cdbe4b9ba44910d5b8d84cb3e2d24f"
     }
 }
