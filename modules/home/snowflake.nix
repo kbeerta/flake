@@ -32,6 +32,68 @@ in
       source = "${generated.neovim.src}";
     };
 
+    home.file.".config/sway/config" = {
+      text = ''
+        client.focused          #202020 #202020 #F8F8F6 #3E4A4F   #212121
+        client.focused_inactive #161616 #161616 #F8F8F6 #484E50   #161616
+        client.unfocused        #161616 #161616 #F8F8F6 #292D2E   #161616
+        client.urgent           #141B1E #E52323 #F8F8F6 #E52323   #E52323
+        client.placeholder      #000000 #0C0C0C #F8F8F6 #000000   #0C0C0C
+
+        input type:keyboard {
+            repeat_rate 20
+            repeat_delay 200
+        }
+
+        input type:touchpad {
+            dwt enabled
+            tap enabled
+            natural_scroll enabled
+            middle_emulation enabled
+        }
+
+        output * bg ${../../wallpapers/wallhaven-jxmwvm.png} fill
+
+        exec dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
+        bindsym Mod1+Q kill
+        bindsym Mod1+Return exec ghostty
+        bindsym Mod1+Shift+R reload
+
+        bindsym Mod1+Shift+Escape exit
+
+        bindsym Mod1+h focus left
+        bindsym Mod1+j focus down
+        bindsym Mod1+k focus up
+        bindsym Mod1+l focus right
+
+        bindsym Mod1+1 workspace number 1
+        bindsym Mod1+2 workspace number 2
+        bindsym Mod1+3 workspace number 3
+        bindsym Mod1+4 workspace number 4
+        bindsym Mod1+5 workspace number 5
+
+        bindsym Mod1+Shift+1 move container to workspace number 1
+        bindsym Mod1+Shift+2 move container to workspace number 2
+        bindsym Mod1+Shift+3 move container to workspace number 3
+        bindsym Mod1+Shift+4 move container to workspace number 4
+        bindsym Mod1+Shift+5 move container to workspace number 5
+
+        font monospace 11
+        font pango: monospace 10
+
+        title_align left
+        titlebar_padding 12 4
+        titlebar_border_thickness 0
+
+        for_window [class=".*"] title_format "<span></span>"
+
+        smart_borders on
+        default_border normal 0
+        default_floating_border none
+      '';
+    };
+
     home.file.".config/ghostty/config" = {
       text = ''
         theme = catppuccin-mocha
@@ -55,6 +117,7 @@ in
         set -g mouse on
         set -g base-index 1
         set -g default-terminal "tmux-256color"
+        set-option -g focus-events on
 
         unbind-key C-b
         set-option -g prefix C-a

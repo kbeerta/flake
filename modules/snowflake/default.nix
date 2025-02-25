@@ -2,7 +2,6 @@
   lib,
   pkgs,
   config,
-  inputs,
   ...
 }:
 
@@ -12,8 +11,10 @@ let
 in
 {
   imports = [
-    ./gnome.nix
     ./docker.nix
+    ./gnome.nix
+    ./sway.nix
+    ./wayland.nix
   ];
 
   options.system.snowflake = {
@@ -55,6 +56,7 @@ in
       nixd
 
       fzf
+      ripgrep
       nvfetcher
       pure-prompt
     ];
@@ -78,7 +80,8 @@ in
 
     programs.neovim.enable = true;
     programs.neovim.defaultEditor = true;
-    programs.neovim.package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+
+    programs.dconf.enable = true;
 
     nix.gc.dates = "weekly";
     nix.gc.automatic = true;

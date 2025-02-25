@@ -15,21 +15,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    hardware.bluetooth.enable = true;
-
-    hardware.graphics.enable = true;
-    hardware.graphics.enable32Bit = true;
-
-    security.rtkit.enable = true;
-
-    services.pipewire.enable = true;
-    services.pipewire.alsa.enable = true;
-    services.pipewire.alsa.support32Bit = true;
-    services.pipewire.pulse.enable = true;
-
-    services.fprintd.enable = true;
-    services.fprintd.tod.enable = true;
-    services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
+    system.snowflake.wayland.enable = true;
 
     services.xserver.enable = true;
     services.xserver.displayManager.gdm.enable = true;

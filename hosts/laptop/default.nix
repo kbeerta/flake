@@ -10,6 +10,7 @@
     enable = true;
     user = "kbeerta";
 
+    sway.enable = true;
     gnome.enable = true;
     docker.enable = true;
   };
