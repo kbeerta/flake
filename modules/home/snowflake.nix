@@ -96,7 +96,7 @@ in
 
     home.file.".config/ghostty/config" = {
       text = ''
-        theme = catppuccin-mocha
+        theme = rose-pine-moon
         background-opacity = 0.9
 
         font-size = 10
