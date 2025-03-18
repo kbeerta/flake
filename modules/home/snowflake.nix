@@ -155,15 +155,8 @@ in
     };
 
     dconf.settings = {
-      "org/gnome/mutter" = {
-        center-new-windows = true;
-      };
       "org/gnome/shell" = {
         favourite-apps = [ ];
-      };
-      "org/gnome/mutter/keybindings" = {
-        toggle-tiled-left = [ ];
-        toggle-tiled-right = [ ];
       };
       "org/gnome/desktop/interface" = {
         clock-format = "24h";
@@ -175,13 +168,13 @@ in
         show-battery-percentage = true;
         monospace-font-name = "RobotoMono Nerd Font Md";
       };
-      "org/gnome/desktop/peripherals/keyboard" = {
-        delay = mkUint32 200;
-      };
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Super>q" ];
-        maximize = [ ];
-        unmaximize = [ ];
+        maximize = [];
+        minimize = [];
+      };
+      "org/gnome/desktop/peripherals/keyboard" = {
+        delay = mkUint32 200;
       };
       "org/gnome/desktop/wm/preferences" = {
         focus-mode = "sloppy";
@@ -189,17 +182,11 @@ in
       "org/gnome/shell" = {
         enabled-extensions = [
           "blur-my-shell@aunetx"
-          "focus-changer@heartmire"
-          "tiling-assistant@leleat-on-github"
+          "pop-shell@system76.com"
+          "just-perfection-desktop@just-perfection"
           "user-theme@gnome-shell-extensions.gcampax.github.com"
           "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
         ];
-      };
-      "org/gnome/shell/extensions/focus-changer" = {
-        focus-up = [ "<Shift><Super>k" ];
-        focus-down = [ "<Shift><Super>j" ];
-        focus-left = [ "<Shift><Super>h" ];
-        focus-right = [ "<Shift><Super>l" ];
       };
     };
   };

@@ -34,9 +34,9 @@ in
       gnome-tweaks
       gnome-shell-extensions
 
-      gnomeExtensions.focus-changer
+      gnomeExtensions.pop-shell
       gnomeExtensions.blur-my-shell
-      gnomeExtensions.tiling-assistant
+      gnomeExtensions.just-perfection
 
       dconf-editor
       papirus-icon-theme
