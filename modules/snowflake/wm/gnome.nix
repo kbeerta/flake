@@ -7,10 +7,10 @@
 
 with lib;
 let
-  cfg = config.system.snowflake.gnome;
+  cfg = config.system.snowflake.wm.gnome;
 in
 {
-  options.system.snowflake.gnome = {
+  options.system.snowflake.wm.gnome = {
     enable = mkEnableOption "gnome";
   };
 

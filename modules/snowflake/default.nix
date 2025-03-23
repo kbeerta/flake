@@ -11,9 +11,8 @@ let
 in
 {
   imports = [
+    ./wm
     ./docker.nix
-    ./gnome.nix
-    ./sway.nix
     ./wayland.nix
   ];
 

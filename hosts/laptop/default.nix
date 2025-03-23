@@ -10,9 +10,10 @@
     enable = true;
     user = "kbeerta";
 
-    sway.enable = true;
-    gnome.enable = true;
     docker.enable = true;
+
+    wm.niri.enable = true;
+    wm.gnome.enable = true;
   };
 
   time.timeZone = "Europe/Amsterdam";

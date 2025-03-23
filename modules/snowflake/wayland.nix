@@ -32,6 +32,7 @@ in
       discord
       firefox
       ghostty
+      wezterm
       wl-clipboard
     ];
   };

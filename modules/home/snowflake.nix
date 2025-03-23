@@ -24,80 +24,74 @@ in
 
   config = mkIf cfg.enable {
     home.username = user;
-    home.homeDirectory = "/home/${user}";
     home.stateVersion = "25.05";
+    home.homeDirectory = "/home/${user}";
 
     home.file.".config/nvim" = {
       recursive = true;
       source = "${generated.neovim.src}";
     };
 
-    home.file.".config/sway/config" = {
+    home.file.".config/niri/config.kdl" = {
       text = ''
-        client.focused          #202020 #202020 #F8F8F6 #3E4A4F   #212121
-        client.focused_inactive #161616 #161616 #F8F8F6 #484E50   #161616
-        client.unfocused        #161616 #161616 #F8F8F6 #292D2E   #161616
-        client.urgent           #141B1E #E52323 #F8F8F6 #E52323   #E52323
-        client.placeholder      #000000 #0C0C0C #F8F8F6 #000000   #0C0C0C
+        spawn-at-startup "${pkgs.ghostty}/bin/ghostty"
+        spawn-at-startup "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
+        spawn-at-startup "${pkgs.swaybg}/bin/swaybg" "-m" "fill" "-i" "${../../wallpapers/wallhaven-jxmwvm.png}"
 
-        input type:keyboard {
-            repeat_rate 20
-            repeat_delay 200
+        prefer-no-csd
+        screenshot-path null
+
+        environment {
+          DISPLAY ":0"
         }
 
-        input type:touchpad {
-            dwt enabled
-            tap enabled
-            natural_scroll enabled
-            middle_emulation enabled
+        input {
+          keyboard {
+            repeat-delay 250
+            repeat-rate 25
+          }
         }
 
-        output * bg ${../../wallpapers/wallhaven-jxmwvm.png} fill
+        binds {
+          Mod+Shift+Escape { quit; }
 
-        exec dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+          Mod+Return { spawn "ghostty"; }
 
-        bindsym Mod1+Q kill
-        bindsym Mod1+Return exec ghostty
-        bindsym Mod1+Shift+R reload
+          Mod+Q { close-window; }
 
-        bindsym Mod1+Shift+Escape exit
+          Mod+H { focus-column-left; }
+          Mod+J { focus-workspace-down; }
+          Mod+K { focus-workspace-up; }
+          Mod+L { focus-column-right; }
 
-        bindsym Mod1+h focus left
-        bindsym Mod1+j focus down
-        bindsym Mod1+k focus up
-        bindsym Mod1+l focus right
+          Mod+Shift+H { move-column-left; }
+          Mod+Shift+J { move-column-to-workspace-down; }
+          Mod+Shift+K { move-window-to-workspace-up; }
+          Mod+Shift+L { move-column-right; }
 
-        bindsym Mod1+1 workspace number 1
-        bindsym Mod1+2 workspace number 2
-        bindsym Mod1+3 workspace number 3
-        bindsym Mod1+4 workspace number 4
-        bindsym Mod1+5 workspace number 5
+          Mod+Ctrl+H { set-column-width "-10%"; }
+          Mod+Ctrl+L { set-column-width "+10%"; }
 
-        bindsym Mod1+Shift+1 move container to workspace number 1
-        bindsym Mod1+Shift+2 move container to workspace number 2
-        bindsym Mod1+Shift+3 move container to workspace number 3
-        bindsym Mod1+Shift+4 move container to workspace number 4
-        bindsym Mod1+Shift+5 move container to workspace number 5
+          Mod+Up { maximize-column; }
+        }
 
-        font monospace 11
-        font pango: monospace 10
+        window-rule {
+          focus-ring {
+            off
+          }
+        }
 
-        title_align left
-        titlebar_padding 12 4
-        titlebar_border_thickness 0
-
-        for_window [class=".*"] title_format "<span></span>"
-
-        smart_borders on
-        default_border normal 0
-        default_floating_border none
+        window-rule {
+          match is-active=false
+          opacity 0.5
+        }
       '';
     };
 
     home.file.".config/ghostty/config" = {
       text = ''
+        maximize = true
         theme = rose-pine-moon
-        background-opacity = 0.9
 
         font-size = 10
         font-feature = -calt -liga -dlag
@@ -187,6 +181,7 @@ in
           "user-theme@gnome-shell-extensions.gcampax.github.com"
           "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
         ];
+        disable-user-extensions = false;
       };
     };
   };
