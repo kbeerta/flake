@@ -6,6 +6,9 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -20,6 +23,9 @@
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+      overlays = [
+        inputs.neovim-nightly.overlays.default
+      ];
       nixosModules = import ./modules;
       homeManagerModules = import ./modules/home;
       nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {

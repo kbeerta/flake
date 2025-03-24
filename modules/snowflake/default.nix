@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }:
 
@@ -78,6 +79,7 @@ in
     programs.tmux.enable = true;
 
     programs.neovim.enable = true;
+    programs.neovim.package = inputs.neovim-nightly.packages.${pkgs.system}.default;
     programs.neovim.defaultEditor = true;
 
     programs.dconf.enable = true;
