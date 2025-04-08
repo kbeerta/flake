@@ -31,7 +31,6 @@ in
       # split the following into another file
       discord
       firefox
-      ghostty
       wezterm
       wl-clipboard
     ];

@@ -22,12 +22,6 @@ in
     services.xserver.desktopManager.gnome.enable = true;
 
     environment.systemPackages = with pkgs; [
-      # split the following into another file
-      discord
-      firefox
-      ghostty
-      wl-clipboard
-
       matugen
       nodejs_latest
 

@@ -1,7 +1,8 @@
 {
-  config,
   lib,
   pkgs,
+  config,
+  inputs,
   ...
 }:
 
@@ -18,10 +19,27 @@ in
     system.snowflake.wayland.enable = true;
 
     programs.niri.enable = true;
+    programs.niri.package = inputs.niri-nightly.packages.${pkgs.system}.default;
+
+    programs.waybar.enable = true;
+
+    xdg.portal.enable = true;
+
+    xdg.portal.extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+    ];
+
+    # TODO systemd setup
+    # TODO use niri-session instead of dbus-run-session
+    environment.loginShellInit = ''
+      if [[ -z $DISPLAY ]] && [[ "$(tty)" = "/dev/tty1" ]]; then
+          exec dbus-run-session ${inputs.niri-nightly.packages.${pkgs.system}.default}/bin/niri
+      fi
+    '';
 
     environment.systemPackages = with pkgs; [
-      ags
       swaybg
+      fuzzel
       xwayland-satellite
     ];
   };

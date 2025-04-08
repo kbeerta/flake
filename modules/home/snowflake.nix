@@ -34,63 +34,197 @@ in
 
     home.file.".config/niri/config.kdl" = {
       text = ''
-        spawn-at-startup "${pkgs.ghostty}/bin/ghostty"
-        spawn-at-startup "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
-        spawn-at-startup "${pkgs.swaybg}/bin/swaybg" "-m" "fill" "-i" "${../../wallpapers/wallhaven-jxmwvm.png}"
+         spawn-at-startup "${pkgs.waybar}/bin/waybar"
+         spawn-at-startup "${pkgs.wezterm}/bin/wezterm"
+         spawn-at-startup "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
+         spawn-at-startup "${pkgs.swaybg}/bin/swaybg" "-m" "fill" "-i" "${../../wallpapers/wallhaven-jxmwvm.png}"
 
-        prefer-no-csd
-        screenshot-path null
+         prefer-no-csd
+         screenshot-path null
 
-        environment {
-          DISPLAY ":0"
+         hotkey-overlay {
+           skip-at-startup
+         }
+
+        layout {
+           gaps 16
+           focus-ring {
+             off
+           }
+         }
+
+         input {
+           mod-key "Alt"
+           focus-follows-mouse
+           warp-mouse-to-focus
+           keyboard {
+             repeat-delay 250
+             repeat-rate 25
+           }
+           mouse {
+             natural-scroll
+           }
+           touchpad {
+             tap
+             natural-scroll
+           }
+         }
+
+         cursor {
+          hide-when-typing
+         }
+
+         binds {
+           Mod+Shift+Escape { quit; }
+
+           Mod+Space { spawn "fuzzel"; }
+           Mod+Return { spawn "wezterm"; }
+
+           Mod+Q { close-window; }
+
+           Mod+H { focus-column-left; }
+           Mod+J { focus-workspace-down; }
+           Mod+K { focus-workspace-up; }
+           Mod+L { focus-column-right; }
+
+           Mod+Shift+H { move-column-left; }
+           Mod+Shift+J { move-column-to-workspace-down; }
+           Mod+Shift+K { move-window-to-workspace-up; }
+           Mod+Shift+L { move-column-right; }
+
+           Mod+Ctrl+H { set-column-width "-10%"; }
+           Mod+Ctrl+L { set-column-width "+10%"; }
+
+           Mod+Up { maximize-column; }
+
+           XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+           XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+           XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+         }
+
+         window-rule {
+           match app-id=r#"^org\.wezfurlong\.wezterm"#
+           open-maximized true
+         }
+
+         window-rule {
+           match app-id=r#"^org\.wezfurlong\.wezterm"# is-active=false
+           opacity 0.5
+         }
+      '';
+    };
+
+    home.file.".config/waybar/style.css" = {
+      text = ''
+        * {
+            border: none;
+            min-height: 25px;
+            padding: 0.125rem;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: "RobotoMono NF";
         }
 
-        input {
-          keyboard {
-            repeat-delay 250
-            repeat-rate 25
-          }
+        window#waybar {
+            color: #e0def4;
+            background: #191724;
         }
 
-        binds {
-          Mod+Shift+Escape { quit; }
-
-          Mod+Return { spawn "ghostty"; }
-
-          Mod+Q { close-window; }
-
-          Mod+H { focus-column-left; }
-          Mod+J { focus-workspace-down; }
-          Mod+K { focus-workspace-up; }
-          Mod+L { focus-column-right; }
-
-          Mod+Shift+H { move-column-left; }
-          Mod+Shift+J { move-column-to-workspace-down; }
-          Mod+Shift+K { move-window-to-workspace-up; }
-          Mod+Shift+L { move-column-right; }
-
-          Mod+Ctrl+H { set-column-width "-10%"; }
-          Mod+Ctrl+L { set-column-width "+10%"; }
-
-          Mod+Up { maximize-column; }
+        #disk,
+        #clock,
+        #battery,
+        #network,
+        #pulseaudio {
+            margin: 0 8px;
         }
 
-        window-rule {
-          focus-ring {
-            off
-          }
+        #battery.warning {
+            color: #f6c177;
         }
 
-        window-rule {
-          match is-active=false
-          opacity 0.5
+        #battery.urgent,
+        #battery.critical,
+        #network.disconnected {
+            color: #eb6d92;
         }
+      '';
+    };
+
+    home.file.".config/waybar/config.jsonc" = {
+      text = ''
+        {
+            "layer": "top",
+            "modules-left": ["clock"],
+            "modules-center": [],
+            "modules-right": ["disk", "pulseaudio", "battery", "network"],
+
+            "battery": {
+                "format": "<span color=\"#6e6a86\">BAT</span> {capacity}%",
+                "format-charging": "<span color=\"#f6c177\">BAT</span> {capacity}%"
+            },
+
+            "clock": {
+                "format": "{:%H:%M}"
+            },
+
+            "disk": {
+                "path": "/",
+                "format": "<span color=\"#6e6a86\">/</span> {percentage_free}%"
+            },
+
+            "network": {
+                "format-wifi": "",
+                "format-disconnected": "DISCONNECTED"
+            },
+
+            "pulseaudio": {
+                "format": "<span color=\"#6e6a86\">VOL</span> {volume}%",
+                "format-muted": "<span color=\"#6e6a86\">VOL</span> -1%"
+            }
+        }
+      '';
+    };
+
+    home.file.".config/fuzzel/fuzzel.ini" = {
+      text = ''
+        dpi-aware=no
+        width=64
+        font=RobotoMono Nerd Font Md:size=12
+        fields=name,generic,comment,categories,filename,keywords
+        terminal=wezterm
+        exit-on-keyboard-focus-loss=no
+        prompt="$ "
+
+        [colors]
+        foreground=e0def4ff
+        background=232136ff
+        selection=c4a7e7ff
+
+        [border]
+        radius=0
+
+        [dmenu]
+        exit-immediately-if-empty=yes
+      '';
+    };
+
+    home.file.".config/wezterm/wezterm.lua" = {
+      text = ''
+        local wezterm = require("wezterm")
+        local config = wezterm.config_builder()
+
+        config.font = wezterm.font("RobotoMono Nerd Font Md")
+        config.font_size = 10
+
+        config.color_scheme = "rose-pine-moon"
+        config.hide_tab_bar_if_only_one_tab = true
+
+        return config
       '';
     };
 
     home.file.".config/ghostty/config" = {
       text = ''
-        maximize = true
         theme = rose-pine-moon
 
         font-size = 10
@@ -164,8 +298,8 @@ in
       };
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Super>q" ];
-        maximize = [];
-        minimize = [];
+        maximize = [ ];
+        minimize = [ ];
       };
       "org/gnome/desktop/peripherals/keyboard" = {
         delay = mkUint32 200;
