@@ -1,3 +1,0 @@
-{
-  snowflake = import ./snowflake.nix;
-}

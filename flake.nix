@@ -1,56 +1,36 @@
 {
-  description = "snowflake";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    niri-nightly.url = "github:YaLTeR/niri";
-    niri-nightly.inputs.nixpkgs.follows = "nixpkgs";
-
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
-    neovim-nightly.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
-    let
-      inherit (self) outputs;
-    in
-    {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-      nixosModules = import ./modules;
-      homeManagerModules = import ./modules/home;
-      nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs outputs; };
-        modules = [
-          ./hosts/laptop
+  outputs = { self, nixpkgs }: let
+    inherit (nixpkgs) lib;
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.kbeerta = {
-              imports = [
-                outputs.homeManagerModules.snowflake
-              ];
+    system = "x86_64-linux";
 
-              system.snowflake.home = {
-                enable = true;
-                user = "kbeerta";
-              };
-            };
-            home-manager.extraSpecialArgs = { inherit inputs outputs; };
-          }
-        ];
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [];
+      config.allowUnfree = true;
+    };
+
+    utils = import ./lib {
+      inherit pkgs lib system;
+    };
+
+    kbeerta = {
+      name = "kbeerta";
+      shell = pkgs.bash;
+      groups = [ "wheel" "networkmanager" ];
+      packages = with pkgs; [stow tmux];
+    };
+  in {
+    nixosConfigurations = {
+      sputnik = utils.mkHost {
+        name = "sputnik";
+        config = ./hosts/sputnik;
+        users = [kbeerta];
       };
     };
+  };
 }
