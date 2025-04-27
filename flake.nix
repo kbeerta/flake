@@ -18,18 +18,23 @@
       inherit pkgs lib system;
     };
 
-    kbeerta = {
+    user = {
       name = "kbeerta";
       shell = pkgs.bash;
-      groups = [ "wheel" "networkmanager" ];
-      packages = with pkgs; [stow tmux];
+      groups = [ "wheel" "input" "networkmanager" ];
+      packages = with pkgs; [tmux alacritty];
     };
   in {
     nixosConfigurations = {
+      mir = utils.mkHost {
+        name = "mir";
+        config = ./hosts/mir;
+        users = [user];
+      };
       sputnik = utils.mkHost {
         name = "sputnik";
         config = ./hosts/sputnik;
-        users = [kbeerta];
+        users = [user];
       };
     };
   };

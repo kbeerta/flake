@@ -11,7 +11,11 @@ rec {
 
           nixpkgs.pkgs = pkgs;
           networking.hostName = "${name}";
-          networking.networkmanager.enable = true;
+
+          environment.systemPackages = with pkgs; [git stow];
+
+          nix.channel.enable = false;
+          nix.settings.experimental-features = ["flakes" "nix-command"];
 
           system.stateVersion = "24.11";
         }

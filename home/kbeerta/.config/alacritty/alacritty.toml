@@ -1,0 +1,8 @@
+[window]
+padding = { x = 5, y = 5 }
+
+[font]
+normal = { family = "Iosevka Nerd Font", style = "Regular" }
+
+[cursor]
+style = { shape = "Block", blinking = "Off" }
