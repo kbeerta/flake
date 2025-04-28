@@ -20,9 +20,8 @@
 
     user = {
       name = "kbeerta";
-      shell = pkgs.bash;
       groups = [ "wheel" "input" "networkmanager" ];
-      packages = with pkgs; [tmux alacritty];
+      packages = with pkgs; [tmux alacritty firefox];
     };
   in {
     nixosConfigurations = {

@@ -23,7 +23,7 @@
 
   programs.sway.enable = true;
   programs.sway.package = pkgs.sway;
-  programs.sway.extraPackages = with pkgs; [swaybg swayidle swaylock brightnessctl ];
+  programs.sway.extraPackages = with pkgs; [swaybg swayidle swaylock wl-clipboard brightnessctl];
   programs.sway.xwayland.enable = true;
 
   programs.waybar.enable = true;
