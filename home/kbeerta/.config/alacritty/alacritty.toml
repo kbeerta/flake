@@ -6,3 +6,7 @@ normal = { family = "Iosevka Nerd Font", style = "Regular" }
 
 [cursor]
 style = { shape = "Block", blinking = "Off" }
+
+[colors.primary]
+background = "#1a1a1a"
+foreground = "#fefefe"

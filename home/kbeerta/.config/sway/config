@@ -43,6 +43,9 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
+bindgesture swipe:left workspace next
+bindgesture swipe:right workspace prev
+
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -93,8 +96,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
-bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ -5%
-bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ 5%-
+bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 5%+
 bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_SOURCE@ toggle
 
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
@@ -107,5 +110,5 @@ client.urgent           #f6c177 #f6c177 #1a1a1a #1a1a1a #1a1a1a
 client.background       #1a1a1a
 
 bar { 
-  swaybar_command waybar
+    swaybar_command waybar
 }

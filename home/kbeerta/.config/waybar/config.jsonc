@@ -1,7 +1,8 @@
 {
     "layer": "top",
+    "position": "bottom",
     "modules-left": [
-        "clock",
+        "custom/power",
         "sway/workspaces",
         "sway/scratchpad",
         "sway/mode"
@@ -12,6 +13,7 @@
         "backlight",
         "pulseaudio",
         "battery",
+        "clock",
         "network"
     ],
 
@@ -27,7 +29,7 @@
     },
 
     "sway/scratchpad": {
-        "format": "SCRATCH {count}"
+        "format": "<span style=\"italic\">scratch {count}</span>"
     },
 
     "sway/mode": {
@@ -36,7 +38,7 @@
 
     "disk": {
         "path": "/",
-        "format": "DISK {percentage_free}%"
+        "format": "DISK {percentage_used}%"
     },
 
     "pulseaudio": {
@@ -55,5 +57,10 @@
     "network": {
         "format": "",
         "format-disconnected": "DISCONNECTED"
+    },
+
+    "custom/power": {
+        "format": "OFF",
+        "on-click": "shutdown now"
     }
 }

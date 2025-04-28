@@ -9,9 +9,12 @@ window#waybar {
     background-color: #1a1a1a;
 }
 
-#window,
-#workspaces {
+#window {
     margin: 0 4px;
+}
+
+#workspaces {
+    margin: 0;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -27,14 +30,37 @@ window#waybar {
 #disk,
 #mode,
 #clock,
-#network,
-#battery,
 #backlight,
 #scratchpad,
 #pulseaudio {
     color: #1a1a1a;
     padding: 0 10px;
     background-color: #eb6f92;
+}
+
+#battery,
+#network,
+#custom-power {
+    color: #eb6f92;
+    padding: 0 10px;
+    background-color: #1a1a1a;
+}
+
+@keyframes pulse {
+    0% {
+        color: #eb6f92;
+        background-color: #1a1a1a;
+    }
+
+    50% {
+        color: #1a1a1a;
+        background-color: #eb6f92;
+    }
+
+    100% {
+        color: #eb6f92;
+        background-color: #1a1a1a;
+    }
 }
 
 #workspaces button {
@@ -56,7 +82,12 @@ window#waybar {
     background-color: #eb6f92;
 }
 
+#battery.urgent {
+    animation: pulse 6s infinite;
+}
+
 #battery.charging, #battery.plugged {
-    color: #1a1a1a;
-    background-color: #f6c177;
+    animation: none;
+    color: #f6c177;
+    background-color: #1a1a1a;
 }
