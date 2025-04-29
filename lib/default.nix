@@ -12,9 +12,6 @@ rec {
           nixpkgs.pkgs = pkgs;
           networking.hostName = "${name}";
 
-          programs.zsh.enable = true;
-          programs.zsh.enableCompletion = true;
-          programs.zsh.syntaxHighlighting.enable = true;
           environment.systemPackages = with pkgs; [git stow];
 
           nix.channel.enable = false;
@@ -28,11 +25,11 @@ rec {
     {
       users.users."${name}" = {
         name = name;
-        shell = pkgs.zsh;
         packages = packages;
         extraGroups = groups;
         isNormalUser = true;
         isSystemUser = false;
+        useDefaultShell = true;
         initialPassword = "password";
       };
     };

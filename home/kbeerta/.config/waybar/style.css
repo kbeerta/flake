@@ -1,16 +1,15 @@
 * {
+    border: none;
     font-size: 14px;
     min-height: 25px;
     font-family: Ioveska Nerd Font, monospace;
+    box-shadow: none;
+    text-shadow: none;
 }
 
 window#waybar {
     color: #fefefe;
     background-color: #1a1a1a;
-}
-
-#window {
-    margin: 0 4px;
 }
 
 #workspaces {
@@ -30,6 +29,7 @@ window#waybar {
 #disk,
 #mode,
 #clock,
+#window,
 #backlight,
 #scratchpad,
 #pulseaudio {
@@ -44,6 +44,11 @@ window#waybar {
     color: #eb6f92;
     padding: 0 10px;
     background-color: #1a1a1a;
+}
+
+#custom-power:hover {
+    color: #1a1a1a;
+    background-color: #eb6f92;
 }
 
 @keyframes pulse {
@@ -65,12 +70,8 @@ window#waybar {
 
 #workspaces button {
     padding: 0 5px;
-    color: #ffffff;
-    border-radius: 0;
-}
-
-#workspaces button {
     color: #aaaaaa;
+    border-radius: 0;
 }
 
 #workspaces button:hover {
@@ -88,6 +89,6 @@ window#waybar {
 
 #battery.charging, #battery.plugged {
     animation: none;
-    color: #f6c177;
-    background-color: #1a1a1a;
+    color: #1a1a1a;
+    background-color: #f6c177;
 }

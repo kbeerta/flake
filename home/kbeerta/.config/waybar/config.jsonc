@@ -21,6 +21,10 @@
         "format": "{:%H:%M}"
     },
 
+    "sway/window": {
+        "format": "{app_id}"
+    },
+
     "sway/workspaces": {
         "all-outputs": true,
         "disable-scroll": true,

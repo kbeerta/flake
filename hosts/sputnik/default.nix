@@ -21,6 +21,13 @@
   fonts.packages = with pkgs; [nerd-fonts.iosevka];
   environment.systemPackages = with pkgs; [neovim];
 
+  users.defaultUserShell = pkgs.zsh;
+
+  programs.zsh.enable = true;
+  programs.zsh.enableCompletion = true;
+  programs.zsh.autosuggestions.enable = true;
+  programs.zsh.syntaxHighlighting.enable = true;
+
   programs.sway.enable = true;
   programs.sway.package = pkgs.sway;
   programs.sway.extraPackages = with pkgs; [swaybg swayidle swaylock wl-clipboard brightnessctl];
