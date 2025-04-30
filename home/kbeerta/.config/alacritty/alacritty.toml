@@ -1,3 +1,6 @@
+[general]
+import = ["~/.config/alacritty/themes/rose-pine-moon.toml"]
+
 [window]
 padding = { x = 5, y = 5 }
 
