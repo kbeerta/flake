@@ -23,10 +23,11 @@ input "type:touchpad" {
 }
 
 bindsym $mod+q kill
-# TODO add alacritty launcher using fzf
-bindsym $mod+Space exec rofi
 bindsym $mod+Return exec alacritty
 
+bindsym $mod+Space exec alacritty --class=sway_launcher --title=sway_launcher -e bash \
+    -c 'compgen -c | sort -u | fzf --no-extended --print-query | \
+        tail -n1 | xargs -r swaymsg -t command exec'
 
 bindsym $mod+Shift+r reload
 floating_modifier $mod normal
@@ -111,4 +112,8 @@ client.background       #1a1a1a
 
 bar { 
     swaybar_command waybar
+}
+
+for_window {
+    [app_id="launcher"] floating enable, border 0px
 }
