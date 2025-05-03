@@ -11,9 +11,14 @@
 
   networking.networkmanager.enable = true;
 
+  security.rtkit.enable = true;
+
   services.pipewire.enable = true;
   services.pipewire.alsa.enable = true;
   services.pipewire.alsa.support32Bit = true;
+  services.pipewire.jack.enable = true;
+  services.pipewire.pulse.enable = true;
+  services.pipewire.wireplumber.enable = true;
 
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
@@ -23,6 +28,9 @@
 
   users.defaultUserShell = pkgs.zsh;
 
+  xdg.portal.enable = true;
+  xdg.portal.wlr.enable = true;
+
   programs.zsh.enable = true;
   programs.zsh.enableCompletion = true;
   programs.zsh.autosuggestions.enable = true;
@@ -30,8 +38,8 @@
 
   programs.sway.enable = true;
   programs.sway.package = pkgs.sway;
-  programs.sway.extraPackages = with pkgs; [swaybg swayidle swaylock wl-clipboard brightnessctl];
   programs.sway.xwayland.enable = true;
+  programs.sway.extraPackages = with pkgs; [swaybg swayidle swaylock wl-clipboard brightnessctl];
 
   programs.waybar.enable = true;
 

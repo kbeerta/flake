@@ -110,10 +110,12 @@ client.unfocused        #1a1a1a #1a1a1a #aaaaaa
 client.urgent           #f6c177 #f6c177 #1a1a1a #1a1a1a #1a1a1a
 client.background       #1a1a1a
 
-bar { 
-    swaybar_command waybar
-}
+bar { }
+
+gaps inner 10
 
 for_window {
     [app_id="launcher"] floating enable, border 0px
 }
+
+include /etc/sway/config.d/*
