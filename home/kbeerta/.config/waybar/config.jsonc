@@ -1,70 +1,74 @@
 {
     "layer": "top",
-    "position": "bottom",
+
+    "position": "top",
+
     "modules-left": [
-        "custom/power",
-        "sway/workspaces",
-        "sway/scratchpad",
-        "sway/mode"
-    ],
-    "modules-center": ["sway/window"],
-    "modules-right": [
-        "disk",
-        "backlight",
-        "pulseaudio",
-        "battery",
-        "clock",
-        "network"
+        "custom/notification",
+        "clock"
     ],
 
-    "clock": {
-        "format": "{:%H:%M}"
+    "modules-center": [
+        "sway/workspaces"
+    ],
+
+    "modules-right": [
+        "network",
+        "battery"
+    ],
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "󰂚",
+        "on-click": "swaync-client -t -sw",
+        "escape": true
     },
 
-    "sway/window": {
-        "format": "{app_id}"
+    "clock": {
+        "interval": 1,
+        "format": "{:%H:%M:%S}"
     },
 
     "sway/workspaces": {
         "all-outputs": true,
         "disable-scroll": true,
         "warp-on-scroll": false,
-        "format": "{name}",
+        "format": "<span> </span>",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": []
+        }
     },
-
-    "sway/scratchpad": {
-        "format": "<span style=\"italic\">scratch {count}</span>"
-    },
-
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-
-    "disk": {
-        "path": "/",
-        "format": "DISK {percentage_used}%"
-    },
-
-    "pulseaudio": {
-        "format": "VOL {volume}%",
-        "format-muted": "VOL -1%",
-    },
-
-    "backlight": {
-        "format": "LIGHT {percent}%"
+    
+    "network": {
+        "format-wifi": " ",
+        "format-ethernet":" ",
+        "format-disconnected": " ",
+        "tooltip-format-disconnected": "Error",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} 🖧 "
     },
 
     "battery": {
-        "format": "BAT {capacity}%",
-    },
-
-    "network": {
-        "format": "",
-        "format-disconnected": "DISCONNECTED"
-    },
-
-    "custom/power": {
-        "format": "OFF",
-        "on-click": "shutdown now"
+        "interval": 30,
+        "states": {
+            "warning": 35,
+            "critical": 20,
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-alt": "{time} {icon}",
+        "format-icons": [
+            "󰁻",
+            "󰁼",
+            "󰁾",
+            "󰂀",
+            "󰂂",
+            "󰁹"
+        ],
     }
 }

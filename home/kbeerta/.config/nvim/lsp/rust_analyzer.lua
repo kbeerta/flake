@@ -23,5 +23,8 @@ return {
     end,
     settings = {
         autoformat = true
+    },
+    experimental = {
+        serverStatusNotification = true
     }
 }

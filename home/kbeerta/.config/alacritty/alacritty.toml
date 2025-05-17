@@ -2,6 +2,7 @@
 import = ["~/.config/alacritty/themes/rose-pine-moon.toml"]
 
 [window]
+opacity = 0.8
 padding = { x = 5, y = 5 }
 
 [font]
@@ -11,5 +12,5 @@ normal = { family = "Iosevka Nerd Font", style = "Regular" }
 style = { shape = "Block", blinking = "Off" }
 
 [colors.primary]
-background = "#1a1a1a"
-foreground = "#fefefe"
+background = "#232136"
+foreground = "#e0def4"

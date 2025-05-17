@@ -1,94 +1,100 @@
+@import url("./themes/rose-pine-moon.css");
+
 * {
-    border: none;
     font-size: 14px;
-    min-height: 25px;
     font-family: Ioveska Nerd Font, monospace;
-    box-shadow: none;
-    text-shadow: none;
 }
 
 window#waybar {
-    color: #fefefe;
-    background-color: #1a1a1a;
+    all: unset;
+}
+
+tooltip {
+    color: @text;
+    background: @base;
+}
+
+.modules-left {
+    padding: 7px;
+    border-radius: 10px;
+    margin: 5px 0 0 10px;
+    background: alpha(@base, 0.8);
+}
+
+.modules-center {
+    padding: 7px;
+    border-radius: 10px;
+    margin: 5px 0 0 0;
+    background: alpha(@base, 0.8);
+}
+
+.modules-right {
+    padding: 7px;
+    border-radius: 10px;
+    margin: 5px 10px 0 0;
+    background: alpha(@base, 0.8);
+}
+
+#custom-notification {
+    color: @gold;
+    padding: 0 5px;
+}
+
+#clock {
+    padding: 0 5px;
 }
 
 #workspaces {
-    margin: 0;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-#disk,
-#mode,
-#clock,
-#window,
-#backlight,
-#scratchpad,
-#pulseaudio {
-    color: #1a1a1a;
-    padding: 0 10px;
-    background-color: #eb6f92;
-}
-
-#battery,
-#network,
-#custom-power {
-    color: #eb6f92;
-    padding: 0 10px;
-    background-color: #1a1a1a;
-}
-
-#custom-power:hover {
-    color: #1a1a1a;
-    background-color: #eb6f92;
-}
-
-@keyframes pulse {
-    0% {
-        color: #eb6f92;
-        background-color: #1a1a1a;
-    }
-
-    50% {
-        color: #1a1a1a;
-        background-color: #eb6f92;
-    }
-
-    100% {
-        color: #eb6f92;
-        background-color: #1a1a1a;
-    }
+    padding: 0 2px;
 }
 
 #workspaces button {
+    all: unset;
     padding: 0 5px;
-    color: #aaaaaa;
-    border-radius: 0;
+    background: alpha(@surface, 0.6);
 }
 
-#workspaces button:hover {
-    background: #2a2a2a;
+#workspaces button:first-child {
+    border-radius: 5px 0 0 5px;
 }
 
-#workspaces button.focused {
-    color: #1a1a1a;
-    background-color: #eb6f92;
+#workspaces button:last-child {
+    border-radius: 0 5px 5px 0;
 }
 
-#battery.urgent {
-    animation: pulse 6s infinite;
+#workspaces button.focused:nth-child(1) {
+    background-color: @love;
 }
 
-#battery.charging, #battery.plugged {
-    animation: none;
-    color: #1a1a1a;
-    background-color: #f6c177;
+#workspaces button.focused:nth-child(2) {
+    background-color: @rose;
+}
+
+#workspaces button.focused:nth-child(3) {
+    background-color: @gold;
+}
+
+#workspaces button.focused:nth-child(4) {
+    background-color: @foam;
+}
+
+#workspaces button.focused:nth-child(5) {
+    background-color: @pine;
+}
+
+#workspaces button.focused:nth-child(6) {
+    background-color: @iris;
+}
+
+#network {
+    padding: 0 5px;
+}
+
+#battery {
+    color: @text;
+    padding: 0 5px;
+}
+
+#battery.charging {
+    color: @gold;
 }

@@ -37,11 +37,11 @@
   programs.zsh.syntaxHighlighting.enable = true;
 
   programs.sway.enable = true;
-  programs.sway.package = pkgs.sway;
+  programs.sway.package = pkgs.swayfx;
   programs.sway.xwayland.enable = true;
-  programs.sway.extraPackages = with pkgs; [swaybg swayidle swaylock wl-clipboard brightnessctl];
+  programs.sway.extraPackages = with pkgs; [swaybg swaynotificationcenter swayidle swaylock wl-clipboard brightnessctl];
 
   programs.waybar.enable = true;
 
-  environment.loginShellInit = "[ \"$(tty)\" = \"/dev/tty1\" ] && exec ${pkgs.dbus}/bin/dbus-run-session ${pkgs.sway}/bin/sway";
+  environment.loginShellInit = "[ \"$(tty)\" = \"/dev/tty1\" ] && exec ${pkgs.dbus}/bin/dbus-run-session ${pkgs.swayfx}/bin/sway";
 }
