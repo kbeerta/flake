@@ -16,6 +16,8 @@ corner_radius 10
 default_border none 0
 default_floating_border none 0
 
+default_dim_inactive 0.2
+
 input "type:keyboard" {
     repeat_rate 25
     repeat_delay 250
