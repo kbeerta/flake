@@ -13,6 +13,7 @@
     ],
 
     "modules-right": [
+        "pulseaudio",
         "network",
         "battery"
     ],
@@ -41,6 +42,16 @@
             "4": [],
             "5": [],
             "6": []
+        }
+    },
+
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": " ",
+        "tooltip-format": "{desc} ({volume}%)  ",
+        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+        "format-icons": {
+            "default": [" ", " "]
         }
     },
     

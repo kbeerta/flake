@@ -86,6 +86,10 @@ tooltip {
     background-color: @iris;
 }
 
+#pulseaudio {
+    padding: 0 5px;
+}
+
 #network {
     padding: 0 5px;
 }
@@ -97,4 +101,8 @@ tooltip {
 
 #battery.charging {
     color: @gold;
+}
+
+#battery.critical {
+    color: @love;
 }

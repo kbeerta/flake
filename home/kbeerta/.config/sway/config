@@ -111,9 +111,7 @@ bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_SOURCE@ toggle
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
-bar {
-    swaybar_command waybar
-}
+bar { }
 
 gaps inner 10
 
