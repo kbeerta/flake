@@ -11,5 +11,5 @@ normal = { family = "Iosevka Nerd Font", style = "Regular" }
 style = { shape = "Block", blinking = "Off" }
 
 [colors.primary]
-background = "#232136"
-foreground = "#e0def4"
+background = "#171717"
+foreground = "#ffffff"

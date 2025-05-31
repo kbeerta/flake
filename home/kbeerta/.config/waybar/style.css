@@ -1,8 +1,8 @@
 @define-color critical #ff0000;
 @define-color warning #f3f809;
 @define-color fgcolor #ffffff;
-@define-color bgcolor #111111;
-@define-color bgcolor #111111;
+@define-color bgcolor #171717;
+@define-color bgcolor #171717;
 @define-color alert   #df3320;
 
 @define-color accent1 #ff7a93;
@@ -21,7 +21,7 @@
 }
 
 window#waybar {
-    background-color: rgb(34, 36, 54);
+    background-color: #171717;
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -74,13 +74,8 @@ window#waybar {
 #backlight,
 #network,
 #pulseaudio,
-#custom-media,
-#tray,
 #mode,
-#idle_inhibitor,
-#custom-power,
-#custom-pacman,
-#language {
+#disk {
     padding: 0px 3px;
     margin: 4px 3px 5px 3px;
     color: @fgcolor;
