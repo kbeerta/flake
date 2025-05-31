@@ -1,108 +1,165 @@
-@import url("./themes/rose-pine-moon.css");
+@define-color critical #ff0000;
+@define-color warning #f3f809;
+@define-color fgcolor #ffffff;
+@define-color bgcolor #111111;
+@define-color bgcolor #111111;
+@define-color alert   #df3320;
+
+@define-color accent1 #ff7a93;
+@define-color accent2 #b9f27c;
+@define-color accent3 #ff9e64;
+@define-color accent4 #bb9af7;
+@define-color accent5 #7da6ff;
+@define-color accent6 #0db9d7;
 
 * {
+    /* `otf-font-awesome` is required to be installed for icons */
+    border: none;
+    font-family: "Iosevka NerdFont";
+    /* Recommended font sizes: 720p: ~14px, 1080p: ~18px */
     font-size: 14px;
-    font-family: Ioveska Nerd Font, monospace;
 }
 
 window#waybar {
-    all: unset;
+    background-color: rgb(34, 36, 54);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+    border-radius: 5px;
 }
 
-tooltip {
-    color: @text;
-    background: @base;
-}
-
-.modules-left {
-    padding: 7px;
-    border-radius: 10px;
-    margin: 5px 0 0 10px;
-    background: alpha(@base, 0.8);
-}
-
-.modules-center {
-    padding: 7px;
-    border-radius: 10px;
-    margin: 5px 0 0 0;
-    background: alpha(@base, 0.8);
-}
-
-.modules-right {
-    padding: 7px;
-    border-radius: 10px;
-    margin: 5px 10px 0 0;
-    background: alpha(@base, 0.8);
-}
-
-#custom-notification {
-    color: @gold;
-    padding: 0 5px;
-}
-
-#clock {
-    padding: 0 5px;
-}
-
-#workspaces {
-    padding: 0 2px;
+window#waybar {
+    opacity: 0.8;
 }
 
 #workspaces button {
-    all: unset;
-    padding: 0 5px;
-    background: alpha(@surface, 0.6);
+    padding: 0px;
+    margin: 4px 0 6px 0;
+    background-color: transparent;
+    color: #ffffff;
+    min-width: 36px;
 }
 
-#workspaces button:first-child {
-    border-radius: 5px 0 0 5px;
+#workspaces button.active {
+    padding: 0 0 0 0;
+    margin: 4px 0 6px 0;
+    background-color: #ddddff;
+    color: #303030;
+    min-width: 32px;
 }
 
-#workspaces button:last-child {
-    border-radius: 0 5px 5px 0;
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
 }
 
-#workspaces button.focused:nth-child(1) {
-    background-color: @love;
+#workspaces button.focused {
+    background-color: #bbccdd;
+    color: #323232;
 }
 
-#workspaces button.focused:nth-child(2) {
-    background-color: @rose;
+#workspaces button.urgent {
+    color: red;
 }
 
-#workspaces button.focused:nth-child(3) {
-    background-color: @gold;
+#mode {
+    background-color: #64727D;
+    border-bottom: 1px solid #ffffff;
 }
 
-#workspaces button.focused:nth-child(4) {
-    background-color: @foam;
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#custom-power,
+#custom-pacman,
+#language {
+    padding: 0px 3px;
+    margin: 4px 3px 5px 3px;
+    color: @fgcolor;
+    background-color:transparent;
 }
 
-#workspaces button.focused:nth-child(5) {
-    background-color: @pine;
+#window,
+#workspaces {
+    margin: 0 4px;
 }
 
-#workspaces button.focused:nth-child(6) {
-    background-color: @iris;
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
 }
 
-#pulseaudio {
-    padding: 0 5px;
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
 }
 
-#network {
-    padding: 0 5px;
+#clock {
+    color: #90ee90;
 }
 
 #battery {
-    color: @text;
-    padding: 0 5px;
+    color: @accent5;
 }
 
-#battery.charging {
-    color: @gold;
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #333333;
+    }
 }
 
-#battery.critical {
-    color: @love;
+#battery.critical:not(.charging) {
+    background-color: @critical;
+    color: @white;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#cpu {
+    color: @accent1;
+}
+
+#memory {
+    color: #86e2d5;
+}
+
+#backlight {
+    color: @accent2;
+}
+
+#network {
+    color: @accent3;
+}
+
+#network.disconnected {
+    color: @alert;
+}
+
+#pulseaudio {
+    color: @accent4;
+}
+
+#pulseaudio.muted {
+    color: #a0a0a0;
+}
+
+#custom-power {
+    color: @accent6;
+}
+
+#custom-separator {
+    color: #606060;
+    margin: 0 1px;
+    padding-bottom: 5px;
 }

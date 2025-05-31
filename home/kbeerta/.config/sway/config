@@ -5,14 +5,11 @@ set $mod Mod1
 
 output * bg ~/.config/sway/wallpapers/wallhaven-gjjzqq.jpg fill
 
-exec swaync
-
 exec swayidle -w \
     timeout 300 'swaylock -f -c 000000' \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -f -c 000000'
 
-corner_radius 10
 default_border none 0
 default_floating_border none 0
 
@@ -115,7 +112,7 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 bar { }
 
-gaps inner 10
+gaps inner 2
 
 for_window {
     [app_id="launcher"] floating enable, border 0px

@@ -21,7 +21,7 @@
     user = {
       name = "kbeerta";
       groups = [ "wheel" "input" "networkmanager" ];
-      packages = with pkgs; [fzf tmux alacritty firefox discord];
+      packages = with pkgs; [ripgrep fzf tmux alacritty firefox discord];
     };
   in {
     nixosConfigurations = {

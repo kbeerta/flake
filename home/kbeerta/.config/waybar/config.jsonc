@@ -4,82 +4,117 @@
     "position": "top",
 
     "modules-left": [
-        "custom/notification",
-        "clock"
+        "sway/workspaces",
+        "sway/mode",
+        "custom/separator",
+        "cpu",
+        "custom/separator",
+        "memory",
+        "custom/separator",
+        "disk",
+        "custom/separator",
+        "network",
     ],
 
     "modules-center": [
-        "sway/workspaces"
     ],
 
     "modules-right": [
+        "backlight",
+        "custom/separator",
+        "battery",
+        "custom/separator",
         "pulseaudio",
-        "network",
-        "battery"
+        "custom/separator",
+        "clock"
     ],
 
-    "custom/notification": {
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}",
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "cpu": {
+        "format": " &#8239;{usage}%",
+        "tooltip": false
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": " {used:0.2f}GB",
+
+        "max-length": 10,
         "tooltip": false,
-        "format": "󰂚",
-        "on-click": "swaync-client -t -sw",
-        "escape": true
+        "warning": 70,
+        "critical": 90
+    },
+
+    "disk": {
+        "unit": "GiB",
+        "interval": 30,
+        "format": " {specific_used:0.2f}GiB",
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi": " &#8239;({signalStrength}%)",
+        "format-ethernet": "&#8239;{ifname}: {ipaddr}/{cidr}",
+        "format-linked": "&#8239;{ifname} (No IP)",
+        "format-disconnected": "✈&#8239;Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{essid}: {ipaddr}"
+    },
+
+    "backlight": {
+        "format": "{icon}&#8239;{percent}%",
+        "format-icons": ["💡", "💡"],
+        "on-scroll-down": "brightnessctl -c backlight set 1%-",
+        "on-scroll-up": "brightnessctl -c backlight set +1%"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}&#8239;{capacity}%",
+        "format-charging": " &#8239;{capacity}%",
+        "format-plugged": " &#8239;{capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": [" ", " ", " ", " ", " "],
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-bluetooth-muted": " {format_source}",
+        "format-muted": "  {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": "🎧",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": ["", " ", " "]
+        }
     },
 
     "clock": {
         "interval": 1,
-        "format": "{:%H:%M:%S}"
+        "format": "  {:%H:%M}"
     },
 
-    "sway/workspaces": {
-        "all-outputs": true,
-        "disable-scroll": true,
-        "warp-on-scroll": false,
-        "format": "<span> </span>",
-        "persistent-workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            "6": []
-        }
-    },
-
-    "pulseaudio": {
-        "format": "{icon}",
-        "format-muted": " ",
-        "tooltip-format": "{desc} ({volume}%)  ",
-        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
-        "format-icons": {
-            "default": [" ", " "]
-        }
-    },
-    
-    "network": {
-        "format-wifi": " ",
-        "format-ethernet":" ",
-        "format-disconnected": " ",
-        "tooltip-format-disconnected": "Error",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-        "tooltip-format-ethernet": "{ifname} 🖧 "
-    },
-
-    "battery": {
-        "interval": 30,
-        "states": {
-            "warning": 35,
-            "critical": 20,
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% 󰂄",
-        "format-alt": "{time} {icon}",
-        "format-icons": [
-            "󰁻",
-            "󰁼",
-            "󰁾",
-            "󰂀",
-            "󰂂",
-            "󰁹"
-        ],
+    "custom/separator": {
+        "format": "|",
+        "tooltip": false,
+        "interval": "once"
     }
 }
