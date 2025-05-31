@@ -3,7 +3,7 @@ font Iosevka Nerd Font 14px
 
 set $mod Mod1
 
-output * bg ~/.config/sway/wallpapers/wallhaven-gjjzqq.jpg fill
+output * bg ~/.config/sway/wallpapers/wallhaven-w5o9o7.png fill
 
 exec swayidle -w \
     timeout 300 'swaylock -f -c 000000' \
