@@ -23,9 +23,6 @@
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
 
-  fonts.packages = with pkgs; [nerd-fonts.iosevka];
-  environment.systemPackages = with pkgs; [neovim];
-
   users.defaultUserShell = pkgs.zsh;
 
   xdg.portal.enable = true;
@@ -39,7 +36,7 @@
   programs.sway.enable = true;
   programs.sway.package = pkgs.swayfx;
   programs.sway.xwayland.enable = true;
-  programs.sway.extraPackages = with pkgs; [swaybg swayidle swaylock wl-clipboard brightnessctl];
+  programs.sway.extraPackages = with pkgs; [swaybg wl-clipboard brightnessctl];
 
   programs.waybar.enable = true;
 

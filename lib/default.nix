@@ -4,7 +4,6 @@ rec {
     host_users = (map (u: mkUser u) users);
   in lib.nixosSystem {
       inherit system;
-
       modules = [
         {
           imports = [config] ++ host_users;
@@ -12,7 +11,7 @@ rec {
           nixpkgs.pkgs = pkgs;
           networking.hostName = "${name}";
 
-          environment.systemPackages = with pkgs; [git stow];
+          environment.systemPackages = with pkgs; [git stow neovim];
 
           nix.channel.enable = false;
           nix.settings.experimental-features = ["flakes" "nix-command"];
@@ -21,7 +20,7 @@ rec {
         }
       ];
     };
-  mkUser = { name, groups, packages }:
+  mkUser = { name, groups, fonts, packages }:
     {
       users.users."${name}" = {
         name = name;
@@ -32,5 +31,7 @@ rec {
         useDefaultShell = true;
         initialPassword = "password";
       };
+
+      fonts.packages = fonts;
     };
 }

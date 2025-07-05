@@ -18,22 +18,20 @@
       inherit pkgs lib system;
     };
 
-    user = {
-      name = "kbeerta";
-      groups = [ "wheel" "input" "networkmanager" ];
-      packages = with pkgs; [ripgrep fzf tmux alacritty firefox discord];
-    };
+    users = [
+      {
+        name = "kbeerta";
+        groups = [ "wheel" "input" "networkmanager" ];
+        fonts = with pkgs; [nerd-fonts.iosevka];
+        packages = with pkgs; [ripgrep fzf tmux alacritty firefox discord];
+      }
+    ];
   in {
     nixosConfigurations = {
-      mir = utils.mkHost {
-        name = "mir";
-        config = ./hosts/mir;
-        users = [user];
-      };
       sputnik = utils.mkHost {
+        users = users;
         name = "sputnik";
         config = ./hosts/sputnik;
-        users = [user];
       };
     };
   };
