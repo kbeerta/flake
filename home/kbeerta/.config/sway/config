@@ -107,7 +107,7 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 bar { }
 
-gaps inner 2
+gaps inner 6
 
 for_window {
     [app_id="launcher"] floating enable, border 0px

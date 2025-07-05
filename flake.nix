@@ -30,6 +30,7 @@
         groups = [ "wheel" "input" "networkmanager" ];
         fonts = with pkgs; [
           nerd-fonts.iosevka
+          nerd-fonts.jetbrains-mono
         ];
         packages = with pkgs; [
           # cli
@@ -40,8 +41,6 @@
           alacritty 
           firefox 
           discord
-          # shell
-          quickshell
         ];
       }
     ];
