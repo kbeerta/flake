@@ -11,7 +11,7 @@ rec {
           nixpkgs.pkgs = pkgs;
           networking.hostName = "${name}";
 
-          environment.systemPackages = with pkgs; [git stow neovim];
+          environment.systemPackages = with pkgs; [git stow neovim nixd];
 
           nix.channel.enable = false;
           nix.settings.experimental-features = ["flakes" "nix-command"];

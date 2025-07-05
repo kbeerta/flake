@@ -1,16 +1,22 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs }: let
+  outputs = { self, nixpkgs, ... } @ inputs: let
+
     inherit (nixpkgs) lib;
 
     system = "x86_64-linux";
 
     pkgs = import nixpkgs {
       inherit system;
-      overlays = [];
+      overlays = [
+        inputs.neovim-nightly-overlay.overlays.default
+      ];
       config.allowUnfree = true;
     };
 
@@ -22,8 +28,21 @@
       {
         name = "kbeerta";
         groups = [ "wheel" "input" "networkmanager" ];
-        fonts = with pkgs; [nerd-fonts.iosevka];
-        packages = with pkgs; [ripgrep fzf tmux alacritty firefox discord];
+        fonts = with pkgs; [
+          nerd-fonts.iosevka
+        ];
+        packages = with pkgs; [
+          # cli
+          fzf 
+          tmux 
+          ripgrep 
+          # programs
+          alacritty 
+          firefox 
+          discord
+          # shell
+          quickshell
+        ];
       }
     ];
   in {

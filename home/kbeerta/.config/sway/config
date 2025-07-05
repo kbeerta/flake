@@ -5,11 +5,6 @@ set $mod Mod1
 
 output * bg ~/.config/sway/wallpapers/wallhaven-gjjzqq.jpg fill
 
-exec swayidle -w \
-    timeout 300 'swaylock -f -c 000000' \
-    timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-    before-sleep 'swaylock -f -c 000000'
-
 default_border none 0
 default_floating_border none 0
 

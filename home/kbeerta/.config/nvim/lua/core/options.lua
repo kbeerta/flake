@@ -27,3 +27,4 @@ opt.expandtab = true
 
 opt.cursorline = true
 opt.cursorlineopt = "number"
+
