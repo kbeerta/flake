@@ -1,56 +1,56 @@
 {
-  description = "snowflake";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    niri-nightly.url = "github:YaLTeR/niri";
-    niri-nightly.inputs.nixpkgs.follows = "nixpkgs";
-
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
-    neovim-nightly.inputs.nixpkgs.follows = "nixpkgs";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
-    let
-      inherit (self) outputs;
-    in
-    {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-      nixosModules = import ./modules;
-      homeManagerModules = import ./modules/home;
-      nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs outputs; };
-        modules = [
-          ./hosts/laptop
+  outputs = { self, nixpkgs, ... } @ inputs: let
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.kbeerta = {
-              imports = [
-                outputs.homeManagerModules.snowflake
-              ];
+    inherit (nixpkgs) lib;
 
-              system.snowflake.home = {
-                enable = true;
-                user = "kbeerta";
-              };
-            };
-            home-manager.extraSpecialArgs = { inherit inputs outputs; };
-          }
+    system = "x86_64-linux";
+
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [
+        inputs.neovim-nightly-overlay.overlays.default
+      ];
+      config.allowUnfree = true;
+    };
+
+    utils = import ./lib {
+      inherit pkgs lib system;
+    };
+
+    users = [
+      {
+        name = "kbeerta";
+        groups = [ "wheel" "input" "networkmanager" ];
+        fonts = with pkgs; [
+          nerd-fonts.iosevka
+          nerd-fonts.jetbrains-mono
         ];
+        packages = with pkgs; [
+          # cli
+          fzf 
+          tmux 
+          ripgrep 
+          # programs
+          alacritty 
+          firefox 
+          discord
+        ];
+      }
+    ];
+  in {
+    nixosConfigurations = {
+      sputnik = utils.mkHost {
+        users = users;
+        name = "sputnik";
+        config = ./hosts/sputnik;
       };
     };
+  };
 }
