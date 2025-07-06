@@ -30,7 +30,7 @@
     "modules-right": [
         "sway/window",  
         "battery",
-        "group/audio", 
+        "pulseaudio",
         "custom/power"
     ]
 }
